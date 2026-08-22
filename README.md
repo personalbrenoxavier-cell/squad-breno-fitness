@@ -117,3 +117,18 @@ docs/COMO-CRIAR-FORMULARIO-GOOGLE.md  → guia do Google Form (já feito)
 ---
 
 *Em caso de dúvida operacional, pergunta no Claude — ele lê todo o projeto sozinho e responde com base na metodologia. Não chuta nem inventa.*
+
+---
+
+## 💾 Salvar no GitHub
+
+Repositório privado: `personalbrenoxavier-cell/squad-breno-fitness`
+
+Depois de gerar dietas ou mexer no sistema, dê **dois cliques em `atualizar-github.bat`**.
+Ele mostra o que mudou, pede uma descrição (pode só apertar Enter) e envia tudo.
+
+Não precisa fazer isso a cada arquivo. Pode acumular o dia inteiro e enviar uma vez só.
+
+**Fica de fora do GitHub:** `data/` (avaliações posturais), fotos, `.csv` e `.xlsx`.
+Ou seja, o GitHub **não** é backup dessa pasta.
+
