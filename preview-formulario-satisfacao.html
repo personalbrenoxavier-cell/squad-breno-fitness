@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Preview — Questionário de Alunas (Durante o Acompanhamento)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    background: #f0ebf8;
+    margin: 0;
+    padding: 30px 16px;
+    color: #202124;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  .header-bar {
+    height: 10px;
+    background: #673ab7;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+
+  .card.title-card {
+    border-top: 10px solid #673ab7;
+    padding-top: 24px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 12px 0;
+    line-height: 1.25;
+  }
+
+  .form-desc {
+    font-size: 14px;
+    color: #202124;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .required-note {
+    font-size: 13px;
+    color: #d93025;
+    margin-top: 16px;
+  }
+
+  .section-card {
+    border-left: 6px solid #673ab7;
+  }
+
+  .section-num {
+    font-size: 12px;
+    color: #5f6368;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0 0 8px 0;
+  }
+
+  .section-help {
+    font-size: 13px;
+    color: #5f6368;
+    line-height: 1.5;
+  }
+
+  .question-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.45;
+  }
+
+  .required-star { color: #d93025; margin-left: 2px; }
+
+  .question-help {
+    font-size: 12px;
+    color: #5f6368;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .answer-text {
+    border-bottom: 1px solid #dadce0;
+    height: 28px;
+    margin-top: 14px;
+    color: #80868b;
+    font-size: 13px;
+    padding-bottom: 4px;
+  }
+
+  .answer-paragraph {
+    border-bottom: 1px solid #dadce0;
+    min-height: 28px;
+    margin-top: 14px;
+    color: #80868b;
+    font-size: 13px;
+    padding-bottom: 4px;
+  }
+
+  .answer-date {
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 14px;
+    color: #80868b;
+    font-size: 13px;
+    width: 180px;
+    display: inline-block;
+  }
+
+  .option-row {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #202124;
+  }
+
+  .radio-circle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #5f6368;
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .checkbox-square {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #5f6368;
+    border-radius: 2px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .scale {
+    display: flex;
+    align-items: center;
+    margin-top: 14px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .scale-label {
+    font-size: 12px;
+    color: #5f6368;
+    min-width: 110px;
+  }
+
+  .scale-numbers {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .scale-num {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: #5f6368;
+    gap: 4px;
+  }
+
+  .scale-circle {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #5f6368;
+    border-radius: 50%;
+  }
+
+  .next-btn {
+    background: #673ab7;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 16px;
+    cursor: default;
+    display: inline-block;
+  }
+
+  .footer-info {
+    text-align: center;
+    font-size: 12px;
+    color: #5f6368;
+    padding: 24px 0 8px 0;
+  }
+
+  .section-divider {
+    height: 8px;
+  }
+
+  .preview-banner {
+    background: #fef7e0;
+    border: 1px solid #f9ab00;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #3c4043;
+  }
+
+  .preview-banner strong { color: #b06000; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="preview-banner">
+    <strong>📋 PREVIEW ESTÁTICO</strong> — simulação visual de como o formulário vai aparecer pra aluna depois de rodar o script <code>criar-formulario-satisfacao-google.gs</code>. Os botões aqui não funcionam.
+  </div>
+
+  <!-- TÍTULO E DESCRIÇÃO -->
+  <div class="card title-card">
+    <h1>Questionário de Alunas (Durante o Acompanhamento) — Breno Xavier</h1>
+    <div class="form-desc">Oi! Esse questionário rápido (uns 5-7 min) me ajuda a entender o que tá funcionando no programa e o que eu posso melhorar pra você — desde o acompanhamento por WhatsApp até os conteúdos que você consome.
+
+Responde com sinceridade total. Crítica é o que faz a consultoria crescer e o seu resultado melhorar. Tudo é confidencial. — Breno Xavier</div>
+    <div class="required-note">* Indica uma pergunta obrigatória</div>
+  </div>
+
+  <!-- IDENTIFICAÇÃO -->
+  <div class="card">
+    <div class="question-title">Seu nome completo<span class="required-star">*</span></div>
+    <div class="answer-text">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Data do preenchimento<span class="required-star">*</span></div>
+    <div class="answer-date">dd/mm/aaaa</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Há quanto tempo você é aluna?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Menos de 1 mês</div>
+    <div class="option-row"><div class="radio-circle"></div>1 a 3 meses</div>
+    <div class="option-row"><div class="radio-circle"></div>3 a 6 meses</div>
+    <div class="option-row"><div class="radio-circle"></div>6 a 12 meses</div>
+    <div class="option-row"><div class="radio-circle"></div>Mais de 1 ano</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Qual plano você contratou?</div>
+    <div class="option-row"><div class="radio-circle"></div>Trimestral (3 meses)</div>
+    <div class="option-row"><div class="radio-circle"></div>Semestral (6 meses)</div>
+    <div class="option-row"><div class="radio-circle"></div>Semestral em dobro (6 + 6 grátis)</div>
+    <div class="option-row"><div class="radio-circle"></div>Anual</div>
+    <div class="option-row"><div class="radio-circle"></div>Não lembro / Outro</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 1 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 1 de 6</div>
+    <div class="section-title">1. O programa em geral</div>
+    <div class="section-help">Pensa no programa como um todo: dieta + treino + acompanhamento + conteúdo.</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Em uma escala de 0 a 10, quão satisfeita você está com o programa em geral?<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Muito insatisfeita</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Extremamente satisfeita</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Os resultados estão batendo com o que você esperava quando contratou?<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Muito abaixo</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Acima da expectativa</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">O que mais te SURPREENDEU positivamente desde que entrou no programa?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Algo te DECEPCIONOU ou ficou abaixo do que você esperava?</div>
+    <div class="question-help">Pode falar sem medo — é exatamente isso que eu preciso saber pra melhorar.</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 2 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 2 de 6</div>
+    <div class="section-title">2. Acompanhamento pelo WhatsApp</div>
+    <div class="section-help">A forma principal de contato durante o programa.</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Quão satisfeita você está com o acompanhamento pelo WhatsApp?<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Muito insatisfeita</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Extremamente satisfeita</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Tempo de resposta às suas dúvidas<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Muito demorado</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Muito rápido</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Clareza nas orientações que você recebe<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Confusas</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Super claras</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Como você avalia a FREQUÊNCIA de contato?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Pouca — gostaria de mais contato</div>
+    <div class="option-row"><div class="radio-circle"></div>Boa — está no ponto certo</div>
+    <div class="option-row"><div class="radio-circle"></div>Muita — às vezes acho excessiva</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Você sente que é ouvida quando traz um problema ou dúvida?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Sempre — me sinto acolhida e levada a sério</div>
+    <div class="option-row"><div class="radio-circle"></div>Geralmente sim</div>
+    <div class="option-row"><div class="radio-circle"></div>Às vezes não</div>
+    <div class="option-row"><div class="radio-circle"></div>Raramente — sinto que minhas dúvidas são respondidas de forma genérica</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">O que você mudaria ou melhoraria no acompanhamento pelo WhatsApp?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 3 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 3 de 6</div>
+    <div class="section-title">3. Atendimento Comercial</div>
+    <div class="section-help">Como foi quando você ainda não era aluna — do primeiro contato até fechar o plano.</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Como você avalia o atendimento comercial ANTES de contratar?<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">Péssimo</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Excelente</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">No processo de compra, você se sentiu...<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Bem orientada, sem pressão</div>
+    <div class="option-row"><div class="radio-circle"></div>Bem orientada, mas com alguma pressão pra fechar</div>
+    <div class="option-row"><div class="radio-circle"></div>Pouco orientada, com pressão pra fechar</div>
+    <div class="option-row"><div class="radio-circle"></div>Mal orientada / experiência ruim</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">As informações sobre o plano (preço, prazo, o que está incluso) ficaram claras?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Sim, tudo claro</div>
+    <div class="option-row"><div class="radio-circle"></div>Em parte — algumas coisas só entendi depois</div>
+    <div class="option-row"><div class="radio-circle"></div>Não — me senti confusa em alguns pontos</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">O que poderia melhorar no processo de venda / primeiro contato?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 4 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 4 de 6</div>
+    <div class="section-title">4. Conteúdos do Instagram (@brenoxavieer_)</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Com que frequência você acompanha o conteúdo do @brenoxavieer_?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Todo dia</div>
+    <div class="option-row"><div class="radio-circle"></div>Algumas vezes na semana</div>
+    <div class="option-row"><div class="radio-circle"></div>Raramente</div>
+    <div class="option-row"><div class="radio-circle"></div>Quase nunca</div>
+    <div class="option-row"><div class="radio-circle"></div>Não sigo / não acompanho</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Quão útil é o conteúdo pra você?</div>
+    <div class="scale">
+      <span class="scale-label">Nada útil</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Extremamente útil</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Que tipo de conteúdo mais te ajuda? (pode marcar quantas quiser)</div>
+    <div class="option-row"><div class="checkbox-square"></div>Treino (técnica, execução, dicas)</div>
+    <div class="option-row"><div class="checkbox-square"></div>Dieta e nutrição</div>
+    <div class="option-row"><div class="checkbox-square"></div>Antes e depois / transformações de alunas</div>
+    <div class="option-row"><div class="checkbox-square"></div>Mindset / motivação</div>
+    <div class="option-row"><div class="checkbox-square"></div>Stories do dia a dia</div>
+    <div class="option-row"><div class="checkbox-square"></div>Lives</div>
+    <div class="option-row"><div class="checkbox-square"></div>Conteúdo educativo (vídeos longos / carrosséis)</div>
+    <div class="option-row"><div class="checkbox-square"></div>Bastidores e rotina do Breno</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Que tipo de conteúdo você gostaria de ver MAIS?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Tem algum conteúdo que você acha que o Breno deveria PARAR de fazer ou fazer menos?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 5 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 5 de 6</div>
+    <div class="section-title">5. Indicação</div>
+    <div class="section-help">A pergunta mais importante. Sua resposta aqui me diz se eu tô entregando o que prometi.</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">De 0 a 10, o quanto você indicaria o programa do Breno pra uma amiga ou pessoa próxima?<span class="required-star">*</span></div>
+    <div class="scale">
+      <span class="scale-label">De jeito nenhum</span>
+      <div class="scale-numbers">
+        <div class="scale-num">0<div class="scale-circle"></div></div>
+        <div class="scale-num">1<div class="scale-circle"></div></div>
+        <div class="scale-num">2<div class="scale-circle"></div></div>
+        <div class="scale-num">3<div class="scale-circle"></div></div>
+        <div class="scale-num">4<div class="scale-circle"></div></div>
+        <div class="scale-num">5<div class="scale-circle"></div></div>
+        <div class="scale-num">6<div class="scale-circle"></div></div>
+        <div class="scale-num">7<div class="scale-circle"></div></div>
+        <div class="scale-num">8<div class="scale-circle"></div></div>
+        <div class="scale-num">9<div class="scale-circle"></div></div>
+        <div class="scale-num">10<div class="scale-circle"></div></div>
+      </div>
+      <span class="scale-label" style="text-align: right;">Com certeza indicaria</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Por que essa nota?<span class="required-star">*</span></div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Você já indicou o programa pra alguém?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Sim, e a pessoa fechou</div>
+    <div class="option-row"><div class="radio-circle"></div>Sim, mas a pessoa não fechou</div>
+    <div class="option-row"><div class="radio-circle"></div>Ainda não, mas pretendo</div>
+    <div class="option-row"><div class="radio-circle"></div>Não pretendo indicar</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Se você indicou alguém que fechou — quem foi? (pra eu reconhecer e te agradecer)</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Posso usar trechos da sua resposta como DEPOIMENTO em divulgação?<span class="required-star">*</span></div>
+    <div class="option-row"><div class="radio-circle"></div>Sim, com meu nome e/ou foto</div>
+    <div class="option-row"><div class="radio-circle"></div>Sim, mas só anônimo (sem nome/foto)</div>
+    <div class="option-row"><div class="radio-circle"></div>Não, prefiro que fique privado</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Próxima</button></div>
+
+  <div class="section-divider"></div>
+
+  <!-- SEÇÃO 6 -->
+  <div class="card section-card">
+    <div class="section-num">Seção 6 de 6</div>
+    <div class="section-title">6. Aberto</div>
+    <div class="section-help">Espaço livre. O que tiver pra dizer.</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Se você pudesse mudar UMA COISA no programa, qual seria?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Tem algo que está te impedindo de ter resultados ainda melhores?</div>
+    <div class="question-help">Pode ser interno (rotina, ansiedade, tempo) ou algo do programa.</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div class="card">
+    <div class="question-title">Algo mais que você queira me contar?</div>
+    <div class="answer-paragraph">Sua resposta</div>
+  </div>
+
+  <div style="text-align: right;"><button class="next-btn">Enviar</button></div>
+
+  <div class="footer-info">
+    Nunca envie senhas pelo Formulários Google.<br>
+    Este conteúdo não foi criado nem aprovado pelo Google.
+  </div>
+
+</div>
+
+</body>
+</html>

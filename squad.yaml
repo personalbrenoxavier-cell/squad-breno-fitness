@@ -1,0 +1,72 @@
+# Manifesto do SQUAD — Breno Xavier
+# Lista tudo que existe no squad e como se conecta.
+
+squad:
+  nome: "Squad Breno Xavier — Consultoria Fitness"
+  versao: "0.1.0"
+  responsavel: "Breno Xavier"
+  posicionamento: "Consultoria online para mulheres 24-45 com foco em corpo definido"
+  idioma: pt-BR
+
+agentes:
+  - id: avaliacao-postural
+    arquivo: agents/avaliacao-postural.md
+    descricao: "Gera relatório de Avaliação Postural INICIAL (primeira foto) no modelo oficial — análise segmentar por vista (Anterior, Posterior, Lateral)."
+    padrao_oficial: "PDF Maria Jennifer Pinheiro Lopes — 18/05/2026"
+    usa_skills:
+      - avaliacao-postural
+    templates:
+      - templates/avaliacao-postural.md
+    checklists:
+      - checklists/avaliacao.md
+    workflows:
+      - workflows/fluxo-avaliacao.md
+
+  - id: reavaliacao-postural
+    arquivo: agents/reavaliacao-postural.md
+    descricao: "Gera relatório de Reavaliação Postural COMPARATIVA (Antes×Depois) no modelo oficial — tabela das 9 regiões com coluna Evolução."
+    padrao_oficial: "PDF Gabriela Carline — 17/05/2026"
+    usa_skills:
+      - avaliacao-postural
+    templates:
+      - templates/reavaliacao-postural.md
+    checklists:
+      - checklists/reavaliacao.md
+    workflows:
+      - workflows/fluxo-reavaliacao.md
+
+  - id: dieta-mensal
+    arquivo: agents/dieta-mensal.md
+    descricao: "Monta e atualiza dieta mensal da aluna respeitando princípios e fase de composição corporal."
+    usa_skills:
+      - dieta-mensal
+    templates:
+      - templates/dieta-mensal.md
+    checklists:
+      - checklists/dieta.md
+    workflows:
+      - workflows/fluxo-dieta-mensal.md
+
+  - id: dieta-ciclagem
+    arquivo: agents/dieta-ciclagem.md
+    descricao: "Monta dieta CICLADA (carbo/caloria) com 2 tipos de dia (ALTO/BAIXO) encaixados no treino. Ativa quando: aderência caindo, reverse diet, entrada em superávit leve. Substitui dieta-mensal para esta entrega."
+    usa_skills:
+      - dieta-mensal
+    knowledge_base:
+      - core/knowledge-base/ciclagem-carbo-caloria.md
+    templates:
+      - templates/dieta-mensal.md
+    checklists:
+      - checklists/dieta.md
+
+core:
+  - core/metodologia.md          # Princípios gerais da consultoria
+  - core/fases-composicao.md     # Lógica: quando secar, quando ganhar
+  - core/dieta-principios.md     # Regras inegociáveis da dieta
+
+planejamento:
+  pendente:
+    - agente-treino
+    - agente-acompanhamento
+    - agente-captacao
+    - agente-anamnese  # substituir Google Forms

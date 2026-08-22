@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',-apple-system,Segoe UI,sans-serif}
+  :root{
+    --bg:#0c0e13;--gold:#e8b94a;--mut:#96a0b2;--line:#232a3a;--panel:#12151d;
+    --aval:#e8b94a;--ad:#ff6b8b;--prova:#39d98a;--duvida:#4f9dff;--share:#a884ff;--leve:#2fd4c4;--frase:#b7c0d0;
+  }
+  html{background:#0c0e13}
+  body{width:1680px;height:1460px;overflow:hidden;color:#fff;background:
+      radial-gradient(1100px 600px at 82% 0%, #171c28 0%, transparent 60%),
+      radial-gradient(900px 600px at 5% 100%, #14181f 0%, transparent 55%),#0c0e13}
+  .stage{padding:32px 40px;height:1460px;display:flex;flex-direction:column}
+
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+  .brand .h{font-weight:800;font-size:23px;letter-spacing:2px}
+  .brand .h span{color:var(--gold)}
+  h1{font-weight:900;font-size:34px}
+  h1 b{color:var(--gold)}
+  .sub{color:var(--mut);font-size:15px;font-weight:600;margin:2px 0 14px}
+
+  .top{display:grid;grid-template-columns:1fr 1.35fr;gap:14px;margin-bottom:14px}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 18px}
+  .box h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
+  .how{font-size:13.5px;color:#d8dde7;line-height:1.6}
+  .how b{color:#fff}
+  .leg{display:grid;grid-template-columns:1fr 1fr;gap:7px 20px}
+  .lg{display:flex;gap:9px;font-size:12.8px;color:#d3d8e2;line-height:1.35;align-items:flex-start}
+  .lg .sw{width:13px;height:13px;border-radius:4px;flex:0 0 13px;margin-top:2px}
+  .lg b{color:#fff}
+
+  .cal{flex:1;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);background:#141925;border-bottom:1px solid var(--line)}
+  .dow div{padding:9px 0;text-align:center;font-weight:800;font-size:13px;letter-spacing:2px;color:var(--gold)}
+  .dow .we{color:var(--mut)}
+  .weeks{flex:1;display:grid;grid-template-rows:repeat(5,1fr)}
+  .wk{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid #171c27}
+  .wk:last-child{border-bottom:none}
+  .cell{border-right:1px solid #171c27;padding:7px 8px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+  .cell:last-child{border-right:none}
+  .cell.out{background:repeating-linear-gradient(45deg,#0e1119,#0e1119 6px,#0c0e13 6px,#0c0e13 12px)}
+  .dnum{font-weight:800;font-size:15px;color:#e7ebf3;margin-bottom:1px}
+  .cell.we .dnum{color:var(--mut)}
+  .it{border-left:3px solid var(--line);background:#0f1420;border-radius:5px;padding:4px 8px}
+  .it .th{display:flex;justify-content:space-between;align-items:baseline;gap:6px}
+  .it .t{font-weight:800;color:#fff;font-size:12px}
+  .it .clock{color:var(--gold);font-weight:800;font-size:10.5px;white-space:nowrap}
+  .it .d{color:#aeb6c4;font-weight:600;font-size:10.6px;line-height:1.25;margin-top:1px}
+  .b-aval{border-left-color:var(--aval)} .b-ad{border-left-color:var(--ad)}
+  .b-prova{border-left-color:var(--prova)} .b-duvida{border-left-color:var(--duvida)}
+  .b-share{border-left-color:var(--share)} .b-leve{border-left-color:var(--leve)} .b-frase{border-left-color:var(--frase)}
+
+  .foot{margin-top:12px;color:var(--mut);font-size:12.5px;font-weight:600;display:flex;justify-content:space-between}
+  .foot b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="brand"><span class="dot"></span><span class="h">BRENO<span>XAVIER</span></span></div>
+  <h1>Cronograma de Stories · <b>Julho 2026</b></h1>
+  <div class="sub">Só stories · de 1 a 3 por dia · cada quadradinho colorido é 1 story pra postar no horário indicado</div>
+
+  <div class="top">
+    <div class="box">
+      <h4>📌 Como usar</h4>
+      <div class="how">
+        Cada <b>quadradinho colorido = 1 story</b>. Poste no <b>horário</b> que está nele.<br>
+        A cor diz <b>que tipo de story é</b> (veja a legenda ao lado).<br>
+        <b>De manhã</b> as pessoas interagem mais · <b>à noite</b> mais gente vê.<br>
+        O que mais importa é <b>quantas responderam no direct</b>, não a curtida.
+      </div>
+    </div>
+    <div class="box">
+      <h4>🎨 Os 7 tipos de story (o que postar em cada cor)</h4>
+      <div class="leg">
+        <span class="lg"><span class="sw" style="background:var(--aval)"></span><span><b>Chamada pra avaliação</b> — texto/foto falando da dor e pedindo pra mandar "AVALIAÇÃO" no direct. É o que mais traz cliente.</span></span>
+        <span class="lg"><span class="sw" style="background:var(--ad)"></span><span><b>Antes e depois</b> — foto de transformação de aluna, sempre convidando pra avaliação.</span></span>
+        <span class="lg"><span class="sw" style="background:var(--prova)"></span><span><b>Resultado / prova</b> — print de mensagem de aluna feliz OU antes/depois forte (pode usar card pronto).</span></span>
+        <span class="lg"><span class="sw" style="background:var(--duvida)"></span><span><b>Responder dúvida</b> — você responde uma pergunta comum das seguidoras (ex.: "já tentei tudo e não seco").</span></span>
+        <span class="lg"><span class="sw" style="background:var(--share)"></span><span><b>Pra compartilhar</b> — conteúdo que a seguidora se identifica e marca uma amiga. Traz gente nova.</span></span>
+        <span class="lg"><span class="sw" style="background:var(--leve)"></span><span><b>Momento leve</b> — vida leve: comida sem culpa, praia, rotina boa. Mostra o estilo de vida.</span></span>
+        <span class="lg"><span class="sw" style="background:var(--frase)"></span><span><b>Frase / bastidor</b> — frase de motivação OU bastidor do seu atendimento (mostra que cuida de perto).</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal">
+    <div class="dow"><div>SEGUNDA</div><div>TERÇA</div><div>QUARTA</div><div>QUINTA</div><div>SEXTA</div><div class="we">SÁBADO</div><div class="we">DOMINGO</div></div>
+    <div class="weeks">
+
+      <!-- Semana 1: Qua 1 -> Dom 5 -->
+      <div class="wk">
+        <div class="cell out"></div>
+        <div class="cell out"></div>
+        <div class="cell"><div class="dnum">1</div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">09h</span></div><div class="d">Você ajustando o treino/dieta de uma aluna.</div></div>
+          <div class="it b-share"><div class="th"><span class="t">Pra compartilhar</span><span class="clock">13h</span></div><div class="d">Ex.: "3 sinais de que você é falsa magra". Pede pra marcar uma amiga.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">2</div>
+          <div class="it b-aval"><div class="th"><span class="t">A dor</span><span class="clock">18h30</span></div><div class="d">Frase que descreve a frustração dela.</div></div>
+          <div class="it b-ad"><div class="th"><span class="t">A prova</span><span class="clock">18h45</span></div><div class="d">Antes e depois de aluna.</div></div>
+          <div class="it b-aval"><div class="th"><span class="t">O convite</span><span class="clock">19h</span></div><div class="d">"Manda AVALIAÇÃO que respondo hoje."</div></div>
+        </div>
+        <div class="cell"><div class="dnum">3</div>
+          <div class="it b-prova"><div class="th"><span class="t">Resultado</span><span class="clock">13h</span></div><div class="d">Antes/depois forte de aluna (card pronto).</div></div>
+          <div class="it b-leve"><div class="th"><span class="t">Momento leve</span><span class="clock">19h30</span></div><div class="d">Comida sem culpa / vida leve.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">4</div>
+          <div class="it b-leve"><div class="th"><span class="t">Vida leve</span><span class="clock">11h</span></div><div class="d">Foto de praia, treino leve ou comida boa.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">5</div>
+          <div class="it b-frase"><div class="th"><span class="t">Frase de virada</span><span class="clock">11h</span></div><div class="d">Motivação pra decidir mudar na segunda.</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 2: 6 -> 12 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">6</div>
+          <div class="it b-aval"><div class="th"><span class="t">Chamada pra avaliação</span><span class="clock">08h30</span></div><div class="d">Fala da barriga que não seca e pede "AVALIAÇÃO".</div></div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">19h30</span></div><div class="d">Você montando o plano de uma aluna.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">7</div>
+          <div class="it b-ad"><div class="th"><span class="t">Antes e depois</span><span class="clock">09h</span></div><div class="d">Transformação de aluna + convite pra avaliação.</div></div>
+          <div class="it b-prova"><div class="th"><span class="t">Prova real</span><span class="clock">13h</span></div><div class="d">Print de mensagem de aluna feliz (com autorização).</div></div>
+          <div class="it b-duvida"><div class="th"><span class="t">Responder dúvida</span><span class="clock">19h30</span></div><div class="d">Responde: "já tentei tudo e não seco".</div></div>
+        </div>
+        <div class="cell"><div class="dnum">8</div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">09h</span></div><div class="d">Print do direct cheio de gente pedindo vaga.</div></div>
+          <div class="it b-share"><div class="th"><span class="t">Pra compartilhar</span><span class="clock">13h</span></div><div class="d">Conteúdo que ela se identifica e marca amiga.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">9</div>
+          <div class="it b-aval"><div class="th"><span class="t">A dor</span><span class="clock">18h30</span></div><div class="d">Frase da frustração dela.</div></div>
+          <div class="it b-ad"><div class="th"><span class="t">A prova</span><span class="clock">18h45</span></div><div class="d">Antes e depois de aluna.</div></div>
+          <div class="it b-aval"><div class="th"><span class="t">O convite</span><span class="clock">19h</span></div><div class="d">"Manda AVALIAÇÃO que respondo hoje."</div></div>
+        </div>
+        <div class="cell"><div class="dnum">10</div>
+          <div class="it b-prova"><div class="th"><span class="t">Resultado</span><span class="clock">13h</span></div><div class="d">Antes/depois forte de aluna (card pronto).</div></div>
+          <div class="it b-leve"><div class="th"><span class="t">Momento leve</span><span class="clock">19h30</span></div><div class="d">Comida sem culpa / vida leve.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">11</div>
+          <div class="it b-leve"><div class="th"><span class="t">Vida leve</span><span class="clock">11h</span></div><div class="d">Praia, treino leve ou comida boa.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">12</div>
+          <div class="it b-frase"><div class="th"><span class="t">Frase de virada</span><span class="clock">11h</span></div><div class="d">Motivação pra decidir mudar na segunda.</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 3: 13 -> 19 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">13</div>
+          <div class="it b-aval"><div class="th"><span class="t">Chamada pra avaliação</span><span class="clock">08h30</span></div><div class="d">Oferta da consultoria + pede "PRIORIDADE".</div></div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">19h30</span></div><div class="d">Você ajustando plano de aluna.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">14</div>
+          <div class="it b-ad"><div class="th"><span class="t">Antes e depois</span><span class="clock">09h</span></div><div class="d">Transformação + convite pra avaliação.</div></div>
+          <div class="it b-prova"><div class="th"><span class="t">Prova real</span><span class="clock">13h</span></div><div class="d">Print de aluna feliz (com autorização).</div></div>
+          <div class="it b-duvida"><div class="th"><span class="t">Responder dúvida</span><span class="clock">19h30</span></div><div class="d">Responde uma pergunta comum das seguidoras.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">15</div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">09h</span></div><div class="d">Rotina do seu atendimento.</div></div>
+          <div class="it b-share"><div class="th"><span class="t">Pra compartilhar</span><span class="clock">13h</span></div><div class="d">Conteúdo pra marcar amiga.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">16</div>
+          <div class="it b-aval"><div class="th"><span class="t">A dor</span><span class="clock">18h30</span></div><div class="d">Frase da frustração dela.</div></div>
+          <div class="it b-ad"><div class="th"><span class="t">A prova</span><span class="clock">18h45</span></div><div class="d">Antes e depois de aluna.</div></div>
+          <div class="it b-aval"><div class="th"><span class="t">O convite</span><span class="clock">19h</span></div><div class="d">"Manda AVALIAÇÃO que respondo hoje."</div></div>
+        </div>
+        <div class="cell"><div class="dnum">17</div>
+          <div class="it b-prova"><div class="th"><span class="t">Resultado</span><span class="clock">13h</span></div><div class="d">Antes/depois forte de aluna.</div></div>
+          <div class="it b-leve"><div class="th"><span class="t">Momento leve</span><span class="clock">19h30</span></div><div class="d">Comida sem culpa / vida leve.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">18</div>
+          <div class="it b-leve"><div class="th"><span class="t">Vida leve</span><span class="clock">11h</span></div><div class="d">Praia, treino leve ou comida boa.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">19</div>
+          <div class="it b-frase"><div class="th"><span class="t">Frase de virada</span><span class="clock">11h</span></div><div class="d">Motivação pra segunda.</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 4: 20 -> 26 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">20</div>
+          <div class="it b-aval"><div class="th"><span class="t">Chamada pra avaliação</span><span class="clock">08h30</span></div><div class="d">Fala da dor e pede "AVALIAÇÃO".</div></div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">19h30</span></div><div class="d">Você montando plano de aluna.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">21</div>
+          <div class="it b-ad"><div class="th"><span class="t">Antes e depois</span><span class="clock">09h</span></div><div class="d">Transformação + convite pra avaliação.</div></div>
+          <div class="it b-prova"><div class="th"><span class="t">Prova real</span><span class="clock">13h</span></div><div class="d">Print de aluna feliz (com autorização).</div></div>
+          <div class="it b-duvida"><div class="th"><span class="t">Responder dúvida</span><span class="clock">19h30</span></div><div class="d">Responde uma dúvida comum.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">22</div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">09h</span></div><div class="d">Print do direct cheio de gente.</div></div>
+          <div class="it b-share"><div class="th"><span class="t">Pra compartilhar</span><span class="clock">13h</span></div><div class="d">Conteúdo pra marcar amiga.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">23</div>
+          <div class="it b-aval"><div class="th"><span class="t">A dor</span><span class="clock">18h30</span></div><div class="d">Frase da frustração dela.</div></div>
+          <div class="it b-ad"><div class="th"><span class="t">A prova</span><span class="clock">18h45</span></div><div class="d">Antes e depois de aluna.</div></div>
+          <div class="it b-aval"><div class="th"><span class="t">O convite</span><span class="clock">19h</span></div><div class="d">"Manda AVALIAÇÃO que respondo hoje."</div></div>
+        </div>
+        <div class="cell"><div class="dnum">24</div>
+          <div class="it b-prova"><div class="th"><span class="t">Resultado</span><span class="clock">13h</span></div><div class="d">Antes/depois forte de aluna.</div></div>
+          <div class="it b-leve"><div class="th"><span class="t">Momento leve</span><span class="clock">19h30</span></div><div class="d">Comida sem culpa / vida leve.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">25</div>
+          <div class="it b-leve"><div class="th"><span class="t">Vida leve</span><span class="clock">11h</span></div><div class="d">Praia, treino leve ou comida boa.</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">26</div>
+          <div class="it b-frase"><div class="th"><span class="t">Frase de virada</span><span class="clock">11h</span></div><div class="d">Motivação pra segunda.</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 5: 27 -> 31 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">27</div>
+          <div class="it b-aval"><div class="th"><span class="t">Chamada pra avaliação</span><span class="clock">08h30</span></div><div class="d">Oferta da consultoria + pede "PRIORIDADE".</div></div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">19h30</span></div><div class="d">Você ajustando plano de aluna.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">28</div>
+          <div class="it b-ad"><div class="th"><span class="t">Antes e depois</span><span class="clock">09h</span></div><div class="d">Transformação + convite pra avaliação.</div></div>
+          <div class="it b-prova"><div class="th"><span class="t">Prova real</span><span class="clock">13h</span></div><div class="d">Print de aluna feliz (com autorização).</div></div>
+          <div class="it b-duvida"><div class="th"><span class="t">Responder dúvida</span><span class="clock">19h30</span></div><div class="d">Responde uma dúvida comum.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">29</div>
+          <div class="it b-frase"><div class="th"><span class="t">Bastidor</span><span class="clock">09h</span></div><div class="d">Rotina do seu atendimento.</div></div>
+          <div class="it b-share"><div class="th"><span class="t">Pra compartilhar</span><span class="clock">13h</span></div><div class="d">Conteúdo pra marcar amiga.</div></div>
+        </div>
+        <div class="cell"><div class="dnum">30</div>
+          <div class="it b-aval"><div class="th"><span class="t">A dor</span><span class="clock">18h30</span></div><div class="d">Frase da frustração dela.</div></div>
+          <div class="it b-ad"><div class="th"><span class="t">A prova</span><span class="clock">18h45</span></div><div class="d">Antes e depois de aluna.</div></div>
+          <div class="it b-aval"><div class="th"><span class="t">O convite</span><span class="clock">19h</span></div><div class="d">"Manda AVALIAÇÃO que respondo hoje."</div></div>
+        </div>
+        <div class="cell"><div class="dnum">31</div>
+          <div class="it b-prova"><div class="th"><span class="t">Resultado</span><span class="clock">13h</span></div><div class="d">Antes/depois que fecha o mês.</div></div>
+          <div class="it b-leve"><div class="th"><span class="t">Momento leve</span><span class="clock">19h30</span></div><div class="d">Comida sem culpa / vida leve.</div></div>
+        </div>
+        <div class="cell we out"></div>
+        <div class="cell we out"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Regra simples: <b>manhã pra engajar · noite pra alcançar</b>. Sempre que puder, peça pra mandar "AVALIAÇÃO" no direct.</div>
+    <div><b>1 a 3 stories por dia</b> · @brenoxavieer_</div>
+  </div>
+
+</div>
+</body>
+</html>

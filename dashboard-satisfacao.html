@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<!-- v1 -->
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard de Satisfação — Breno Xavier</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #e8e8e8;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1f1f1f;
+  }
+  header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+  header .subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+  }
+  header .filters {
+    display: flex;
+    gap: 8px;
+  }
+  header select {
+    background: #1a1a1a;
+    color: #e8e8e8;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  header .mock-badge {
+    background: #2a1f00;
+    border: 1px solid #594300;
+    color: #ffc000;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: #131313;
+    border: 1px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi .label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+  .kpi .value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+  .kpi .value .sub {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+    margin-left: 6px;
+  }
+  .kpi .trend {
+    font-size: 12px;
+    margin-top: 8px;
+    color: #888;
+  }
+  .kpi .trend.up { color: #4ade80; }
+  .kpi .trend.down { color: #f87171; }
+
+  .kpi-nps .value { font-size: 36px; }
+  .kpi-nps.promoter .value { color: #4ade80; }
+  .kpi-nps.passive .value { color: #fbbf24; }
+  .kpi-nps.detractor .value { color: #f87171; }
+
+  /* Section grids */
+  .row {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .row-2 { grid-template-columns: 1fr 1fr; }
+  .row-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .row-2-1 { grid-template-columns: 2fr 1fr; }
+
+  .card {
+    background: #131313;
+    border: 1px solid #1f1f1f;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card-title {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .card-subtitle {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 16px;
+  }
+  .chart-wrap {
+    position: relative;
+    height: 240px;
+  }
+  .chart-wrap.tall { height: 280px; }
+  .chart-wrap.short { height: 200px; }
+
+  /* NPS gauge */
+  .nps-display {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  .nps-big {
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+  .nps-good { color: #4ade80; }
+  .nps-mid { color: #fbbf24; }
+  .nps-bad { color: #f87171; }
+  .nps-bar-stack {
+    flex: 1;
+    height: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+  }
+  .nps-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+  .nps-promo { background: #4ade80; }
+  .nps-pass { background: #fbbf24; }
+  .nps-det { background: #f87171; }
+  .nps-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+  .nps-legend .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  /* Open responses */
+  .quotes {
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 6px;
+  }
+  .quotes::-webkit-scrollbar { width: 6px; }
+  .quotes::-webkit-scrollbar-track { background: #0a0a0a; }
+  .quotes::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 3px; }
+
+  .quote {
+    background: #0a0a0a;
+    border-left: 3px solid #2a2a2a;
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .quote.positive { border-left-color: #4ade80; }
+  .quote.negative { border-left-color: #f87171; }
+  .quote .meta {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 4px;
+  }
+
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #1f1f1f;
+  }
+  .tab {
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .tab:hover { color: #ccc; }
+  .tab.active {
+    color: #fff;
+    border-bottom-color: #ffc000;
+  }
+
+  @media (max-width: 1000px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .row-2, .row-3, .row-2-1 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div>
+      <h1>Dashboard de Satisfação<span class="mock-badge">MOCK</span></h1>
+      <div class="subtitle">Questionário de Alunas — Durante o Acompanhamento · Atualizado hoje</div>
+    </div>
+    <div class="filters">
+      <select>
+        <option>Todos os planos</option>
+        <option>Trimestral</option>
+        <option>Semestral</option>
+        <option>Semestral em dobro</option>
+      </select>
+      <select>
+        <option>Últimos 90 dias</option>
+        <option>Últimos 30 dias</option>
+        <option>Este ano</option>
+        <option>Todo período</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- KPI ROW -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Respostas</div>
+      <div class="value">47<span class="sub">alunas</span></div>
+      <div class="trend up">↑ 12 desde o último mês</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Satisfação Geral</div>
+      <div class="value">8.6<span class="sub">/ 10</span></div>
+      <div class="trend up">↑ 0.4 vs mês anterior</div>
+    </div>
+    <div class="kpi kpi-nps promoter">
+      <div class="label">NPS</div>
+      <div class="value">+62</div>
+      <div class="trend">68% promotoras · 26% passivas · 6% detratoras</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Taxa de Indicação</div>
+      <div class="value">74<span class="sub">%</span></div>
+      <div class="trend">já indicaram ou pretendem</div>
+    </div>
+  </div>
+
+  <!-- NPS HIGHLIGHT -->
+  <div class="card" style="margin-bottom: 14px;">
+    <div class="card-title">NPS — Net Promoter Score</div>
+    <div class="card-subtitle">"O quanto você indicaria o programa pra uma amiga?" (0-10)</div>
+    <div class="nps-display">
+      <div class="nps-big nps-good">+62</div>
+      <div style="flex: 1;">
+        <div class="nps-bar-stack">
+          <div class="nps-segment nps-promo" style="width: 68%;">Promotoras 68%</div>
+          <div class="nps-segment nps-pass" style="width: 26%;">26%</div>
+          <div class="nps-segment nps-det" style="width: 6%;">6%</div>
+        </div>
+        <div class="nps-legend">
+          <span><span class="dot" style="background:#4ade80;"></span>Promotoras (9-10) — 32 alunas</span>
+          <span><span class="dot" style="background:#fbbf24;"></span>Passivas (7-8) — 12 alunas</span>
+          <span><span class="dot" style="background:#f87171;"></span>Detratoras (0-6) — 3 alunas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 1: Satisfação geral + Expectativa -->
+  <div class="row row-2">
+    <div class="card">
+      <div class="card-title">Distribuição da Satisfação Geral</div>
+      <div class="card-subtitle">Notas 0-10 dadas pelas alunas</div>
+      <div class="chart-wrap"><canvas id="chartSatisfacaoGeral"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Expectativa vs. Resultado</div>
+      <div class="card-subtitle">"Os resultados batem com o que você esperava?"</div>
+      <div class="chart-wrap"><canvas id="chartExpectativa"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ROW 2: Acompanhamento WhatsApp -->
+  <div class="row row-2-1">
+    <div class="card">
+      <div class="card-title">Acompanhamento WhatsApp — Médias</div>
+      <div class="card-subtitle">Comparação dos 3 indicadores principais</div>
+      <div class="chart-wrap"><canvas id="chartWhatsapp"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Frequência de Contato</div>
+      <div class="card-subtitle">Como elas avaliam</div>
+      <div class="chart-wrap"><canvas id="chartFrequencia"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ROW 3: Comercial -->
+  <div class="row row-2">
+    <div class="card">
+      <div class="card-title">Comercial — Nota Pré-Venda</div>
+      <div class="card-subtitle">Distribuição do atendimento antes da contratação</div>
+      <div class="chart-wrap"><canvas id="chartComercial"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Sensação no Processo de Compra</div>
+      <div class="card-subtitle">Pressão percebida</div>
+      <div class="chart-wrap"><canvas id="chartPressao"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ROW 4: Instagram -->
+  <div class="row row-2-1">
+    <div class="card">
+      <div class="card-title">Conteúdos do Instagram — Mais Úteis</div>
+      <div class="card-subtitle">Tipos que mais ajudam as alunas (múltipla escolha)</div>
+      <div class="chart-wrap tall"><canvas id="chartConteudos"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Frequência de Consumo do Insta</div>
+      <div class="card-subtitle">@brenoxavieer_</div>
+      <div class="chart-wrap tall"><canvas id="chartInstaFreq"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ROW 5: Perfil das alunas -->
+  <div class="row row-3">
+    <div class="card">
+      <div class="card-title">Tempo de Programa</div>
+      <div class="chart-wrap short"><canvas id="chartTempo"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Plano Contratado</div>
+      <div class="chart-wrap short"><canvas id="chartPlano"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Status de Indicação</div>
+      <div class="chart-wrap short"><canvas id="chartIndicacao"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ROW 6: Respostas abertas -->
+  <div class="card" style="margin-bottom: 14px;">
+    <div class="tab-bar">
+      <div class="tab active">O que surpreendeu (positivo)</div>
+      <div class="tab">O que decepcionou</div>
+      <div class="tab">O que mudaria</div>
+      <div class="tab">Por que essa nota (NPS)</div>
+    </div>
+    <div class="quotes">
+      <div class="quote positive">
+        <div class="meta">Marcela B. · Plano Semestral · 4 meses</div>
+        "O acompanhamento é absurdo. Pensei que ia ser tipo 'manda dieta e some' e tem sido o oposto — sinto que ele realmente acompanha."
+      </div>
+      <div class="quote positive">
+        <div class="meta">Deborah R. · Plano Trimestral · 2 meses</div>
+        "A dieta não é restritiva igual eu tinha medo. Comi doce no almoço todo dia e mesmo assim emagreci."
+      </div>
+      <div class="quote positive">
+        <div class="meta">Isadora S. · Plano Semestral · 5 meses</div>
+        "A reavaliação postural em PDF foi o que mais me chocou. Nunca tinha visto nada tão detalhado."
+      </div>
+      <div class="quote positive">
+        <div class="meta">Maria J. · Plano Anual · 8 meses</div>
+        "A naturalidade do treino. Achei que ia ser puxado demais e tem sido progressivo, do meu nível."
+      </div>
+      <div class="quote positive">
+        <div class="meta">Cintia S. · Plano Semestral · 3 meses</div>
+        "Não esperava conteúdo educativo no zap. Toda semana ele manda algum áudio explicando coisa que me ajuda."
+      </div>
+      <div class="quote positive">
+        <div class="meta">Gabriela C. · Plano Trimestral · 1 mês</div>
+        "Resposta rápida. Mando dúvida no zap e em menos de 1h ele responde — mesmo no domingo."
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-size: 11px; color: #444; padding: 20px 0;">
+    Dashboard interno · @brenoxavieer_ · Atualizado a cada nova resposta
+  </div>
+
+</div>
+
+<script>
+  // Cores
+  const COR_PRIMARIA = '#ffc000';
+  const COR_SECUNDARIA = '#4ade80';
+  const COR_TERC = '#60a5fa';
+  const COR_QUAD = '#a78bfa';
+  const COR_GRID = '#1f1f1f';
+  const COR_TEXT = '#888';
+  const COR_RUIM = '#f87171';
+  const COR_MEIO = '#fbbf24';
+  const COR_BOM = '#4ade80';
+
+  Chart.defaults.color = COR_TEXT;
+  Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+  Chart.defaults.font.size = 11;
+
+  const gridConfig = {
+    grid: { color: COR_GRID, drawBorder: false },
+    ticks: { color: COR_TEXT }
+  };
+
+  // 1. Satisfação Geral — histograma
+  new Chart(document.getElementById('chartSatisfacaoGeral'), {
+    type: 'bar',
+    data: {
+      labels: ['0','1','2','3','4','5','6','7','8','9','10'],
+      datasets: [{
+        data: [0,0,0,0,1,1,2,4,11,16,12],
+        backgroundColor: ['#f87171','#f87171','#f87171','#f87171','#fbbf24','#fbbf24','#fbbf24','#fbbf24','#4ade80','#4ade80','#4ade80'],
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: gridConfig, y: { ...gridConfig, beginAtZero: true } }
+    }
+  });
+
+  // 2. Expectativa vs Resultado — histograma
+  new Chart(document.getElementById('chartExpectativa'), {
+    type: 'bar',
+    data: {
+      labels: ['0','1','2','3','4','5','6','7','8','9','10'],
+      datasets: [{
+        data: [0,0,0,0,0,2,3,5,13,15,9],
+        backgroundColor: COR_PRIMARIA,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: gridConfig, y: { ...gridConfig, beginAtZero: true } }
+    }
+  });
+
+  // 3. WhatsApp — barras horizontais com 3 médias
+  new Chart(document.getElementById('chartWhatsapp'), {
+    type: 'bar',
+    data: {
+      labels: ['Satisfação geral', 'Tempo de resposta', 'Clareza nas orientações'],
+      datasets: [{
+        label: 'Nota média (0-10)',
+        data: [9.1, 8.7, 9.3],
+        backgroundColor: COR_BOM,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ...gridConfig, beginAtZero: true, max: 10 },
+        y: gridConfig
+      }
+    }
+  });
+
+  // 4. Frequência de Contato — donut
+  new Chart(document.getElementById('chartFrequencia'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Boa — no ponto', 'Pouca', 'Muita'],
+      datasets: [{
+        data: [38, 7, 2],
+        backgroundColor: [COR_BOM, COR_MEIO, COR_RUIM],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12 } } },
+      cutout: '60%'
+    }
+  });
+
+  // 5. Comercial — histograma
+  new Chart(document.getElementById('chartComercial'), {
+    type: 'bar',
+    data: {
+      labels: ['0','1','2','3','4','5','6','7','8','9','10'],
+      datasets: [{
+        data: [0,0,0,0,1,1,3,6,12,14,10],
+        backgroundColor: COR_TERC,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: gridConfig, y: { ...gridConfig, beginAtZero: true } }
+    }
+  });
+
+  // 6. Pressão na Compra — donut
+  new Chart(document.getElementById('chartPressao'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Sem pressão', 'Pouca pressão', 'Pressão notável', 'Experiência ruim'],
+      datasets: [{
+        data: [32, 11, 3, 1],
+        backgroundColor: [COR_BOM, COR_MEIO, '#fb923c', COR_RUIM],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12 } } },
+      cutout: '60%'
+    }
+  });
+
+  // 7. Conteúdos do Insta — barras horizontais
+  new Chart(document.getElementById('chartConteudos'), {
+    type: 'bar',
+    data: {
+      labels: [
+        'Antes e depois / transformações',
+        'Treino (técnica)',
+        'Dieta e nutrição',
+        'Mindset / motivação',
+        'Conteúdo educativo',
+        'Stories do dia a dia',
+        'Bastidores',
+        'Lives'
+      ],
+      datasets: [{
+        data: [38, 34, 32, 22, 19, 17, 11, 8],
+        backgroundColor: COR_PRIMARIA,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ...gridConfig, beginAtZero: true },
+        y: gridConfig
+      }
+    }
+  });
+
+  // 8. Frequência Insta — donut
+  new Chart(document.getElementById('chartInstaFreq'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Todo dia', 'Algumas vezes/sem', 'Raramente', 'Quase nunca', 'Não sigo'],
+      datasets: [{
+        data: [21, 16, 6, 3, 1],
+        backgroundColor: ['#4ade80','#86efac','#fbbf24','#fb923c','#f87171'],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 10 } } } },
+      cutout: '55%'
+    }
+  });
+
+  // 9. Tempo de Programa — donut
+  new Chart(document.getElementById('chartTempo'), {
+    type: 'doughnut',
+    data: {
+      labels: ['<1 mês', '1-3 m', '3-6 m', '6-12 m', '1+ ano'],
+      datasets: [{
+        data: [4, 14, 16, 9, 4],
+        backgroundColor: ['#94a3b8','#60a5fa','#fbbf24','#4ade80','#a78bfa'],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+      cutout: '55%'
+    }
+  });
+
+  // 10. Plano — donut
+  new Chart(document.getElementById('chartPlano'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Trimestral', 'Semestral', 'Sem. em dobro', 'Anual'],
+      datasets: [{
+        data: [12, 18, 14, 3],
+        backgroundColor: ['#60a5fa','#fbbf24','#4ade80','#a78bfa'],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+      cutout: '55%'
+    }
+  });
+
+  // 11. Indicação — donut
+  new Chart(document.getElementById('chartIndicacao'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Indicou e fechou', 'Indicou s/ fechar', 'Pretende indicar', 'Não pretende'],
+      datasets: [{
+        data: [14, 9, 19, 5],
+        backgroundColor: ['#4ade80','#86efac','#fbbf24','#f87171'],
+        borderColor: '#131313',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 8, font: { size: 10 } } } },
+      cutout: '55%'
+    }
+  });
+</script>
+
+</body>
+</html>

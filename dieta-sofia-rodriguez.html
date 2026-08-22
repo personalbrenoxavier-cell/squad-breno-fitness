@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Sofia Rodriguez Santos</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Playfair Display', serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+
+  h1.titulo { font-family: Georgia, 'Playfair Display', serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, 'Playfair Display', serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<h1 class="titulo">Sofia Rodriguez Santos · Cutting (DEFINIÇÃO)</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">1.500 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">115 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value">5 <small>/ dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Restrições</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Sem lactose<br><small>e sem camarão</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Treino<br>Força</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Sim<br><small>(cutting)</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes</div>
+    <div class="macro-kcal">1.500 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">115 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">31% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:62%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">165 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">44% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:88%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">40 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">25% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã (7h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:66%;"></div></div></div>
+    <div class="meal-kcal">320 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Manhã (10h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:21%;"></div></div></div>
+    <div class="meal-kcal">100 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço (12h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">485 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Tarde (15h30)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:58%;"></div></div></div>
+    <div class="meal-kcal">280 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar (19h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:66%;"></div></div></div>
+    <div class="meal-kcal">320 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Pontos chave do protocolo</div>
+  <ul>
+    <li><strong>Intolerância à lactose:</strong> todos os lácteos sem lactose (queijo, requeijão, iogurte, leite). Manteiga vira ghee ou manteiga sem lactose. Whey isolado.</li>
+    <li><strong>Alergia a camarão:</strong> evitar camarão e qualquer preparo que possa ter contaminação cruzada (frutos do mar mistos).</li>
+    <li><strong>Doce até 100 kcal liberado nas 3 opções do almoço</strong> (ou troque por fruta de sobremesa).</li>
+    <li><strong>Estratégia anti-compulsão noturna:</strong> 1 doce até 80 kcal liberado depois do jantar (1 brigadeiro pequeno, 1 quadrado de chocolate amargo 70%, 2 a 3 biscoitos doce simples). Isso controla o gatilho de comer biscoito ou Bis em pacote por estresse à noite.</li>
+    <li><strong>Se a vontade bater forte fora de hora:</strong> 1 fruta com canela e um chá quente primeiro. Espera 15 min. Se ainda quiser muito, vai pro doce de 80 kcal já liberado. Evita pacote de biscoito ou Bis nos dias críticos.</li>
+    <li><strong>Se não der pra almoçar entre trabalhos:</strong> escolhas melhores na rua são sanduíche natural, tapioca recheada, x-frango (sem fritura), pão francês com frango desfiado. Evita coxinha, pastel, esfirra de massa folhada. Volta ao protocolo na próxima refeição.</li>
+    <li><strong>Hidratação:</strong> 2,5 a 3 L de água por dia.</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, lagarto, alcatra, tilápia, frango (peito ou sobrecoxa sem pele). Proteína animal até 90g por refeição.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">7h · 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com ovo, ghee e café com leite (sua rotina)</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Ovo mexido <span class="qtd">1 Un.</span></div>
+    <div>Ghee ou manteiga sem lactose <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Café com leite desnatado sem lactose <span class="qtd">200ml (1 xícara grande)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão com ovos e queijo</span> <span class="kcal-tag">~340 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo branco sem lactose <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca com ovos e queijo</span> <span class="kcal-tag">~310 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca <span class="qtd">40g (2 colheres de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo branco sem lactose <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h · 2 opções leves</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte sem lactose</span> <span class="kcal-tag">~110 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado sem lactose <span class="qtd">170g (1 pote)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Fruta com castanhas</span> <span class="kcal-tag">~90 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Mexerica ou maçã <span class="qtd">80g (1 unidade)</span></div>
+    <div>Amêndoas in natura <span class="qtd">10g (10 a 12 unidades)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h · pode acompanhar bebida zero · doce até 100 kcal nas 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango com arroz, feijão, batata e vegetais (sua rotina)</span> <span class="kcal-tag">~520 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">70g (3 a 4 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Peito de frango grelhado <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Batata inglesa cozida <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Brócolis e cenoura cozidos <span class="qtd">100g (ou mais)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou troque por 1 fruta)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Carne magra com mandioca e vegetais</span> <span class="kcal-tag">~510 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">60g (3 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Patinho, músculo, coxão mole ou tilápia grelhada <span class="qtd">90g (1 bife médio)</span></div>
+    <div>Mandioca cozida <span class="qtd">80g</span></div>
+    <div>Vegetais à escolha (brócolis, cenoura, couve-flor, abobrinha) <span class="qtd">100g (ou mais)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou troque por 1 fruta)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Macarrão com carne moída</span> <span class="kcal-tag">~460 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão cozido <span class="qtd">120g (1 escumadeira)</span></div>
+    <div>Carne moída magra (patinho ou acém) <span class="qtd">80g (3 colheres de sopa cheias)</span></div>
+    <div>Molho de tomate caseiro <span class="qtd">50g</span></div>
+    <div>Vegetais à escolha <span class="qtd">100g (ou mais)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou troque por 1 fruta)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">15h30 · 3 opções · whey isolado na Op.2</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Sanduíche natural com frango</span> <span class="kcal-tag">~265 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">50g</span></div>
+    <div>Requeijão light sem lactose <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Tomate, alface, cenoura ralada <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Panqueca de banana com whey</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">80g (1 unidade)</span></div>
+    <div>Ovo <span class="qtd">1 Un.</span></div>
+    <div>Aveia em flocos <span class="qtd">20g (2 colheres de sopa)</span></div>
+    <div>Whey isolado <span class="qtd">15g (meio scoop)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Toast com queijo e fruta (prático)</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Queijo branco sem lactose <span class="qtd">25g (1 fatia)</span></div>
+    <div>Banana <span class="qtd">80g (1 unidade)</span></div>
+    <div>Café preto OU chá <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">19h · 3 opções · doce até 80 kcal liberado pós refeição (anti compulsão noturna)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Comida em casa (base do almoço, sua rotina)</span> <span class="kcal-tag">~315 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Peito de frango grelhado <span class="qtd">80g (1 filé médio)</span></div>
+    <div>Brócolis e cenoura cozidos <span class="qtd">150g (ou mais)</span></div>
+    <div>Doce de sobremesa <span class="qtd">até 80 kcal (ou 1 fruta pequena)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Hambúrguer caseiro</span> <span class="kcal-tag">~330 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Patinho cru (vira hambúrguer caseiro) <span class="qtd">80g (1 unidade)</span></div>
+    <div>Requeijão light sem lactose <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Ketchup <span class="qtd">15g (moderado)</span></div>
+    <div>Alface, tomate, cebola <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tilápia com vegetais</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Tilápia, merluza ou pescada grelhada <span class="qtd">90g</span></div>
+    <div>Vegetais à escolha (brócolis, couve-flor, cenoura, abobrinha) <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (1/2 colher de chá)</span></div>
+    <div>Doce de sobremesa <span class="qtd">até 80 kcal (ou 1 fruta pequena)</span></div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza OU 11 peças de sushi OU 1 hambúrguer simples). Sempre com contenção de danos: bebida zero, boas escolhas no geral. Se consumir álcool, a refeição livre vale por duas.
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>

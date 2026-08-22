@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Isabela Evelin — Viagem</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+  h1.titulo { font-family: Georgia, serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+  .viagem-tag { display: inline-block; background: #e65100; color: #fff; font-size: 8pt; font-weight: 700; letter-spacing: 2px; padding: 5px 14px; border-radius: 3px; margin-bottom: 12px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon"><span class="ramo">∿∿∿</span><div class="circle">B<span class="x">x</span></div></div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas</div>
+
+<div class="viagem-tag">Versão Viagem</div>
+<h1 class="titulo">Isabela Evelin Mendes dos Anjos · Cutting · Roacutan · Viagem</h1>
+
+<div class="cards">
+  <div class="card"><div class="card-label">Objetivo<br>Calórico</div><div class="card-value">1.600 <small>kcal</small></div></div>
+  <div class="card"><div class="card-label">Proteína</div><div class="card-value">110 <small>g/dia</small></div></div>
+  <div class="card"><div class="card-label">Refeições</div><div class="card-value">5 <small>/ dia</small></div></div>
+  <div class="card"><div class="card-label">Medicação<br>Restrição</div><div class="card-value" style="font-size:10pt; line-height:1.2;">Roacutan<br><small>APLV</small></div></div>
+  <div class="card"><div class="card-label">Suplemento</div><div class="card-value" style="font-size:11pt; line-height:1.2;">Beff Protein<br><small>(vegano)</small></div></div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head"><div class="macro-title">Distribuição de Macronutrientes</div><div class="macro-kcal">1.600 <small>kcal / dia</small></div></div>
+  <div class="macros-grid">
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Proteína</div><div class="macro-amt">110 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">28% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:63%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Carboidrato</div><div class="macro-amt">180 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">45% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Gordura Total</div><div class="macro-amt">48 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">27% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div></div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row"><div class="meal-name">Café da manhã (8h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:66%;"></div></div></div><div class="meal-kcal">350 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche manhã (10h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:28%;"></div></div></div><div class="meal-kcal">150 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Almoço (12h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div><div class="meal-kcal">530 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Café tarde (16h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:53%;"></div></div></div><div class="meal-kcal">280 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Jantar (20h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:55%;"></div></div></div><div class="meal-kcal">290 kcal</div></div>
+</div>
+
+<div class="recomendacao"><span class="label">Recomendação:</span> a quantidade de vegetais (legumes) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. As quantidades foram expressas em colheres de sopa nas refeições principais pra facilitar em restaurante/hotel. Você não deve acrescentar nem retirar alimentos da dieta, em vez disso me chama no WhatsApp.</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span> Protocolo VIAGEM · Roacutan + APLV · pontos chave</div>
+  <ul>
+    <li><strong>Refeições práticas pra viagem:</strong> tudo escolhido pra caber em restaurante, room service, self-service, buffet de hotel ou coisas que você monta com produtos comprados no mercado local. Sem preparo complexo.</li>
+    <li><strong>Quantidades em colheres de sopa</strong> nas refeições principais (almoço e jantar) porque em restaurante você não pesa. Regra prática: 1 concha média de arroz = 4 colheres de sopa · 1 concha média de feijão = 5 colheres de sopa · 1 bife médio de carne = tamanho da palma da sua mão fechada.</li>
+    <li><strong>Roacutan (isotretinoína):</strong> tomar sempre no ALMOÇO (refeição com azeite = gordura pra absorção). Se por acaso o almoço for muito leve, tomar no jantar com uma opção que tenha azeite ou abacate.</li>
+    <li><strong>Hidratação 3L/dia mantida na viagem</strong> (Roacutan resseca). Compra 1 garrafa grande no hotel toda manhã e carrega na bolsa.</li>
+    <li><strong>Álcool proibido</strong> durante o tratamento com Roacutan (mesmo em viagem, sem exceção).</li>
+    <li><strong>APLV:</strong> sem iogurte, sem leite animal, sem whey animal. Mussarela e requeijão zero lactose mantidos (sua preferência). Beff Protein vegano nos smoothies.</li>
+    <li><strong>Aveia com mel e banana amassada:</strong> boa ideia sua pra saciedade. Inclui na Opção 2 do café da tarde.</li>
+    <li><strong>Legumes que você não gosta muito (beterraba e chuchu):</strong> substituídos por brócolis, cenoura, abobrinha, cabotiá, couve refogada. Se aparecer no restaurante, tudo bem pular sem culpa.</li>
+    <li><strong>Restaurante:</strong> pede sempre a proteína primeiro (carne grelhada, frango grelhado, peixe grelhado), depois o "acompanhamento" separado. Evita risoto, carne empanada, molho branco cremoso (pode ter creme de leite/leite = APLV).</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, alcatra, tilápia, frango.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">8h · 3 opções (café da manhã do hotel ou coisa rápida no quarto)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Ovos com pão e mussarela (sua rotina, achável em qualquer hotel)</span> <span class="kcal-tag">~350 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovos mexidos ou omelete <span class="qtd">2 unidades</span></div>
+    <div>Pão francês ou 2 fatias de pão de forma <span class="qtd">50g (1 unidade ou 2 fatias)</span></div>
+    <div>Mussarela zero lactose <span class="qtd">1 fatia (25g)</span></div>
+    <div>Mamão <span class="qtd">120g (1 fatia média)</span></div>
+    <div>Café coado sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Frango desfiado com pão e mussarela (sua rotina alternativa)</span> <span class="kcal-tag">~355 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Frango desfiado (se o hotel tiver ou você levar em pote) <span class="qtd">60g (3 colheres de sopa cheias)</span></div>
+    <div>Pão francês ou pão de forma <span class="qtd">50g (1 unidade ou 2 fatias)</span></div>
+    <div>Mussarela zero lactose <span class="qtd">1 fatia (25g)</span></div>
+    <div>Mamão ou outra fruta <span class="qtd">100g (1 fatia média)</span></div>
+    <div>Café coado sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca com ovo e mussarela (se conseguir)</span> <span class="kcal-tag">~340 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca <span class="qtd">40g (2 colheres de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 unidades</span></div>
+    <div>Mussarela zero lactose <span class="qtd">1 fatia (25g)</span></div>
+    <div>Fruta (banana, mamão, mexerica) <span class="qtd">80g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h30 · 2 opções portáveis (leva na bolsa)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Fruta com castanhas</span> <span class="kcal-tag">~150 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Fruta (banana, maçã, mamão, mexerica) <span class="qtd">100g (1 unidade)</span></div>
+    <div>Amêndoas ou castanhas de caju <span class="qtd">12g (10 a 12 unidades)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Fruta com Beff Protein pequeno</span> <span class="kcal-tag">~150 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Beff Protein <span class="qtd">15g (meio scoop, misturar em água ou leite vegetal)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · 3 opções · quantidade em colheres de sopa · Roacutan aqui (com azeite)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Carne com arroz, feijão e salada (padrão restaurante, sua rotina)</span> <span class="kcal-tag">~530 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Carne magra grelhada (patinho, coxão mole, alcatra) <span class="qtd">120g (tamanho da palma da sua mão fechada, ~1 bife médio grande)</span></div>
+    <div>Arroz branco <span class="qtd">70g (3 a 4 colheres de sopa cheias, 1 concha rasa)</span></div>
+    <div>Feijão carioca ou preto (opcional, se o restaurante tiver e você quiser · você não gosta muito) <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Legumes cozidos (brócolis, cenoura, abobrinha, cabotiá) <span class="qtd">2 a 3 colheres de sopa cheias (aprox 100g, livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade (1 prato de sobremesa cheio)</span></div>
+    <div>Azeite extra virgem <span class="qtd">1 colher de sopa rasa (10g · essencial pra absorver Roacutan)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Frango com arroz, feijão e legumes (restaurante ou marmita)</span> <span class="kcal-tag">~530 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Peito de frango grelhado <span class="qtd">120g (1 filé grande, tamanho da palma da mão)</span></div>
+    <div>Arroz branco <span class="qtd">70g (3 a 4 colheres de sopa, 1 concha rasa)</span></div>
+    <div>Feijão (opcional, se o restaurante tiver e você quiser · você não gosta muito) <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Legumes cozidos (brócolis, cenoura, abobrinha, cabotiá) <span class="qtd">2 a 3 colheres de sopa cheias</span></div>
+    <div>Salada verde <span class="qtd">à vontade (1 prato de sobremesa cheio)</span></div>
+    <div>Azeite extra virgem <span class="qtd">1 colher de sopa rasa (10g)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Sobrecoxa de frango com arroz, batata e legumes (variação de proteína)</span> <span class="kcal-tag">~540 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Sobrecoxa de frango sem pele grelhada ou assada <span class="qtd">130g (1 unidade grande ou 2 médias)</span></div>
+    <div>Arroz branco <span class="qtd">70g (3 a 4 colheres de sopa, 1 concha rasa)</span></div>
+    <div>Batata inglesa cozida ou assada <span class="qtd">100g (2 unidades pequenas)</span></div>
+    <div>Legumes cozidos (cenoura, chuchu, abobrinha, brócolis) <span class="qtd">2 a 3 colheres de sopa cheias</span></div>
+    <div>Salada verde <span class="qtd">à vontade (1 prato de sobremesa cheio)</span></div>
+    <div>Azeite extra virgem <span class="qtd">1 colher de sopa rasa (10g)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Se preferir, pode trocar por 130g de patinho grelhado OU 130g de coxão mole grelhado.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Café da tarde <span class="dica">16h · 5 opções (bastante variação entre shakes e salgados)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Banana com Beff Protein (sua rotina)</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">120g (1 unidade média)</span></div>
+    <div>Beff Protein <span class="qtd">25g (1 scoop cheio, misturado em água ou leite vegetal 200ml)</span></div>
+    <div>Aveia em flocos <span class="qtd">15g (1,5 colher de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Papa de aveia com mel e banana amassada (sua ideia nova)</span> <span class="kcal-tag">~285 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Aveia em flocos <span class="qtd">40g (4 colheres de sopa)</span></div>
+    <div>Banana amassada <span class="qtd">100g (1 unidade)</span></div>
+    <div>Mel <span class="qtd">10g (1 colher de chá cheia)</span></div>
+    <div>Água ou leite vegetal (coco, amêndoa) <span class="qtd">150ml (misturar até virar papa cremosa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Modo: mistura aveia + banana amassada + mel + líquido, mexe até dar liga. Se quiser mais proteína, adiciona 10g de Beff Protein no fim.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Sanduíche natural com frango (pra quando estiver na rua)</span> <span class="kcal-tag">~275 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma ou pão francês pequeno <span class="qtd">50g (2 fatias ou 1 unidade pequena)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">60g (3 colheres de sopa cheias)</span></div>
+    <div>Requeijão light zero lactose <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Tomate, alface, cenoura ralada <span class="qtd">à vontade (dentro do sanduíche)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Shake de morango congelado com Beff Protein</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Leite vegetal sem açúcar (coco, amêndoa, arroz) <span class="qtd">200ml (1 copo)</span></div>
+    <div>Beff Protein <span class="qtd">25g (1 scoop cheio)</span></div>
+    <div>Morango congelado <span class="qtd">100g</span></div>
+    <div>Banana <span class="qtd">30g (fatias, opcional pra dar cremosidade)</span></div>
+    <div>Aveia em flocos <span class="qtd">15g (1,5 colher de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Modo: bate tudo no liquidificador até ficar cremoso. O morango congelado deixa gelado sem precisar de gelo.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 5 <span class="sub">· Crepioca de frango com queijo (salgado alternativo)</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido <span class="qtd">2 Un. (na massa)</span></div>
+    <div>Goma de tapioca hidratada <span class="qtd">20g (1 colher de sopa)</span></div>
+    <div>Frango desfiado caseiro (no recheio) <span class="qtd">50g (2,5 colheres de sopa)</span></div>
+    <div>Queijo mussarela zero lactose <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Alface, tomate <span class="qtd">à vontade (dentro)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · 3 opções · quantidade em colheres de sopa (sua rotina de pão com carne ou crepioca)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com carne, salada e mussarela (sua rotina)</span> <span class="kcal-tag">~290 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Carne magra desfiada ou moída refogada <span class="qtd">80g (4 colheres de sopa cheias)</span></div>
+    <div>Mussarela zero lactose <span class="qtd">1 fatia (20g)</span></div>
+    <div>Alface, tomate, cebola <span class="qtd">à vontade (dentro do sanduíche)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Crepioca com frango ou carne e requeijão (sua rotina)</span> <span class="kcal-tag">~290 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido <span class="qtd">2 unidades (na massa)</span></div>
+    <div>Goma de tapioca <span class="qtd">20g (1 colher de sopa)</span></div>
+    <div>Frango desfiado OU carne moída refogada (no recheio) <span class="qtd">60g (3 colheres de sopa cheias)</span></div>
+    <div>Requeijão light zero lactose <span class="qtd">10g (1 colher de chá cheia)</span></div>
+    <div>Alface, tomate <span class="qtd">à vontade (dentro)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Wrap Rap 10 com frango e mussarela</span> <span class="kcal-tag">~290 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 unidade</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">70g (3 a 4 colheres de sopa cheias)</span></div>
+    <div>Mussarela zero lactose <span class="qtd">1 fatia fina (15g)</span></div>
+    <div>Requeijão light zero lactose <span class="qtd">10g (1 colher de chá cheia)</span></div>
+    <div>Tomate, alface, cebola <span class="qtd">à vontade (dentro do wrap)</span></div>
+  </div>
+</div>
+
+<div class="livre"><strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza sem exagero no queijo OU 11 peças de sushi OU 1 hambúrguer artesanal). Sempre com contenção de danos: bebida zero, boas escolhas no geral. <strong>Álcool NÃO liberado</strong> durante o tratamento com Roacutan (contraindicação absoluta, mesmo em viagem). Cuidado com queijos comuns e sobremesas com leite (APLV).</div>
+
+<div class="footer">@brenoxavieer_ <span style="color:#4caf50; margin: 0 8px;">·</span> 31 9 7262-8289 <span style="color:#4caf50; margin: 0 8px;">·</span> www.brenoxavier.com.br</div>
+
+</body>
+</html>

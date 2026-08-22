@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Plano alimentar Filipe Estevão Barbosa</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Playfair Display', serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+
+  h1.titulo { font-family: Georgia, 'Playfair Display', serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, 'Playfair Display', serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .subst { font-size: 9pt; color: #666; margin-top: 6px; padding-top: 4px; border-top: 1px dashed #d4d4d4; font-style: italic; }
+  .subst strong { color: #1b5e20; font-style: normal; }
+
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<h1 class="titulo">Filipe Estevão Barbosa · Plano alimentar (Recomposição)</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">1.700 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">135 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value">5 <small>/ dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Suplemento</div>
+    <div class="card-value" style="font-size:13pt;">Whey</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Treino<br>Força</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Sim<br><small>(recomp)</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes</div>
+    <div class="macro-kcal">1.700 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">135 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">32% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">185 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">43% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:82%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">45 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">25% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã (7h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:69%;"></div></div></div>
+    <div class="meal-kcal">340 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Manhã (10h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:22%;"></div></div></div>
+    <div class="meal-kcal">110 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço (12h30)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">490 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Tarde (16h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:78%;"></div></div></div>
+    <div class="meal-kcal">380 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar (20h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:78%;"></div></div></div>
+    <div class="meal-kcal">380 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). A salada deve representar metade do prato no almoço e jantar. Hidratação: 3 a 4 L de água por dia.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Orientação nutricional e metas</div>
+  <ul>
+    <li><strong>Ao acordar:</strong> 300 a 500ml de água em jejum.</li>
+    <li><strong>Whey concentrado 40g</strong> no lanche da tarde (pós treino se treinar à tarde, ou move pra perto do treino se treinar em outro horário).</li>
+    <li><strong>Azeite extra virgem</strong> no almoço e jantar (gordura boa, ajuda hormônio e saciedade).</li>
+    <li><strong>Metas:</strong> variedade de alimentos e frutas, refeições completas, constância no treino.</li>
+    <li><strong>Vegetal verde escuro</strong> (couve, espinafre, brócolis, rúcula, mostarda) em pelo menos 1 das refeições principais (fonte de cálcio e ferro).</li>
+    <li><strong>Proteína animal almoço/jantar:</strong> 2 a 3 dias peixe assado/grelhado, 2 a 3 dias frango, 1 a 2 dias carne de boi ou porco.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">7h · 2 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com ovos e fruta</span> <span class="kcal-tag">~340 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Ovo <span class="qtd">2 Un. (100g)</span></div>
+    <div>Banana prata <span class="qtd">65g (1 unidade média)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+  <div class="subst"><strong>Substituição p/ ovo:</strong> frango desfiado 60g (3 colheres de sopa cheias).</div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão com frango e requeijão</span> <span class="kcal-tag">~335 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Frango desfiado <span class="qtd">80g (4 colheres de sopa cheias)</span></div>
+    <div>Requeijão light <span class="qtd">20g (1 colher de sopa rasa)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+  <div class="subst"><strong>Substituição p/ pão de forma:</strong> pão francês 50g (1 unidade).</div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h · iogurte com fruta</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Refeição <span class="sub">· prático</span> <span class="kcal-tag">~110 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado sem lactose <span class="qtd">160g (1 unidade pequena)</span></div>
+    <div>Maçã <span class="qtd">65g (1 unidade média)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · prato em torno de 600g · salada = metade do prato</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Refeição <span class="sub">· completa</span> <span class="kcal-tag">~490 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz cozido <span class="qtd">100g (2 a 3 colheres de arroz cheias)</span></div>
+    <div>Feijão cozido <span class="qtd">100g (1 concha)</span></div>
+    <div>Frango grelhado, carne magra ou peixe <span class="qtd">120g (1 filé médio)</span></div>
+    <div>Salada e legumes (quiabo, abobrinha, moranga, chuchu, cenoura, beterraba, brócolis, couve, espinafre, mostarda, rúcula) <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+  <div class="subst"><strong>Substituição p/ arroz:</strong> macarrão cozido 120g (2,5 colheres de servir cheias).</div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">16h · 2 opções (whey nas duas) · pós treino</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com frango, whey e fruta</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Frango desfiado <span class="qtd">40g (2 colheres de sopa cheias)</span></div>
+    <div>Maçã <span class="qtd">65g (1 unidade média)</span></div>
+    <div>Whey concentrado <span class="qtd">40g (1 scoop · 26g de proteína)</span></div>
+  </div>
+  <div class="subst"><strong>Substituições:</strong> pão de forma por pão francês 50g (1 unidade) · frango desfiado por atum em conserva 48g (3 colheres de sopa cheias).</div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão com ovo, whey e leite</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">50g (2 fatias)</span></div>
+    <div>Ovo <span class="qtd">1 Un.</span></div>
+    <div>Whey concentrado <span class="qtd">40g (1 scoop · 26g de proteína)</span></div>
+    <div>Leite desnatado <span class="qtd">150ml (3/4 copo · misturar com o whey)</span></div>
+  </div>
+  <div class="subst"><strong>Substituição p/ pão de forma:</strong> pão francês 50g (1 unidade).</div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · base do almoço · salada = metade do prato</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Refeição <span class="sub">· completa</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz cozido <span class="qtd">80g (2 colheres de arroz cheias)</span></div>
+    <div>Feijão cozido <span class="qtd">80g (1 concha)</span></div>
+    <div>Frango grelhado, carne magra ou peixe <span class="qtd">100g (1 filé médio)</span></div>
+    <div>Salada e legumes (verde escuro de preferência) <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (1/2 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feedback da Aluna — {{aluna.nome}} — {{data}}</title>
+<style>
+  @page {
+    size: A4;
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-center {
+      content: "Consultoria online — BRENO XAVIER";
+      color: #9B8FB0;
+      font-family: 'Helvetica', sans-serif;
+      font-size: 9pt;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 10pt;
+    color: #000;
+    line-height: 1.45;
+  }
+  .title {
+    text-align: center;
+    color: #1B7A7A;
+    font-size: 24pt;
+    font-weight: 700;
+    margin: 0 0 4pt;
+    letter-spacing: 0.5pt;
+  }
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 12pt;
+    font-style: italic;
+    margin: 0 0 6pt;
+  }
+  .profname {
+    text-align: center;
+    color: #666;
+    font-size: 9pt;
+    font-style: italic;
+    margin: 0 0 14pt;
+  }
+  hr.sep {
+    border: none;
+    border-top: 1pt solid #1B7A7A;
+    margin: 0 0 14pt;
+  }
+  .intro {
+    background: #E8F4F4;
+    border-left: 3pt solid #1B7A7A;
+    padding: 10pt 14pt;
+    margin: 0 0 16pt;
+    font-size: 10pt;
+    line-height: 1.5;
+  }
+  h2 {
+    color: #1B7A7A;
+    font-size: 14pt;
+    margin: 16pt 0 8pt;
+    border-bottom: 0.5pt solid #1B7A7A;
+    padding-bottom: 3pt;
+    page-break-after: avoid;
+  }
+  .pergunta {
+    margin: 8pt 0 10pt;
+    page-break-inside: avoid;
+  }
+  .pergunta-label {
+    font-weight: 700;
+    font-size: 10pt;
+    margin-bottom: 4pt;
+    color: #333;
+  }
+  .pergunta-hint {
+    color: #888;
+    font-size: 8.5pt;
+    font-style: italic;
+    margin-bottom: 4pt;
+  }
+  .resposta-linha {
+    border-bottom: 0.4pt solid #999;
+    height: 14pt;
+    margin: 4pt 0;
+  }
+  .resposta-bloco {
+    border: 0.5pt solid #ccc;
+    background: #fafafa;
+    min-height: 36pt;
+    padding: 6pt;
+    margin: 4pt 0 8pt;
+    border-radius: 3pt;
+  }
+  .escala {
+    display: flex;
+    gap: 4pt;
+    margin: 4pt 0 6pt;
+    align-items: center;
+  }
+  .escala-label {
+    font-size: 8.5pt;
+    color: #666;
+    margin-right: 6pt;
+  }
+  .nota {
+    width: 22pt;
+    height: 22pt;
+    border: 0.6pt solid #1B7A7A;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 22pt;
+    font-size: 9pt;
+    font-weight: 700;
+    color: #1B7A7A;
+  }
+  .destaque {
+    background: #FFF4E0;
+    border-left: 3pt solid #D4880F;
+    padding: 8pt 12pt;
+    margin: 12pt 0;
+    font-size: 9.5pt;
+  }
+  .destaque b { color: #D4880F; }
+  .checkbox-list {
+    margin: 4pt 0;
+    padding-left: 0;
+    list-style: none;
+  }
+  .checkbox-list li {
+    margin: 3pt 0;
+    font-size: 9.5pt;
+  }
+  .checkbox-list li::before {
+    content: "☐ ";
+    color: #1B7A7A;
+    font-weight: 700;
+    margin-right: 4pt;
+  }
+  .data-proxima {
+    background: #1B7A7A;
+    color: #fff;
+    padding: 14pt 18pt;
+    margin: 16pt 0 12pt;
+    border-radius: 4pt;
+    text-align: center;
+  }
+  .data-proxima .label {
+    font-size: 10pt;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1pt;
+    margin-bottom: 4pt;
+  }
+  .data-proxima .data {
+    font-size: 18pt;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="title">FORMULÁRIO DE FEEDBACK</h1>
+<p class="subtitle">Acompanhamento Mensal — {{aluna.nome}}</p>
+<p class="profname">Breno Xavier — Profissional de Educação Física / Nutricionista</p>
+<hr class="sep">
+
+<div class="intro">
+  <b>Oi, {{aluna.primeiro_nome}}!</b><br>
+  Pra eu ajustar o que precisa pra você nas próximas semanas, preciso entender como foi esse último ciclo. Responde com calma, sem se preocupar em parecer "certinha" — quanto mais sincero o feedback, melhor o resultado. Tudo que você escrever aqui me ajuda a refinar dieta, treino e protocolo.
+</div>
+
+<div class="data-proxima">
+  <div class="label">Próxima Reavaliação Sugerida</div>
+  <div class="data">{{proxima_reavaliacao}}</div>
+</div>
+
+<h2>1. Adesão Geral</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">De 0 a 10, qual sua adesão à <b>dieta</b> no último mês?</div>
+  <div class="escala">
+    <span class="escala-label">0 (não consegui nada)</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10 (segui 100%)</span>
+  </div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">De 0 a 10, qual sua adesão ao <b>treino de força</b>?</div>
+  <div class="escala">
+    <span class="escala-label">0</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10</span>
+  </div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">De 0 a 10, qual sua adesão ao <b>cardio</b>?</div>
+  <div class="escala">
+    <span class="escala-label">0</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10</span>
+  </div>
+</div>
+
+<h2>2. Dieta — O que tá pegando?</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Quais refeições estão mais <b>fáceis</b> de seguir?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Quais refeições estão <b>chatas / difíceis</b> de seguir?</div>
+  <div class="pergunta-hint">Aqui não tem julgamento — se algo tá te castigando, eu mudo. Pode falar.</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Tem algum <b>alimento</b> da dieta que você não gosta ou não está conseguindo encaixar?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como tá a <b>fome</b> ao longo do dia? Tem algum horário específico que fica difícil?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Tem algum momento da semana que você <b>"sai da linha"</b>? Quando e por quê?</div>
+  <div class="pergunta-hint">Final de semana, sair pra jantar, ansiedade à noite, TPM, etc. É normal — só preciso saber.</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<h2>3. Treino de Força</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Quantas sessões de força na semana você conseguiu fazer (média)?</div>
+  <div class="resposta-linha"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Sente <b>dor ou desconforto</b> em algum exercício específico?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Algum exercício você não está conseguindo <b>executar bem</b> (dúvida de técnica, instabilidade, falta de força)?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Sente que está <b>progredindo</b> (subindo carga, mais repetições, mais firmeza)?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<h2>4. Cardio</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Quantas sessões de cardio na semana você fez (média)?</div>
+  <div class="resposta-linha"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Que modalidade tem feito? (esteira, bike, escada, ar livre, etc.)</div>
+  <div class="resposta-linha"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Tem conseguido respeitar a <b>intensidade</b> orientada (zona aeróbia, baixa ou moderada)?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<h2>5. Como você está se sentindo</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como você se sente em relação ao seu corpo <b>hoje</b>?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Notou alguma <b>mudança visível</b>? (em roupas, espelho, foto)</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como está sua <b>energia</b> no dia a dia? (0-10)</div>
+  <div class="escala">
+    <span class="escala-label">0</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10</span>
+  </div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como está seu <b>sono</b>? (0-10)</div>
+  <div class="escala">
+    <span class="escala-label">0</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10</span>
+  </div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como está seu <b>humor</b> em geral? (0-10)</div>
+  <div class="escala">
+    <span class="escala-label">0</span>
+    <div class="nota">0</div><div class="nota">1</div><div class="nota">2</div><div class="nota">3</div>
+    <div class="nota">4</div><div class="nota">5</div><div class="nota">6</div><div class="nota">7</div>
+    <div class="nota">8</div><div class="nota">9</div><div class="nota">10</div>
+    <span class="escala-label" style="margin-left:6pt">10</span>
+  </div>
+</div>
+
+<h2>6. Ciclo Menstrual</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Como está o <b>ciclo</b>? (regular, atrasado, cólica forte, TPM intensa, etc.)</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Sente diferença de <b>fome / energia</b> em alguma fase do ciclo?</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<h2>7. Ajustes e feedback aberto</h2>
+
+<div class="pergunta">
+  <div class="pergunta-label">Tem algum <b>incômodo físico</b> novo? (dor, desconforto, lesão)</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">O que está funcionando <b>MUITO bem</b> pra você? (algo que você quer manter)</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">O que você <b>gostaria que mudasse</b> no protocolo? (dieta, treino, frequência, qualquer coisa)</div>
+  <div class="resposta-bloco"></div>
+</div>
+
+<div class="pergunta">
+  <div class="pergunta-label">Algo mais que você queira me contar?</div>
+  <div class="resposta-bloco" style="min-height:60pt"></div>
+</div>
+
+<div class="destaque">
+  <b>Confirma a data da próxima reavaliação?</b> {{proxima_reavaliacao}}<br>
+  Se essa data não der pra você, me fala que a gente acerta.
+</div>
+
+</body>
+</html>

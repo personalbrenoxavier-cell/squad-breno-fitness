@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Laura Daris</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+  h1.titulo { font-family: Georgia, serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+  .livre-opcao { margin: 8px 0; padding: 6px 10px; background: #fff; border-left: 2px solid #4caf50; border-radius: 0 3px 3px 0; }
+  .livre-opcao .livre-tit { font-weight: 700; color: #1b5e20; font-size: 10pt; }
+  .livre-opcao .livre-kcal { float: right; color: #e65100; font-weight: 700; font-size: 10pt; }
+  .livre-opcao .livre-itens { font-size: 9.5pt; margin-top: 4px; color: #333; }
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon"><span class="ramo">∿∿∿</span><div class="circle">B<span class="x">x</span></div></div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas</div>
+
+<h1 class="titulo">Laura Daris · Cutting (DEFINIÇÃO)</h1>
+
+<div class="cards">
+  <div class="card"><div class="card-label">Objetivo<br>Calórico</div><div class="card-value">1.300 <small>kcal</small></div></div>
+  <div class="card"><div class="card-label">Proteína</div><div class="card-value">100 <small>g/dia</small></div></div>
+  <div class="card"><div class="card-label">Refeições</div><div class="card-value">5 <small>/ dia</small></div></div>
+  <div class="card"><div class="card-label">Restrição<br>Alimentar</div><div class="card-value" style="font-size:10pt; line-height:1.2;">Sem glúten<br><small>sem lactose</small></div></div>
+  <div class="card"><div class="card-label">Suplemento</div><div class="card-value" style="font-size:11pt; line-height:1.2;">Whey<br><small>Creatina</small></div></div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head"><div class="macro-title">Distribuição de Macronutrientes</div><div class="macro-kcal">1.300 <small>kcal / dia</small></div></div>
+  <div class="macros-grid">
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Proteína</div><div class="macro-amt">100 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">31% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:66%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Carboidrato</div><div class="macro-amt">140 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">43% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Gordura Total</div><div class="macro-amt">40 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">28% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:58%;"></div></div></div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row"><div class="meal-name">Café da manhã (8h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:67%;"></div></div></div><div class="meal-kcal">280 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Almoço (12h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div><div class="meal-kcal">420 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche tarde (16h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:52%;"></div></div></div><div class="meal-kcal">220 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Jantar (20h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:62%;"></div></div></div><div class="meal-kcal">260 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Ceia açaí (22h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:29%;"></div></div></div><div class="meal-kcal">120 kcal</div></div>
+</div>
+
+<div class="recomendacao"><span class="label">Recomendação:</span> a quantidade de vegetais (legumes) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span> Pontos chave do protocolo</div>
+  <ul>
+    <li><strong>Déficit calórico 1.300 kcal:</strong> proteína alta (31% do VCT) pra preservar massa magra e dar saciedade. Se sentir muita fome noturna, o açaí resolve.</li>
+    <li><strong>Gastrite:</strong> evita jejum longo, pimenta forte, café em excesso (máx 2 xícaras/dia), refri, álcool, frituras pesadas. Se voltar a tomar Lítio, mantém hidratação 3 L/dia.</li>
+    <li><strong>Creatina monoidratada 5g/dia:</strong> pode misturar no whey ou no açaí.</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, alcatra, tilápia, frango.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">8h · 3 opções (mantém sua rotina de tapioca, ovo com queijo e whey)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Ovo com queijo e banana</span> <span class="kcal-tag">~285 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido ou frito no seco <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela ZERO LACTOSE <span class="qtd">30g (1 fatia)</span></div>
+    <div>Banana <span class="qtd">50g (meia unidade)</span></div>
+    <div>Café coado sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Tapioca com ovo e queijo (sua rotina)</span> <span class="kcal-tag">~285 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca pura <span class="qtd">30g (1,5 colher de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal ZERO LACTOSE <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Fruta (banana, mamão, mexerica) <span class="qtd">50g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Shake de whey com banana e aveia sem glúten (sua rotina)</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Leite vegetal (coco, amêndoa ou arroz sem açúcar) <span class="qtd">200ml (1 copo)</span></div>
+    <div>Whey isolado ou hidrolisado <span class="qtd">25g (1 scoop)</span></div>
+    <div>Banana <span class="qtd">50g (meia unidade)</span></div>
+    <div>Aveia em flocos SEM GLÚTEN certificada <span class="qtd">10g (1 colher de sopa rasa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · 3 opções · sem arroz e sem feijão · doce até 80 kcal (sem lactose e sem glúten)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango com batata doce e legumes (sua rotina ajustada)</span> <span class="kcal-tag">~420 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Peito de frango grelhado <span class="qtd">100g (1 filé médio)</span></div>
+    <div>Batata doce cozida ou assada <span class="qtd">120g (1 unidade pequena)</span></div>
+    <div>Legumes cozidos (brócolis flores, cenoura, chuchu, abobrinha) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 80 kcal (chocolate 70% sem leite, paçoca sem lactose, brigadeiro vegan)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Carne magra com batata inglesa e legumes</span> <span class="kcal-tag">~415 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Patinho, coxão mole ou músculo grelhado <span class="qtd">100g (1 bife médio)</span></div>
+    <div>Batata inglesa cozida ou assada <span class="qtd">130g (1 unidade pequena)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, cabotiá) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 80 kcal (sem lactose e sem glúten)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tilápia com quinoa e legumes</span> <span class="kcal-tag">~420 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Tilápia, merluza ou pescada grelhada <span class="qtd">130g (1 filé)</span></div>
+    <div>Quinoa cozida (naturalmente sem glúten) <span class="qtd">80g (3 colheres de sopa)</span></div>
+    <div>Legumes cozidos (brócolis flores, cenoura, chuchu) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 80 kcal (sem lactose e sem glúten)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Troca opcional: 80g de quinoa por 120g de mandioca cozida.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">16h · 2 opções (shake de whey ou crepioca de frango)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Shake de whey com fruta (sua rotina)</span> <span class="kcal-tag">~220 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Leite vegetal (coco, amêndoa ou arroz sem açúcar) <span class="qtd">150ml (meio copo e meio)</span></div>
+    <div>Whey isolado ou hidrolisado <span class="qtd">25g (1 scoop)</span></div>
+    <div>Banana ou morango <span class="qtd">50g (meia unidade)</span></div>
+    <div>Aveia em flocos SEM GLÚTEN <span class="qtd">10g (1 colher de sopa rasa)</span></div>
+    <div>Creatina monoidratada <span class="qtd">5g (misturada no shake)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Crepioca de frango desfiado com requeijão</span> <span class="kcal-tag">~220 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido <span class="qtd">1 Un.</span></div>
+    <div>Goma de tapioca pura <span class="qtd">20g (1 colher de sopa)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">50g (2,5 colheres de sopa cheias)</span></div>
+    <div>Requeijão light ZERO LACTOSE <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Tomate, alface, pepino <span class="qtd">à vontade (dentro da crepioca)</span></div>
+    <div>Café coado ou chá sem açúcar <span class="qtd">1 xícara</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Modo: bate o ovo com a goma de tapioca, cozinha na frigideira antiaderente sem óleo, recheia com frango e requeijão.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · 5 opções (rotina de tapioca/cuscuz + opções salgadas com frango e batata doce)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Ovo com bacon, queijo e banana (sua rotina)</span> <span class="kcal-tag">~265 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido ou frito no seco <span class="qtd">2 Un.</span></div>
+    <div>Bacon (assado sem óleo) <span class="qtd">10g (1 fatia fina)</span></div>
+    <div>Queijo mussarela ZERO LACTOSE <span class="qtd">15g (1 fatia bem fina)</span></div>
+    <div>Banana <span class="qtd">50g (meia unidade)</span></div>
+    <div>Café ou chá sem açúcar <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Tapioca com ovo e queijo</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca pura <span class="qtd">25g (1 colher de sopa cheia)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal ZERO LACTOSE <span class="qtd">10g (1 fatia bem fina)</span></div>
+    <div>Fruta (banana ou mamão) <span class="qtd">30g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Cuscuz de milho com ovo (sua rotina)</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz de milho (sem glúten) <span class="qtd">25g cru (80g pronto)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Tomate e cebola refogados <span class="qtd">à vontade (por cima)</span></div>
+    <div>Fruta (banana, mamão) <span class="qtd">40g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Tapioca com frango desfiado e requeijão</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca pura <span class="qtd">30g (1,5 colher de sopa)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">70g (3 colheres de sopa cheias)</span></div>
+    <div>Requeijão light ZERO LACTOSE <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Tomate, alface, pepino <span class="qtd">à vontade (dentro da tapioca)</span></div>
+    <div>Fruta pequena (banana, mamão) <span class="qtd">30g (opcional, comer depois)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 5 <span class="sub">· Batata doce com frango grelhado, legumes e salada</span> <span class="kcal-tag">~265 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Batata doce cozida ou assada <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Peito de frango grelhado <span class="qtd">70g (1 filé pequeno)</span></div>
+    <div>Legumes cozidos (brócolis flores, cenoura, chuchu, abobrinha) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Troca opcional de proteína: 70g de patinho, coxão mole ou 100g de tilápia grelhada.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Ceia açaí <span class="dica">22h · 1 opção (sua rotina mantida)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Refeição <span class="sub">· Açaí puro com banana e granola sem glúten</span> <span class="kcal-tag">~120 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Polpa de açaí PURA (sem xarope de guaraná, sem açúcar adicionado) <span class="qtd">100g (1 taça pequena)</span></div>
+    <div>Banana em rodelas <span class="qtd">30g (1/3 de unidade pequena)</span></div>
+    <div>Granola SEM GLÚTEN <span class="qtd">8g (1 colher de sopa rasa)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Se bater fome extra à noite, pode trocar granola por 10g de coco ralado sem açúcar (aumenta saciedade sem passar de 150 kcal).</div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre semanal · contada em kcal e gramas · sempre respeitando sem glúten e sem lactose:</strong>
+  <div style="margin-top:8px; font-size:9pt; color:#555;">Escolha 1 opção por semana. Em cutting apertado (1.300 kcal), a refeição livre substitui almoço + jantar do dia (não é adicional).</div>
+
+  <div class="livre-opcao">
+    <span class="livre-kcal">~700 kcal</span>
+    <span class="livre-tit">Opção A · Pizza sem glúten (2 fatias)</span>
+    <div class="livre-itens">Massa sem glúten 150g (2 fatias médias) · Molho de tomate 30g · Queijo mussarela zero lactose 60g · Recheio (frango desfiado, tomate, cebola) 80g · Orégano à vontade</div>
+  </div>
+
+  <div class="livre-opcao">
+    <span class="livre-kcal">~750 kcal</span>
+    <span class="livre-tit">Opção B · Prato de bife com arroz e batata (sem pão)</span>
+    <div class="livre-itens">Bife ancho, fraldinha ou coxão mole grelhado 180g (1 bife grande) · Arroz branco 80g (4 colheres de sopa) · Batata inglesa rústica assada 150g (2 unidades pequenas) · Salada verde (alface, rúcula, tomate, cebola) à vontade · Azeite extra virgem e limão 10g · Chimichurri sem lactose (opcional)</div>
+  </div>
+
+  <div class="livre-opcao">
+    <span class="livre-kcal">~500 kcal</span>
+    <span class="livre-tit">Opção C · Sushi (10 peças) com shoyu sem glúten</span>
+    <div class="livre-itens">Sashimi 3 peças (60g) · Niguiri de salmão 3 peças (75g) · Uramaki de salmão ou frango 4 peças (100g) · Shoyu SEM GLÚTEN (tamari) 15ml (1 colher de sopa) · Wasabi e gengibre à vontade</div>
+  </div>
+
+  <div class="livre-opcao">
+    <span class="livre-kcal">~380 kcal</span>
+    <span class="livre-tit">Opção D · Bolo caseiro sem glúten e sem lactose (1 fatia)</span>
+    <div class="livre-itens">Bolo caseiro de farinha de arroz ou amêndoa, com leite vegetal 120g (1 fatia grande) · Café coado ou chá sem açúcar à vontade</div>
+  </div>
+
+  <div class="livre-opcao">
+    <span class="livre-kcal">~250 kcal</span>
+    <span class="livre-tit">Opção E · Sorvete sem lactose</span>
+    <div class="livre-itens">Sorvete de coco, açaí ou frutas sem lactose 150g (2 bolas) · Calda de chocolate 70% sem leite (opcional) 15g · Fruta picada por cima 40g</div>
+  </div>
+
+  <div style="margin-top:10px; font-size:9pt; color:#e65100; font-weight:700;">Regras da refeição livre (cutting 1.300 kcal):</div>
+  <div style="font-size:9pt; margin-top:2px;">Bebida zero (refri zero sem cafeína pra respeitar gastrite) · Evita álcool (piora gastrite) · A refeição livre substitui almoço + jantar do dia · Se comer 2 opções no mesmo dia, a livre da semana seguinte fica cancelada.</div>
+</div>
+
+<div class="footer">@brenoxavieer_ <span style="color:#4caf50; margin: 0 8px;">·</span> 31 9 7262-8289 <span style="color:#4caf50; margin: 0 8px;">·</span> www.brenoxavier.com.br</div>
+
+</body>
+</html>

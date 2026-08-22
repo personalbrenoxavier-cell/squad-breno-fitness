@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Carolina Jordão de Souza</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Playfair Display', serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+
+  h1.titulo { font-family: Georgia, 'Playfair Display', serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, 'Playfair Display', serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<h1 class="titulo">Carolina Jordão de Souza · Cutting (Protocolo GLP-1)</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">1.350 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">100 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value">5 <small>/ dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Medicação</div>
+    <div class="card-value" style="font-size:11pt; line-height:1.25;">Retratutida<br><small>(GLP-1)</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Suplementos</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Whey, Creatina<br><small>Psyllium</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes</div>
+    <div class="macro-kcal">1.350 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">100 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">30% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">145 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">43% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:85%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">40 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">27% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã (8h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:75%;"></div></div></div>
+    <div class="meal-kcal">300 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Manhã (10h30)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:25%;"></div></div></div>
+    <div class="meal-kcal">100 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço (12h30)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">400 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Tarde (16h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:75%;"></div></div></div>
+    <div class="meal-kcal">300 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar (20h)</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:63%;"></div></div></div>
+    <div class="meal-kcal">250 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Protocolo GLP-1 (Retratutida) · pontos chave</div>
+  <ul>
+    <li><strong>Proteína é prioridade em todas as refeições.</strong> A saciedade aumentada do GLP-1 faz você comer pouco, então priorize sempre a proteína primeiro no prato. Whey concentrado nas 4 refeições ajuda a bater a meta diária (100g).</li>
+    <li><strong>Creatina monoidratada 5g/dia obrigatória.</strong> Protege massa magra durante a perda de peso do GLP-1. Pode entrar no shake do café ou do lanche da tarde.</li>
+    <li><strong>Psyllium 5 a 10g/dia recomendado.</strong> Constipação é lateral muito comum no GLP-1. Toma com 1 copo grande de água, longe das refeições.</li>
+    <li><strong>Hidratação:</strong> 3 L de água por dia (GLP-1 causa desidratação lateral, muito importante).</li>
+    <li><strong>Se náusea aparecer:</strong> come devagar, evita gorduras muito pesadas na refeição, prefere alimentos secos (torrada, biscoito de arroz) no início. Fraciona a refeição em 2 momentos se precisar.</li>
+    <li><strong>Se saciedade estiver muito alta e não conseguir comer tudo:</strong> prioriza a proteína (frango, ovo, whey) e o feijão. Deixa arroz e vegetais em segundo plano.</li>
+    <li><strong>Treino de força é essencial no GLP-1.</strong> Sem estímulo muscular, perde muita massa magra. Musculação 3 a 4x por semana é o mínimo.</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, lagarto, alcatra, tilápia, frango. Proteína animal até 90g por refeição.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">8h · 3 opções · creatina pode entrar aqui</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com frango desfiado, requeijão e fruta</span> <span class="kcal-tag">~305 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral <span class="qtd">60g (2 fatias)</span> OU Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">40g (2 colheres de sopa cheias)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Fruta (mamão, mexerica, morango) <span class="qtd">60g</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+    <div>Creatina monoidratada <span class="qtd">5g (misturada em água)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Cuscuz com ovo e queijo</span> <span class="kcal-tag">~300 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz de milho <span class="qtd">30g (cru) ou 100g (pronto)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal <span class="qtd">15g (1 fatia bem fina)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+    <div>Creatina monoidratada <span class="qtd">5g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Omelete recheada com pão integral</span> <span class="kcal-tag">~300 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Espinafre refogado, tomate e cebola <span class="qtd">à vontade (na omelete)</span></div>
+    <div>Queijo branco <span class="qtd">20g (dentro da omelete)</span></div>
+    <div>Pão integral <span class="qtd">30g (1 fatia)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+    <div>Creatina monoidratada <span class="qtd">5g</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h30 · 2 opções leves</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Fruta com castanhas</span> <span class="kcal-tag">~110 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Fruta a gosto (mexerica, maçã, mamão pequeno) <span class="qtd">80g (1 unidade)</span></div>
+    <div>Amêndoas ou castanhas de caju <span class="qtd">10g (10 a 12 unidades)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Iogurte pequeno com fruta</span> <span class="kcal-tag">~95 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">100g (meio pote)</span></div>
+    <div>Fruta a gosto (morango, mamão) <span class="qtd">60g</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · pode acompanhar bebida zero · prioriza proteína primeiro</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Filé de sobrecoxa com arroz, feijão e legumes</span> <span class="kcal-tag">~400 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Filé de sobrecoxa de frango grelhado (sem pele) <span class="qtd">100g (2 filés médios, come primeiro)</span></div>
+    <div>Legumes cozidos (brócolis flores, cenoura, chuchu, abobrinha) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div>Limão, alho, cúrcuma <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Troca opcional: 30g de arroz por 100g de batata inglesa cozida OU 100g de mandioca cozida.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Carne vermelha com arroz, feijão e legumes</span> <span class="kcal-tag">~400 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">60g (3 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Patinho, coxão mole, músculo ou alcatra grelhado <span class="qtd">90g (1 bife médio, come primeiro)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, cabotiá) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Troca opcional: 40g de arroz por 100g de batata inglesa cozida OU 100g de mandioca cozida.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Peixe com arroz, feijão e legumes</span> <span class="kcal-tag">~400 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">70g (3 a 4 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">80g (1 concha)</span></div>
+    <div>Tilápia, merluza, pescada ou salmão grelhado <span class="qtd">120g (1 filé grande, come primeiro)</span></div>
+    <div>Legumes cozidos (brócolis flores, cenoura, chuchu, abobrinha) <span class="qtd">100g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Limão, alho <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Troca opcional: 40g de arroz por 100g de batata inglesa cozida OU 100g de mandioca cozida.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">16h · 1 opção (sua rotina)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Refeição <span class="sub">· Iogurte com banana, aveia e whey</span> <span class="kcal-tag">~300 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Whey concentrado <span class="qtd">15g (meio scoop, misturado)</span></div>
+    <div>Aveia em flocos <span class="qtd">15g (1,5 colher de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · 3 opções · pouco e prático (leve, alta proteína)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Sopa de legumes com sobrecoxa desfiada</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Sopa caseira de legumes (chuchu, cenoura, abobrinha, alho) <span class="qtd">350ml (1 tigela)</span></div>
+    <div>Sobrecoxa de frango desfiada (sem pele) <span class="qtd">80g (dentro da sopa)</span></div>
+    <div>Torrada integral <span class="qtd">15g (2 unidades pequenas)</span></div>
+    <div>Cúrcuma, gengibre <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Salada proteica com carne vermelha desfiada</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Folhas verdes (alface, rúcula, espinafre) <span class="qtd">à vontade</span></div>
+    <div>Patinho ou coxão mole desfiado (refogado com alho e cebola) <span class="qtd">80g (2 colheres de sopa cheias)</span></div>
+    <div>Ovo cozido <span class="qtd">1 Un.</span></div>
+    <div>Tomate cereja, pepino, cenoura ralada <span class="qtd">100g (ou mais)</span></div>
+    <div>Azeite extra virgem e limão <span class="qtd">3g (meia colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Sobrecoxa desfiada com abacate e torrada</span> <span class="kcal-tag">~270 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Sobrecoxa de frango desfiada (sem pele) <span class="qtd">80g (2 colheres de sopa cheias)</span></div>
+    <div>Abacate amassado <span class="qtd">30g (1,5 colher de sopa)</span></div>
+    <div>Torrada integral <span class="qtd">20g (2 a 3 unidades)</span></div>
+    <div>Tomate, sal e limão <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza OU 11 peças de sushi OU 1 hambúrguer simples). Sempre com contenção de danos: bebida zero, boas escolhas no geral. No GLP-1 a saciedade é alta, então provavelmente você não vai conseguir comer muito na refeição livre mesmo. Se consumir álcool, a refeição livre vale por duas.
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>

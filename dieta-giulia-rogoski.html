@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Giulia Rogoski</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+  h1.titulo { font-family: Georgia, serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+  .plataforma-tag { display: inline-block; background: #0d47a1; color: #fff; font-size: 8pt; font-weight: 700; letter-spacing: 2px; padding: 5px 14px; border-radius: 3px; margin-bottom: 12px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon"><span class="ramo">∿∿∿</span><div class="circle">B<span class="x">x</span></div></div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas</div>
+
+<div class="plataforma-tag">Plano Plataforma</div>
+<h1 class="titulo">Giulia Oliveira Ferreira Rogoski · Cutting (definição · rotina quartel)</h1>
+
+<div class="cards">
+  <div class="card"><div class="card-label">Objetivo<br>Calórico</div><div class="card-value">1.800 <small>kcal</small></div></div>
+  <div class="card"><div class="card-label">Proteína</div><div class="card-value">130 <small>g/dia</small></div></div>
+  <div class="card"><div class="card-label">Refeições</div><div class="card-value">5 <small>/ dia</small></div></div>
+  <div class="card"><div class="card-label">Idade / Peso<br>Altura</div><div class="card-value" style="font-size:10.5pt; line-height:1.2;">24 anos<br><small>69 kg · 1,65 m</small></div></div>
+  <div class="card"><div class="card-label">Suplemento</div><div class="card-value" style="font-size:11pt; line-height:1.2;">Whey<br><small>Creatina 5g</small></div></div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head"><div class="macro-title">Distribuição de Macronutrientes</div><div class="macro-kcal">1.800 <small>kcal / dia</small></div></div>
+  <div class="macros-grid">
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Proteína</div><div class="macro-amt">130 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">29% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:57%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Carboidrato</div><div class="macro-amt">208 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">46% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Gordura Total</div><div class="macro-amt">50 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">25% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:52%;"></div></div></div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row"><div class="meal-name">Café da manhã (9h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:76%;"></div></div></div><div class="meal-kcal">380 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche manhã (11h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:36%;"></div></div></div><div class="meal-kcal">180 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Almoço quartel (12h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div><div class="meal-kcal">550 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Fruta / Pré treino (15h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:40%;"></div></div></div><div class="meal-kcal">200 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Jantar (20h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:88%;"></div></div></div><div class="meal-kcal">490 kcal</div></div>
+</div>
+
+<div class="recomendacao"><span class="label">Recomendação:</span> a quantidade de vegetais (legumes) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span> Pontos chave do protocolo</div>
+  <ul>
+    <li><strong>Almoço no quartel:</strong> você não controla o que servem, então dei orientação de porção e escolha (o que pegar, o que evitar). Se for possível, monte o prato no padrão: metade de salada + legumes, um quarto de arroz + feijão, um quarto de proteína.</li>
+    <li><strong>Fruta às 15h mantida</strong> (seu pedido). É a base do lanche da tarde, ampliei com opção de fruta + whey pra reforçar proteína e servir de pré treino se treinar tarde.</li>
+    <li><strong>Whey opcional (sempre 1 opção com whey):</strong> lanche da manhã (Op 2) e lanche das 15h (Op 2). Concentrado padrão. Sugestões: Vitafor, True Source, DUX, Equaliv, Essential.</li>
+    <li><strong>Creatina 5g/dia:</strong> diluída em água ou suco natural, pós treino ou após o almoço. Todo dia sem falha (inclusive descanso).</li>
+    <li><strong>Jantar:</strong> mantida sua rotina de arroz + feijão + frango OU pão com ovo OU carne. Ampliei em 3 opções calibradas.</li>
+    <li><strong>Doce até 100 kcal pós almoço</strong> (sobremesa do quartel encaixa aqui, escolha só 1 pequeno).</li>
+    <li><strong>Hidratação:</strong> 2,4 L de água por dia (0,035 x peso na balança).</li>
+    <li><strong>Temperos naturais</strong> à vontade (orégano, alho, pimenta, páprica, açafrão, alecrim).</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">9h · 3 opções (base pão com ovo / crepioca · sua rotina)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão francês com ovo e queijo (sua rotina)</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">25g (1 fatia)</span></div>
+    <div>Requeijão light <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Fruta (banana, mamão ou mexerica) <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Crepioca com ovo, queijo e fruta (sua rotina)</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca hidratada <span class="qtd">40g (2 colheres de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span> (misturados na crepioca)</div>
+    <div>Queijo minas frescal <span class="qtd">25g (1 fatia média)</span></div>
+    <div>Fruta (banana, mamão ou mexerica) <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Crepioca: bate 2 ovos com a tapioca hidratada, cozinha na frigideira antiaderente, recheia com queijo.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Pão integral com ovo, queijo e fruta</span> <span class="kcal-tag">~385 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral (Vigor light ou similar) <span class="qtd">2 fatias (aprox 50g)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">20g (1 fatia)</span></div>
+    <div>Requeijão light <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Fruta (banana, mamão ou mexerica) <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">11h · 2 opções (leve · sempre 1 opção com whey)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte natural com fruta e granola</span> <span class="kcal-tag">~180 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Fruta (morango, mamão ou banana) <span class="qtd">80g</span></div>
+    <div>Granola sem açúcar <span class="qtd">15g (1,5 colher de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Shake de whey com fruta (dia que estiver usando whey)</span> <span class="kcal-tag">~180 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Whey protein concentrado <span class="qtd">25g (1 scoop)</span></div>
+    <div>Banana <span class="qtd">80g (1 unidade pequena)</span> OU Morango <span class="qtd">100g</span></div>
+    <div>Água <span class="qtd">200ml</span></div>
+    <div>Gelo <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço quartel <span class="dica">12h30 · orientação de porcionamento (não há como controlar o que servem)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Padrão do quartel (arroz, feijão, carne, sobremesa)</span> <span class="kcal-tag">~550 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">100g (4 colheres de sopa cheias · sempre mais feijão que arroz)</span></div>
+    <div>Carne ou frango (o que servirem) <span class="qtd">90g (1 filé médio ou 1 concha rasa)</span></div>
+    <div>Legumes ou salada (o que tiver disponível) <span class="qtd">120g (livre pra pegar mais)</span></div>
+    <div>Sobremesa do quartel (se tiver) <span class="qtd">até 100 kcal (1 gelatina pequena, 1 fruta ou 1 doce pequeno)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:6px; font-size:9.5pt;"><strong>Regras pra montar no bandeco:</strong> metade do prato = salada + legumes. Um quarto = arroz + feijão. Um quarto = proteína. FORA: sobremesa grande, refrigerante comum, farofa em excesso, molho branco cremoso. Se servirem frito (batata frita, bife à milanesa), reduza pela metade e pegue mais salada.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Alternativa se levar marmita (dia que der pra montar em casa)</span> <span class="kcal-tag">~545 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">100g (4 colheres de sopa cheias)</span></div>
+    <div>Peito de frango grelhado OU patinho, coxão mole grelhado <span class="qtd">90g</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Fruta / Pré treino <span class="dica">15h · 2 opções · SEMPRE 1 com whey (seu pedido: fruta na tarde)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Fruta com aveia e canela (seu pedido)</span> <span class="kcal-tag">~200 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">120g (1 unidade grande)</span> OU Maçã <span class="qtd">150g (1 unidade média)</span> OU Mamão <span class="qtd">200g</span></div>
+    <div>Aveia em flocos <span class="qtd">15g (1,5 colher de sopa · dentro da fruta ou à parte)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div>Café coado sem açúcar (opcional) <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Fruta com whey (dia de treino · sua rotina de whey)</span> <span class="kcal-tag">~200 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span> OU Morango <span class="qtd">120g</span></div>
+    <div>Whey protein concentrado <span class="qtd">25g (1 scoop)</span></div>
+    <div>Água <span class="qtd">200ml (bate no liquidificador)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Terminar 45 a 60 min antes do treino se treinar depois.</div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · 3 opções (sua rotina · arroz + feijão + proteína OU pão com ovo OU carne)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Arroz, feijão e frango (sua rotina)</span> <span class="kcal-tag">~490 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">70g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">90g (4 colheres de sopa cheias)</span></div>
+    <div>Peito de frango grelhado ou desfiado <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, brócolis) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão com ovo e queijo + salada (sua rotina · dia sem tempo)</span> <span class="kcal-tag">~485 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Ovo mexido <span class="qtd">3 Un.</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">20g (1 fatia)</span></div>
+    <div>Tomate, alface, cebola <span class="qtd">à vontade (dentro do sanduíche ou à parte)</span></div>
+    <div>Fruta pós refeição (mexerica, banana) <span class="qtd">80g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Arroz, feijão e carne magra (sua rotina)</span> <span class="kcal-tag">~495 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">70g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">90g (4 colheres de sopa cheias)</span></div>
+    <div>Patinho, coxão mole, lagarto ou músculo grelhado <span class="qtd">90g (1 bife médio)</span></div>
+    <div>Legumes cozidos <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="livre"><strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza sem exagero no queijo OU 11 peças de sushi OU 1 hambúrguer artesanal com fritas médias). Sempre com contenção de danos: bebida zero, boas escolhas no geral. Se consumir álcool, a refeição livre vale por duas. Beliscar liberado: melão, melancia, abacaxi, morango, kiwi, pipoca de panela (30g de milho com azeite e sal).</div>
+
+<div class="footer">@brenoxavieer_ <span style="color:#4caf50; margin: 0 8px;">·</span> 31 9 7262-8289 <span style="color:#4caf50; margin: 0 8px;">·</span> www.brenoxavier.com.br</div>
+
+</body>
+</html>

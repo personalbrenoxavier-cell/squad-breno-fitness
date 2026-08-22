@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',-apple-system,Segoe UI,sans-serif}
+  :root{
+    --bg:#0c0e13;--gold:#e8b94a;--green:#39d98a;--mut:#8a93a6;--line:#212736;--panel:#12151d;
+    --oferta:#e8b94a;--antes:#ff6b8b;--result:#39d98a;--resp:#4f9dff;--share:#a884ff;--desejo:#2fd4c4;--refl:#9aa3b2;
+  }
+  html{background:#0c0e13}
+  body{width:1680px;height:1150px;overflow:hidden;color:#fff;background:
+      radial-gradient(1100px 600px at 82% 0%, #171c28 0%, transparent 60%),
+      radial-gradient(900px 600px at 5% 100%, #14181f 0%, transparent 55%),#0c0e13}
+  .stage{padding:34px 40px;height:1150px;display:flex;flex-direction:column}
+
+  .head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+  .brand .h{font-weight:800;font-size:24px;letter-spacing:2px}
+  .brand .h span{color:var(--gold)}
+  h1{font-weight:900;font-size:34px;letter-spacing:.5px}
+  h1 b{color:var(--gold)}
+  .sub{color:var(--mut);font-size:15px;font-weight:600;margin:2px 0 14px}
+
+  /* engine + legend */
+  .top{display:grid;grid-template-columns:1.15fr 1fr;gap:14px;margin-bottom:14px}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+  .box h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .box ul{list-style:none;font-size:12.5px;color:#d3d8e2;line-height:1.5}
+  .box li b{color:#fff}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 14px}
+  .lg{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#cfd5e2}
+  .sw{width:11px;height:11px;border-radius:3px}
+
+  /* calendar */
+  .cal{flex:1;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);background:#141925;border-bottom:1px solid var(--line)}
+  .dow div{padding:9px 0;text-align:center;font-weight:800;font-size:13px;letter-spacing:2px;color:var(--gold)}
+  .dow .we{color:var(--mut)}
+  .weeks{flex:1;display:grid;grid-template-rows:repeat(5,1fr)}
+  .wk{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid #171c27}
+  .wk:last-child{border-bottom:none}
+  .cell{border-right:1px solid #171c27;padding:6px 7px;display:flex;flex-direction:column;gap:3px;min-height:0;overflow:hidden}
+  .cell:last-child{border-right:none}
+  .cell.out{background:repeating-linear-gradient(45deg,#0e1119,#0e1119 6px,#0c0e13 6px,#0c0e13 12px)}
+  .dnum{font-weight:800;font-size:14px;color:#e7ebf3}
+  .cell.we .dnum{color:var(--mut)}
+  .it{border-left:3px solid var(--line);background:#0f1420;border-radius:5px;padding:3px 6px;font-size:10.7px;line-height:1.25}
+  .it .t{font-weight:800;color:#fff;font-size:9.5px;letter-spacing:.3px}
+  .it .h{color:var(--mut);font-weight:700;font-size:9px}
+  .it.feed{background:#12261c;box-shadow:inset 0 0 0 1px rgba(57,217,138,.25)}
+  .it.feed .t::before{content:"★ FEED · ";color:var(--green)}
+  .b-oferta{border-left-color:var(--oferta)} .b-antes{border-left-color:var(--antes)}
+  .b-result{border-left-color:var(--result)} .b-resp{border-left-color:var(--resp)}
+  .b-share{border-left-color:var(--share)} .b-desejo{border-left-color:var(--desejo)}
+  .b-refl{border-left-color:var(--refl)}
+
+  .foot{margin-top:12px;color:var(--mut);font-size:12px;font-weight:600;display:flex;justify-content:space-between}
+  .foot b{color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="head">
+    <div>
+      <div class="brand"><span class="dot"></span><span class="h">BRENO<span>XAVIER</span></span></div>
+      <h1>Cronograma de Postagens · <b>Julho 2026</b></h1>
+      <div class="sub">Ritmo calibrado pelos dados de maio · stories diários + posts de feed</div>
+    </div>
+  </div>
+
+  <div class="top">
+    <div class="box">
+      <h4>⚙️ Motor do mês (o que maio ensinou)</h4>
+      <ul>
+        <li>🎯 <b>Oferta com dor nomeada</b> = máquina de lead → toda segunda de manhã</li>
+        <li>📸 <b>Antes/depois SEMPRE com CTA</b> de ação (AVALIAÇÃO), nunca só resultado</li>
+        <li>💬 Caixinha morreu → virou <b>"respondendo vocês"</b> (o Breno responde)</li>
+        <li>📲 <b>1–2 compartilháveis/semana</b> pra furar a bolha (alcance era 80–97% interno)</li>
+        <li>⏰ <b>Manhã engaja · Noite alcança</b> — horários abaixo seguem isso</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>🎨 Legenda de conteúdo</h4>
+      <div class="legend">
+        <span class="lg"><span class="sw" style="background:var(--oferta)"></span>Oferta-dor (lead)</span>
+        <span class="lg"><span class="sw" style="background:var(--antes)"></span>Antes/depois + CTA</span>
+        <span class="lg"><span class="sw" style="background:var(--result)"></span>Resultado/prova (FEED)</span>
+        <span class="lg"><span class="sw" style="background:var(--resp)"></span>Respondendo vocês</span>
+        <span class="lg"><span class="sw" style="background:var(--share)"></span>Compartilhável (fura bolha)</span>
+        <span class="lg"><span class="sw" style="background:var(--desejo)"></span>Desejo / lifestyle</span>
+        <span class="lg"><span class="sw" style="background:var(--refl)"></span>Reflexão / autoridade</span>
+      </div>
+      <ul style="margin-top:10px;font-size:11.5px">
+        <li><b>★ FEED</b> = post permanente (carrossel/imagem). O resto é story.</li>
+        <li>Posts de resultado usam o modelo do card da Jordana.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cal">
+    <div class="dow"><div>SEG</div><div>TER</div><div>QUA</div><div>QUI</div><div>SEX</div><div class="we">SÁB</div><div class="we">DOM</div></div>
+    <div class="weeks">
+
+      <!-- Semana 1: Qua 1 -> Dom 5 -->
+      <div class="wk">
+        <div class="cell out"></div>
+        <div class="cell out"></div>
+        <div class="cell"><div class="dnum">1</div>
+          <div class="it b-refl"><div class="t">Autoridade · bastidor</div><div class="h">09h</div></div>
+          <div class="it b-share"><div class="t">Compartilhável</div><div class="h">13h · salvar/marcar</div></div>
+        </div>
+        <div class="cell"><div class="dnum">2</div>
+          <div class="it feed b-oferta"><div class="t">Sequência de venda</div><div class="h">carrossel · 18h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">3</div>
+          <div class="it feed b-result"><div class="t">Resultado — Jordana</div><div class="h">antes/depois · 13h</div></div>
+          <div class="it b-desejo"><div class="t">Desejo de vida</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">4</div>
+          <div class="it b-desejo"><div class="t">Lifestyle leve</div><div class="h">11h</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">5</div>
+          <div class="it b-refl"><div class="t">Reflexão de virada</div><div class="h">11h</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 2: 6 -> 12 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">6</div>
+          <div class="it b-oferta"><div class="t">Oferta-dor</div><div class="h">08h30 · AVALIAÇÃO</div></div>
+        </div>
+        <div class="cell"><div class="dnum">7</div>
+          <div class="it b-antes"><div class="t">Antes/depois + CTA</div><div class="h">09h</div></div>
+          <div class="it b-resp"><div class="t">Respondendo vocês</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">8</div>
+          <div class="it b-refl"><div class="t">Autoridade · demanda</div><div class="h">09h</div></div>
+          <div class="it b-share"><div class="t">Compartilhável</div><div class="h">13h</div></div>
+        </div>
+        <div class="cell"><div class="dnum">9</div>
+          <div class="it feed b-oferta"><div class="t">Sequência de venda</div><div class="h">carrossel · 18h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">10</div>
+          <div class="it feed b-result"><div class="t">Resultado — aluna</div><div class="h">antes/depois · 13h</div></div>
+          <div class="it b-desejo"><div class="t">Desejo de vida</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">11</div>
+          <div class="it b-desejo"><div class="t">Lifestyle leve</div><div class="h">11h</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">12</div>
+          <div class="it b-refl"><div class="t">Reflexão + semente</div><div class="h">11h / 19h</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 3: 13 -> 19 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">13</div>
+          <div class="it b-oferta"><div class="t">Oferta-dor (elite)</div><div class="h">08h30 · PRIORIDADE</div></div>
+        </div>
+        <div class="cell"><div class="dnum">14</div>
+          <div class="it b-antes"><div class="t">Antes/depois + CTA</div><div class="h">09h</div></div>
+          <div class="it b-resp"><div class="t">Respondendo vocês</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">15</div>
+          <div class="it b-refl"><div class="t">Autoridade · bastidor</div><div class="h">09h</div></div>
+          <div class="it b-share"><div class="t">Compartilhável</div><div class="h">13h</div></div>
+        </div>
+        <div class="cell"><div class="dnum">16</div>
+          <div class="it feed b-oferta"><div class="t">Sequência de venda</div><div class="h">carrossel · 18h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">17</div>
+          <div class="it feed b-result"><div class="t">Resultado — aluna</div><div class="h">antes/depois · 13h</div></div>
+          <div class="it b-desejo"><div class="t">Desejo de vida</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">18</div>
+          <div class="it b-desejo"><div class="t">Lifestyle leve</div><div class="h">11h</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">19</div>
+          <div class="it b-refl"><div class="t">Reflexão de virada</div><div class="h">11h</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 4: 20 -> 26 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">20</div>
+          <div class="it b-oferta"><div class="t">Oferta-dor</div><div class="h">08h30 · AVALIAÇÃO</div></div>
+        </div>
+        <div class="cell"><div class="dnum">21</div>
+          <div class="it b-antes"><div class="t">Antes/depois + CTA</div><div class="h">09h</div></div>
+          <div class="it b-resp"><div class="t">Respondendo vocês</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">22</div>
+          <div class="it b-refl"><div class="t">Autoridade · demanda</div><div class="h">09h</div></div>
+          <div class="it b-share"><div class="t">Compartilhável</div><div class="h">13h</div></div>
+        </div>
+        <div class="cell"><div class="dnum">23</div>
+          <div class="it feed b-oferta"><div class="t">Sequência de venda</div><div class="h">carrossel · 18h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">24</div>
+          <div class="it feed b-result"><div class="t">Resultado — aluna</div><div class="h">antes/depois · 13h</div></div>
+          <div class="it b-desejo"><div class="t">Desejo de vida</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">25</div>
+          <div class="it b-desejo"><div class="t">Lifestyle leve</div><div class="h">11h</div></div>
+        </div>
+        <div class="cell we"><div class="dnum">26</div>
+          <div class="it b-refl"><div class="t">Reflexão + semente</div><div class="h">11h / 19h</div></div>
+        </div>
+      </div>
+
+      <!-- Semana 5: 27 -> 31 -->
+      <div class="wk">
+        <div class="cell"><div class="dnum">27</div>
+          <div class="it b-oferta"><div class="t">Oferta-dor (elite)</div><div class="h">08h30 · PRIORIDADE</div></div>
+        </div>
+        <div class="cell"><div class="dnum">28</div>
+          <div class="it b-antes"><div class="t">Antes/depois + CTA</div><div class="h">09h</div></div>
+          <div class="it b-resp"><div class="t">Respondendo vocês</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">29</div>
+          <div class="it b-refl"><div class="t">Autoridade · bastidor</div><div class="h">09h</div></div>
+          <div class="it b-share"><div class="t">Compartilhável</div><div class="h">13h</div></div>
+        </div>
+        <div class="cell"><div class="dnum">30</div>
+          <div class="it feed b-oferta"><div class="t">Sequência de venda</div><div class="h">carrossel · 18h30</div></div>
+        </div>
+        <div class="cell"><div class="dnum">31</div>
+          <div class="it feed b-result"><div class="t">Resultado — fecha o mês</div><div class="h">antes/depois · 13h</div></div>
+          <div class="it b-desejo"><div class="t">Desejo de vida</div><div class="h">19h30</div></div>
+        </div>
+        <div class="cell we out"></div>
+        <div class="cell we out"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Meta: <b>respostas no direct</b> &gt; salvamentos &gt; compartilhamentos. Curtida é vaidade.</div>
+    <div><b>~8 posts de feed</b> + stories diários no mês · @brenoxavieer_</div>
+  </div>
+
+</div>
+</body>
+</html>

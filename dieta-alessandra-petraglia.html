@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Alessandra Petraglia</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+  h1.titulo { font-family: Georgia, serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+  .elite-tag { display: inline-block; background: #1a1a1a; color: #d4a017; font-size: 8pt; font-weight: 700; letter-spacing: 3px; padding: 5px 16px; border-radius: 3px; margin-bottom: 12px; text-transform: uppercase; border: 1px solid #d4a017; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon"><span class="ramo">∿∿∿</span><div class="circle">B<span class="x">x</span></div></div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas</div>
+
+<div class="elite-tag">Plano Elite</div>
+<h1 class="titulo">Alessandra Petraglia de Freitas · Cutting (definição · protocolo vesícula)</h1>
+
+<div class="cards">
+  <div class="card"><div class="card-label">Objetivo<br>Calórico</div><div class="card-value">1.600 <small>kcal</small></div></div>
+  <div class="card"><div class="card-label">Proteína</div><div class="card-value">115 <small>g/dia</small></div></div>
+  <div class="card"><div class="card-label">Refeições</div><div class="card-value">5 <small>/ dia</small></div></div>
+  <div class="card"><div class="card-label">Idade / Peso<br>Altura</div><div class="card-value" style="font-size:10.5pt; line-height:1.2;">45 anos<br><small>65 kg · 1,65 m</small></div></div>
+  <div class="card"><div class="card-label">Restrição</div><div class="card-value" style="font-size:10pt; line-height:1.2;">Sem lactose<br><small>Vesícula / colelitíase</small></div></div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head"><div class="macro-title">Distribuição de Macronutrientes</div><div class="macro-kcal">1.600 <small>kcal / dia</small></div></div>
+  <div class="macros-grid">
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Proteína</div><div class="macro-amt">115 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">29% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:57%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Carboidrato</div><div class="macro-amt">200 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">50% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Gordura Total</div><div class="macro-amt">38 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">21% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:42%;"></div></div></div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row"><div class="meal-name">Café da manhã (7h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:64%;"></div></div></div><div class="meal-kcal">320 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche manhã (10h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:36%;"></div></div></div><div class="meal-kcal">180 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Almoço (12h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div><div class="meal-kcal">500 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Pré treino (16h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:56%;"></div></div></div><div class="meal-kcal">280 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Jantar / Pós treino (20h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:64%;"></div></div></div><div class="meal-kcal">320 kcal</div></div>
+</div>
+
+<div class="recomendacao"><span class="label">Recomendação:</span> a quantidade de vegetais (legumes) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span> Pontos chave do protocolo</div>
+  <ul>
+    <li><strong>SEM lactose em NENHUM item:</strong> queijo, requeijão, iogurte, leite ZERO LACTOSE. FORA: leite comum, queijo comum, iogurte comum, requeijão comum.</li>
+    <li><strong>Protocolo vesícula (colelitíase):</strong> gordura total controlada em 21% do VCT. FORA: frituras, bacon, linguiça, torresmo, embutidos, queijos amarelos, molhos cremosos, manteiga, banha, contra filé com muita gordura, costela gorda. Preferir peito de frango, peixe branco, patinho, coxão mole, alcatra sem gordura, ovo cozido ou mexido sem óleo.</li>
+    <li><strong>Fracionar em 5 refeições</strong> reduz o volume por vez e alivia o trabalho da vesícula. Nunca pular refeição, fica mais tempo em jejum e a bile fica concentrada.</li>
+    <li><strong>Panqueca de banana mantida no café</strong> (sua rotina). Sem cacau ou pasta de amendoim (gordura), somente banana + ovo + aveia.</li>
+    <li><strong>Pré treino às 16h + jantar/pós treino às 20h:</strong> pré leva mais carbo e pouca gordura (digestão rápida antes do treino). Pós treino leva proteína + carbo + salada pra reconstrução muscular. Ideal: comer pré 45 a 60 min antes de começar o treino.</li>
+    <li><strong>Pão francês mantido no pré treino</strong> (sua rotina). Recheado com frango desfiado + requeijão zero lactose light.</li>
+    <li><strong>Almoço:</strong> arroz + feijão + proteína magra + salada em TODAS as opções (padrão squad). Mais feijão que arroz (fibra + saciedade).</li>
+    <li><strong>Coca zero:</strong> 1 lata (350ml) por dia no MÁXIMO, no almoço OU no jantar (não os dois). Evite tomar em jejum.</li>
+    <li><strong>Café coado sem açúcar</strong> à vontade no café da manhã (só 1 xícara no meio da manhã, evite mais no dia por causa da cafeína + coca zero).</li>
+    <li><strong>Doce até 100 kcal pós almoço</strong> nas 3 opções, sem chocolate ao leite (usar 70 por cento ou paçoca). Chocolate ao leite tem lactose.</li>
+    <li><strong>Hidratação:</strong> 2,3 L de água por dia (0,035 x peso na balança). Água ajuda a bile a ficar mais fluida.</li>
+    <li><strong>Temperos naturais</strong> à vontade (orégano, alho, pimenta suave, açafrão, alecrim, cheiro verde). Evite pimenta muito forte se irritar a vesícula.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">7h30 · 3 opções (base panqueca de banana · sua rotina)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Panqueca de banana com aveia (sua rotina, sem gordura extra)</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Ovo <span class="qtd">2 Un.</span></div>
+    <div>Aveia em flocos <span class="qtd">25g (2,5 colheres de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Modo: amassa a banana, mistura com ovo e aveia, cozinha na frigideira antiaderente SEM óleo (a gordura irrita a vesícula).</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Tapioca com ovo e queijo zero lactose</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca hidratada <span class="qtd">40g (2 colheres de sopa)</span></div>
+    <div>Ovo mexido (sem óleo) <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal ZERO LACTOSE <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Fruta (mamão ou banana) <span class="qtd">80g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Sugestões de queijo zero lactose: Verde Campo, Yorgus, Piracanjuba, Vigor Zero.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Cuscuz com ovo e fruta</span> <span class="kcal-tag">~325 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz de milho <span class="qtd">40g cru (aprox 130g pronto)</span></div>
+    <div>Ovo mexido (sem óleo) <span class="qtd">2 Un.</span></div>
+    <div>Mamão <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h30 · 2 opções (leve · sem gordura)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte zero lactose com fruta</span> <span class="kcal-tag">~180 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado ZERO LACTOSE <span class="qtd">170g (1 pote)</span></div>
+    <div>Fruta (morango, mirtilo, mamão ou banana) <span class="qtd">100g</span></div>
+    <div>Aveia em flocos <span class="qtd">10g (1 colher de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Sugestões de iogurte zero lactose: Verde Campo, Yorgus, Vigor Zero, Danone Zero.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Fruta com biscoito de arroz</span> <span class="kcal-tag">~180 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Biscoito de arroz integral <span class="qtd">4 unidades (aprox 20g)</span></div>
+    <div>Fruta (mamão, mexerica, morango ou banana) <span class="qtd">150g</span></div>
+    <div>Café coado sem açúcar (só se quiser) <span class="qtd">1 xícara pequena</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · 3 opções · arroz + feijão + proteína magra · coca zero opcional</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango com arroz, feijão e legumes</span> <span class="kcal-tag">~500 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">90g (4 colheres de sopa cheias)</span></div>
+    <div>Peito de frango grelhado (sem pele) <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Abobrinha, chuchu, cenoura ou berinjela refogados <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde (alface, rúcula, tomate, pepino) <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Coca zero <span class="qtd">350ml (1 lata · opcional, escolha almoço OU jantar)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal (bombom sem lactose, paçoca, 2 quadrados chocolate 70 por cento)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Carne bovina magra com arroz, feijão e legumes</span> <span class="kcal-tag">~505 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">90g (4 colheres de sopa cheias)</span></div>
+    <div>Patinho, coxão mole, lagarto ou músculo grelhado (sem gordura visível) <span class="qtd">90g (1 bife médio)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, beterraba) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Coca zero <span class="qtd">350ml (1 lata · opcional, escolha almoço OU jantar)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Cortes magros: patinho, coxão mole, lagarto, músculo, alcatra sem gordura visível. FORA: fraldinha, costela, contra filé com capa de gordura, picanha.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Peixe branco com arroz, feijão e salada</span> <span class="kcal-tag">~495 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">70g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">80g (3 a 4 colheres de sopa)</span></div>
+    <div>Peixe branco assado ou grelhado (tilápia, merluza, pescada, linguado) <span class="qtd">110g (1 filé)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, brócolis) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Coca zero <span class="qtd">350ml (1 lata · opcional, escolha almoço OU jantar)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Pré treino <span class="dica">16h · 3 opções · carbo dominante · pouca gordura (digestão rápida antes do treino)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão francês com frango desfiado (sua rotina)</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">50g (2 a 3 colheres de sopa)</span></div>
+    <div>Requeijão light ZERO LACTOSE <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Alface e tomate <span class="qtd">à vontade (dentro do sanduíche)</span></div>
+    <div>Banana <span class="qtd">80g (1 unidade pequena)</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Terminar de comer aprox 45 a 60 min antes do treino.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Panqueca de banana com aveia (sua rotina · versão pré treino)</span> <span class="kcal-tag">~275 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Ovo <span class="qtd">1 Un.</span></div>
+    <div>Aveia em flocos <span class="qtd">25g (2,5 colheres de sopa)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+    <div>Café coado sem açúcar (só se quiser) <span class="qtd">1 xícara pequena</span></div>
+    <div style="color:#555; font-style:italic; margin-top:4px; font-size:9.5pt;">Frigideira antiaderente SEM óleo. Cozinhar 45 a 60 min antes do treino.</div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca com queijo zero lactose e fruta</span> <span class="kcal-tag">~275 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca hidratada <span class="qtd">45g (2 a 3 colheres de sopa)</span></div>
+    <div>Queijo minas frescal ZERO LACTOSE <span class="qtd">20g (1 fatia)</span></div>
+    <div>Ovo mexido (sem óleo) <span class="qtd">1 Un.</span></div>
+    <div>Fruta (mamão, mexerica ou banana pequena) <span class="qtd">80g</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar / Pós treino <span class="dica">20h · 3 opções · proteína alta + carbo + legumes · sem doce</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango com arroz e legumes (pós treino)</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">50g (3 colheres de sopa)</span></div>
+    <div>Peito de frango grelhado ou desfiado (sem pele) <span class="qtd">90g (1 filé pequeno)</span></div>
+    <div>Legumes cozidos (abobrinha, chuchu, cenoura, brócolis) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div>Coca zero <span class="qtd">350ml (1 lata · opcional, se não bebeu no almoço)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Peixe branco com legumes e arroz</span> <span class="kcal-tag">~315 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">50g (3 colheres de sopa)</span></div>
+    <div>Peixe branco assado ou grelhado (tilápia, merluza, pescada) <span class="qtd">100g (1 filé pequeno)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, brócolis) <span class="qtd">150g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+    <div>Coca zero <span class="qtd">350ml (1 lata · opcional, se não bebeu no almoço)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Omelete recheado com legumes</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz de milho <span class="qtd">25g cru (aprox 80g pronto)</span></div>
+    <div>Ovo (mexido sem óleo) <span class="qtd">3 Un.</span></div>
+    <div>Queijo minas frescal ZERO LACTOSE <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Tomate, cebola, cheiro verde <span class="qtd">à vontade (dentro do omelete)</span></div>
+    <div>Salada verde farta <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">3g (meia colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="livre"><strong>Refeição livre:</strong> 1 refeição livre por semana, moderada e SEM gordura pesada por causa da vesícula (ex.: 2 fatias de pizza fininha SEM borda recheada e SEM excesso de queijo OU 11 peças de sushi OU 1 hambúrguer artesanal simples sem bacon e sem molhos cremosos). Evite frituras, feijoada, costela, hamburger com bacon, pizza calabresa gordurosa. Sem álcool no ciclo (cutting + vesícula pedem). Beliscar liberado: melão, melancia, abacaxi, morango, kiwi, gelatina zero.</div>
+
+<div class="footer">@brenoxavieer_ <span style="color:#4caf50; margin: 0 8px;">·</span> 31 9 7262-8289 <span style="color:#4caf50; margin: 0 8px;">·</span> www.brenoxavier.com.br</div>
+
+</body>
+</html>

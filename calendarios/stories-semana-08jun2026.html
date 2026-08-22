@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendário de Stories — Breno Xavier · 08–14 jun 2026</title>
+<style>
+  :root{
+    --bg:#0d0f14; --panel:#161922; --panel2:#1e222e; --line:#2a2f3d;
+    --txt:#e7e9ee; --mut:#9aa3b2; --gold:#f4c430; --acc:#4f8cff;
+    --desejo:#ff6b8b; --autoridade:#4f8cff; --insight:#27c4a0; --cta:#f4c430; --rotina:#9b8cff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+  .wrap{max-width:1500px;margin:0 auto;padding:28px 20px 60px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:22px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:18px}
+  .diag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 28px;font-size:13.5px}
+  .diag-grid b{color:var(--gold)}
+  .bases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+  .base{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .base h4{margin:0 0 6px;font-size:13px;letter-spacing:.4px;text-transform:uppercase}
+  .base p{margin:0;font-size:12.5px;color:var(--mut)}
+  .b-desejo h4{color:var(--desejo)} .b-aut h4{color:var(--autoridade)} .b-ins h4{color:var(--insight)}
+
+  .insights{background:linear-gradient(180deg,#1a1410,#161922);border:1px solid #3a3320}
+  .insights h3{margin:0 0 10px;font-size:15px;color:var(--gold)}
+  .insights ul{margin:0;padding-left:18px;font-size:13px;color:#d8d2c2}
+  .insights li{margin-bottom:5px}
+
+  .arco{background:linear-gradient(180deg,#101a18,#161922);border:1px solid #1f3a34}
+  .arco h3{margin:0 0 6px;font-size:15px;color:var(--insight)}
+  .arco p{margin:0;font-size:13px;color:var(--mut)}
+
+  .board{display:grid;grid-template-columns:repeat(7,minmax(195px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
+  .col{background:var(--panel);border:1px solid var(--line);border-radius:12px;min-width:195px}
+  .col-h{padding:12px 14px;border-bottom:1px solid var(--line);position:sticky;top:0}
+  .col-h .d{font-weight:700;font-size:14px}
+  .col-h .dt{color:var(--mut);font-size:11.5px}
+  .col-h .role{font-size:11px;color:var(--gold);margin-top:3px}
+  .cards{padding:10px;display:flex;flex-direction:column;gap:10px}
+
+  .card{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--rotina);border-radius:9px;padding:10px 11px;font-size:12px}
+  .card .time{color:var(--mut);font-size:10.5px;font-weight:600;letter-spacing:.3px}
+  .card .mom{margin:5px 0 6px;color:#cdd3df}
+  .card .mom b{color:#fff}
+  .card .txt{background:#11141c;border:1px dashed #333a49;border-radius:6px;padding:7px 8px;color:#fff;margin-bottom:6px;font-style:italic}
+  .card .fmt{color:var(--mut);font-size:10.5px}
+  .card .conc{margin-top:6px;color:#7f8aa0;font-size:10.5px;border-top:1px dotted #333;padding-top:5px}
+  .card .conc b{color:#9aa3b2}
+  .tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+  .tag{font-size:9.5px;font-weight:700;letter-spacing:.4px;padding:2px 6px;border-radius:20px;text-transform:uppercase}
+  .t-desejo{background:rgba(255,107,139,.15);color:var(--desejo)}
+  .t-aut{background:rgba(79,140,255,.15);color:var(--autoridade)}
+  .t-ins{background:rgba(39,196,160,.15);color:var(--insight)}
+  .t-cta{background:rgba(244,196,48,.15);color:var(--cta)}
+  .t-rot{background:rgba(155,140,255,.15);color:var(--rotina)}
+  .t-arco{background:rgba(39,196,160,.25);color:#5ee0bf;border:1px solid #2c5d52}
+
+  .bd-desejo{border-left-color:var(--desejo)} .bd-aut{border-left-color:var(--autoridade)}
+  .bd-ins{border-left-color:var(--insight)} .bd-cta{border-left-color:var(--cta)}
+  .bd-arco{border-left-color:#5ee0bf}
+
+  .fill{background:rgba(244,196,48,.12);border:1px solid rgba(244,196,48,.4);border-radius:5px;padding:2px 6px;color:var(--gold);font-size:10.5px;display:inline-block;margin-top:5px}
+
+  .footer{margin-top:22px;font-size:12.5px;color:var(--mut)}
+  .footer h3{color:var(--txt);font-size:14px;margin:0 0 8px}
+  .footer ul{margin:0;padding-left:18px} .footer li{margin-bottom:4px}
+  @media(max-width:900px){.diag-grid{grid-template-columns:1fr}.bases{grid-template-columns:1fr}}
+  @page{size:A3 landscape;margin:8mm}
+  @media print{
+    body{background:#fff;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .wrap{max-width:none;padding:0}
+    .board{grid-template-columns:repeat(7,1fr);overflow:visible}
+    .col{break-inside:avoid}
+    .card{break-inside:avoid}
+    h1{color:#111}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>📲 Calendário de Stories — Breno Xavier / BG Fitness</h1>
+  <div class="sub">Semana 08–14 jun 2026 · construído sobre a análise dos 15 stories de maio</div>
+
+  <!-- DIAGNÓSTICO -->
+  <div class="panel">
+    <div class="diag-grid">
+      <div><b>Expert:</b> Breno Xavier (BG Fitness)</div>
+      <div><b>Arquétipo:</b> Híbrido → tende a Frente (ele aparece + alunas como prova)</div>
+      <div><b>Nível:</b> 2 — Público Final / Desejo (consultoria premium de emagrecimento feminino)</div>
+      <div><b>Público dos stories:</b> mulheres que querem secar/definir sem viver de dieta restritiva</div>
+      <div><b>Transformação:</b> travada, "falsa magra", barriga que não seca → slim, definida, leve e confiante de biquíni</div>
+      <div><b>Desejo:</b> Resultado <b>ALTO</b> · Modelo <b>MÉDIO</b> · Identidade <b>ALTO</b></div>
+      <div><b>Ofertas:</b> Consultoria de elite / Avaliação (CTA: AVALIAÇÃO · PRIORIDADE)</div>
+      <div><b>Tom:</b> direto e provocador na dor, acolhedor na solução. Nunca ataca ninguém.</div>
+      <div style="grid-column:1/-1"><b>Rotina/postagem:</b> consultoria online, horário flexível (posta a qualquer hora) → horários abaixo <b>otimizados pelos dados de maio</b>: oferta/engajamento de manhã, alcance à noite.</div>
+    </div>
+    <div class="bases">
+      <div class="base b-desejo"><h4>Desejo</h4><p>MOSTRAR o corpo slim/definida e a leveza (biquíni, comida sem culpa). Aluna é a prova viva — "poderia ser eu".</p></div>
+      <div class="base b-aut"><h4>Autoridade</h4><p>Volume de transformações, antes/depois, bastidor da consultoria de elite, demanda chegando no direct.</p></div>
+      <div class="base b-ins"><h4>Insight (leve)</h4><p>Relato emocional, não aula. "Ontem uma aluna me mandou..." — o seguidor sente, não analisa.</p></div>
+    </div>
+  </div>
+
+  <!-- O QUE OS NÚMEROS DE MAIO ENSINARAM -->
+  <div class="panel insights">
+    <h3>🔎 O que os números de maio mandaram a gente fazer diferente</h3>
+    <ul>
+      <li><b>Oferta com dor nomeada = máquina de lead.</b> "Falsas magras" (13 replies) e "Consultoria de elite" (12 replies) puxaram metade das conversas do mês → MAIS disso.</li>
+      <li><b>Caixinha de pergunta morreu</b> (0 respostas nas 3). Trocada por <b>"respondendo vocês"</b> — o Breno responde uma dor, não pergunta.</li>
+      <li><b>Antes/depois dá alcance, mas só converte com CTA de ação</b> (#15 bikini: 909 views e só 6 interações). Todo antes/depois fecha com AVALIAÇÃO.</li>
+      <li><b>Alcance 80–97% interno + 3 shares no mês</b> → 2 stories compartilháveis na semana pra furar a bolha.</li>
+      <li><b>Manhã engajou melhor</b> (#1, #2, #3) e o mês todo migrou pra noite → oferta forte de manhã na segunda.</li>
+    </ul>
+  </div>
+
+  <!-- ARCO -->
+  <div class="panel arco">
+    <h3>🎬 Arco ativo da semana — Resultado em tempo real</h3>
+    <p>Acompanhar <span class="fill">⚡ aluna real (c/ autorização)</span> ao longo da semana: abertura seg → updates ter/qua → desfecho sex. Vira "série" (o seguidor volta pra ver o final), gera o conteúdo mais compartilhável e prova autoridade sem declarar. <b>Só com dado e foto reais — nunca inventar.</b></p>
+  </div>
+
+  <!-- BOARD -->
+  <div class="board">
+
+    <!-- SEGUNDA -->
+    <div class="col">
+      <div class="col-h"><div class="d">SEGUNDA</div><div class="dt">08/jun</div><div class="role">Momentum + Oferta-dor de manhã</div></div>
+      <div class="cards">
+        <div class="card bd-cta">
+          <div class="time">☀ 08:30 · MANHÃ</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> antes/depois forte de aluna OU foto-conceito "falsa magra".</div>
+          <div class="txt">"Magra vestida, flácida pelada. Isso tem nome — e tem solução. Me manda 'AVALIAÇÃO'."</div>
+          <div class="fmt">Formato: foto + texto · CTA direto no direct</div>
+          <div class="conc"><b>Conclusão invisível:</b> "isso é exatamente o meu problema — quero falar com ele."</div>
+        </div>
+        <div class="card bd-aut">
+          <div class="time">🕛 12:30 · MEIO-DIA</div>
+          <div class="tags"><span class="tag t-aut">Autoridade</span><span class="tag t-rot">Rotina</span></div>
+          <div class="mom"><b>Momento:</b> bastidor ajustando dieta/treino de aluna (tela do plano, sem dar aula).</div>
+          <div class="txt">"Segunda 12h. Ajustando o plano de quem leva a sério."</div>
+          <div class="fmt">Formato: print/gravação de tela + texto curto</div>
+          <div class="conc"><b>Conclusão invisível:</b> "ele acompanha de verdade, é individual."</div>
+        </div>
+        <div class="card bd-arco">
+          <div class="time">🌙 19:30 · NOITE</div>
+          <div class="tags"><span class="tag t-arco">Arco · Abertura</span><span class="tag t-ins">Insight</span></div>
+          <div class="mom"><b>Momento:</b> apresenta a aluna da semana. <span class="fill">⚡ foto/início real</span></div>
+          <div class="txt">"Essa semana vocês vão acompanhar a [nome] de perto. Começou hoje. Anota o ponto de partida."</div>
+          <div class="fmt">Formato: foto + texto · planta a série</div>
+          <div class="conc"><b>Conclusão invisível:</b> "vou querer ver no que dá" (volta amanhã).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERÇA -->
+    <div class="col">
+      <div class="col-h"><div class="d">TERÇA</div><div class="dt">09/jun</div><div class="role">Conexão + Insight leve</div></div>
+      <div class="cards">
+        <div class="card bd-cta">
+          <div class="time">☀ 09:00 · MANHÃ</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> antes/depois de aluna (alcance) — sempre com ponte pra ação.</div>
+          <div class="txt">"A barriga não seca por acaso. Seca com plano certo. Quer o seu? Me manda 'AVALIAÇÃO'."</div>
+          <div class="fmt">Formato: antes/depois + CTA</div>
+          <div class="conc"><b>Conclusão invisível:</b> "tem método por trás, não é sorte."</div>
+        </div>
+        <div class="card bd-ins">
+          <div class="time">🕛 13:00 · TARDE</div>
+          <div class="tags"><span class="tag t-ins">Insight</span></div>
+          <div class="mom"><b>Momento:</b> print de mensagem real de aluna <span class="fill">⚡ com autorização</span></div>
+          <div class="txt">"Recebi isso hoje. Não é sobre o peso na balança — é sobre ela voltar a se olhar no espelho."</div>
+          <div class="fmt">Formato: print + texto curto emocional (relato, não aula)</div>
+          <div class="conc"><b>Conclusão invisível:</b> "ele transforma a vida, não só o corpo."</div>
+        </div>
+        <div class="card bd-arco">
+          <div class="time">🌙 19:30 · NOITE</div>
+          <div class="tags"><span class="tag t-arco">Arco · Update</span><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> "respondendo vocês" — Breno responde a dúvida/dor mais comum que cai no direct.</div>
+          <div class="txt">"Muita gente me pergunta 'já tentei de tudo e não seco'. Respondo: o problema quase nunca é esforço. É direção. (e a [nome] já tá sentindo isso na 1ª semana)"</div>
+          <div class="fmt">Formato: selfie/vídeo curto respondendo + amarra no arco · fecha com 'me manda AVALIAÇÃO'</div>
+          <div class="conc"><b>Conclusão invisível:</b> "ele entende o que eu sinto e tem a resposta."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUARTA -->
+    <div class="col">
+      <div class="col-h"><div class="d">QUARTA</div><div class="dt">10/jun</div><div class="role">Autoridade + Furar a bolha</div></div>
+      <div class="cards">
+        <div class="card bd-aut">
+          <div class="time">☀ 09:00 · MANHÃ</div>
+          <div class="tags"><span class="tag t-aut">Autoridade</span></div>
+          <div class="mom"><b>Momento:</b> bastidor da consultoria de elite — direct cheio de gente pedindo vaga <span class="fill">⚡ print</span></div>
+          <div class="txt">"Quarta de manhã e a fila do direct já tá assim. A demanda chega — eu só escolho quem leva a sério."</div>
+          <div class="fmt">Formato: print de direct/agenda + texto</div>
+          <div class="conc"><b>Conclusão invisível:</b> "todo mundo quer, é disputado — eu quero estar dentro."</div>
+        </div>
+        <div class="card bd-ins">
+          <div class="time">🕛 13:00 · TARDE</div>
+          <div class="tags"><span class="tag t-ins">Insight</span><span class="tag t-desejo">Compartilhável #1</span></div>
+          <div class="mom"><b>Momento:</b> conteúdo identificável e salvável (NÃO aula técnica). Verdade que a seguidora reconhece em si.</div>
+          <div class="txt">"3 sinais de que você é 'falsa magra' e nem percebe: roupa folgada esconde, foto de costas te assusta, e você vive de dieta mas nunca define. Salva e marca uma amiga que precisa ver."</div>
+          <div class="fmt">Formato: texto fundo escuro · pede salvar/marcar (puxa não-seguidor)</div>
+          <div class="conc"><b>Conclusão invisível:</b> "isso sou eu" → compartilha → entra gente nova.</div>
+        </div>
+        <div class="card bd-cta">
+          <div class="time">🌙 19:00 · NOITE</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> oferta "consultoria de elite" (campeã de lead em maio) + foto que entrega o nível.</div>
+          <div class="txt">"Consultoria de elite não é pra todo mundo. É pra quem cansou de tentar sozinha. Vaga é limitada. Me manda 'PRIORIDADE'."</div>
+          <div class="fmt">Formato: oferta_foto + CTA escasso</div>
+          <div class="conc"><b>Conclusão invisível:</b> "é exclusivo e tem vaga limitada — vou correr."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUINTA -->
+    <div class="col">
+      <div class="col-h"><div class="d">QUINTA</div><div class="dt">11/jun</div><div class="role">★ Sequência de venda (melhor dia)</div></div>
+      <div class="cards">
+        <div class="card bd-desejo">
+          <div class="time">🌙 18:30 · #1 DOR</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span></div>
+          <div class="mom"><b>Momento:</b> nomeia a frustração que prende.</div>
+          <div class="txt">"Você não tá gorda. Você tá sem definição e sem direção. São coisas diferentes — e só uma tem solução rápida."</div>
+          <div class="fmt">Formato: texto fundo escuro</div>
+          <div class="conc"><b>Conclusão invisível:</b> "ele descreveu exatamente o que eu sinto."</div>
+        </div>
+        <div class="card bd-desejo">
+          <div class="time">🌙 18:40 · #2 PROVA</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span><span class="tag t-aut">Autoridade</span></div>
+          <div class="mom"><b>Momento:</b> antes/depois de aluna que viveu essa virada. <span class="fill">⚡ foto real</span></div>
+          <div class="txt">"A [nome] tava nesse exato lugar. Olha agora."</div>
+          <div class="fmt">Formato: antes/depois</div>
+          <div class="conc"><b>Conclusão invisível:</b> "tem prova de que funciona com gente como eu."</div>
+        </div>
+        <div class="card bd-ins">
+          <div class="time">🌙 18:50 · #3 MECANISMO</div>
+          <div class="tags"><span class="tag t-ins">Insight</span></div>
+          <div class="mom"><b>Momento:</b> por que funciona — leve, sem virar aula.</div>
+          <div class="txt">"Não é treinar mais nem comer menos. É plano individual + ajuste toda semana. Por isso destrava."</div>
+          <div class="fmt">Formato: selfie + texto curto</div>
+          <div class="conc"><b>Conclusão invisível:</b> "faz sentido, é diferente do que eu já tentei."</div>
+        </div>
+        <div class="card bd-cta">
+          <div class="time">🌙 19:00 · #4 CTA</div>
+          <div class="tags"><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> convite direto, sem rodeio.</div>
+          <div class="txt">"Bora destravar o seu? Me manda 'AVALIAÇÃO' aqui no direct que eu te respondo hoje."</div>
+          <div class="fmt">Formato: texto + CTA · resposta no mesmo dia</div>
+          <div class="conc"><b>Conclusão invisível:</b> "é simples começar, é agora."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEXTA -->
+    <div class="col">
+      <div class="col-h"><div class="d">SEXTA</div><div class="dt">12/jun</div><div class="role">Desejo de vida + Desfecho do arco</div></div>
+      <div class="cards">
+        <div class="card bd-cta">
+          <div class="time">☀ 09:00 · MANHÃ</div>
+          <div class="tags"><span class="tag t-desejo">Desejo</span><span class="tag t-cta">CTA</span></div>
+          <div class="mom"><b>Momento:</b> antes/depois (alcance de manhã) + CTA.</div>
+          <div class="txt">"Sexta. Umas vão pra praia se escondendo, outras vivendo. A diferença começou numa decisão. Me manda 'AVALIAÇÃO'."</div>
+          <div class="fmt">Formato: antes/depois + CTA</div>
+          <div class="conc"><b>Conclusão invisível:</b> "eu quero ser a que vive, não a que se esconde."</div>
+        </div>
+        <div class="card bd-arco">
+          <div class="time">🕛 13:00 · TARDE</div>
+          <div class="tags"><span class="tag t-arco">Arco · Desfecho</span><span class="tag t-desejo">Compartilhável #2</span></div>
+          <div class="mom"><b>Momento:</b> fecha a série da semana com o resultado/depoimento da aluna. <span class="fill">⚡ resultado real</span></div>
+          <div class="txt">"Lembra da [nome] de segunda? Olha o que 1 semana de direção certa já mudou. Imagina 12. Compartilha pra alguém que precisa começar."</div>
+          <div class="fmt">Formato: antes/depois ou vídeo-depoimento + pede compartilhar</div>
+          <div class="conc"><b>Conclusão invisível:</b> "acompanhei isso acontecer — é real. E é rápido."</div>
+        </div>
+        <div class="card bd-desejo">
+          <div class="time">🌙 19:30 · NOITE</div>
+          <div class="tags"><span class="tag t-desejo">Desejo de vida</span></div>
+          <div class="mom"><b>Momento:</b> leveza — aluna/cena vivendo sem culpa (jantar, taça, sentindo-se bem).</div>
+          <div class="txt">"Sexta à noite. Definida não é viver de privação. É comer isso sem culpa porque a semana foi certa."</div>
+          <div class="fmt">Formato: foto lifestyle + texto curto</div>
+          <div class="conc"><b>Conclusão invisível:</b> "dá pra ter resultado E viver — eu quero isso."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÁBADO -->
+    <div class="col">
+      <div class="col-h"><div class="d">SÁBADO</div><div class="dt">13/jun</div><div class="role">Desejo de vida (leve)</div></div>
+      <div class="cards">
+        <div class="card bd-desejo">
+          <div class="time">🕛 11:00 · DIA</div>
+          <div class="tags"><span class="tag t-desejo">Desejo · Identidade</span></div>
+          <div class="mom"><b>Momento:</b> cena de liberdade corporal — praia/treino leve/comida boa. Mostra o estado B vivido.</div>
+          <div class="txt">"Fim de semana de quem fez a escolha certa: sol, corpo leve, zero culpa."</div>
+          <div class="fmt">Formato: foto lifestyle + texto curto</div>
+          <div class="conc"><b>Conclusão invisível:</b> "é essa a vida que eu quero."</div>
+        </div>
+        <div class="card bd-cta">
+          <div class="time">🌙 18:00 · TARDE</div>
+          <div class="tags"><span class="tag t-cta">CTA suave</span></div>
+          <div class="mom"><b>Momento:</b> convite leve, sem pressão de fim de semana.</div>
+          <div class="txt">"Quer começar a sua virada na segunda? Deixa 'AVALIAÇÃO' no direct que segunda eu te chamo."</div>
+          <div class="fmt">Formato: texto + CTA brando</div>
+          <div class="conc"><b>Conclusão invisível:</b> "posso dar o primeiro passo agora, sem peso."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DOMINGO -->
+    <div class="col">
+      <div class="col-h"><div class="d">DOMINGO</div><div class="dt">14/jun</div><div class="role">Conexão + semente da semana</div></div>
+      <div class="cards">
+        <div class="card bd-ins">
+          <div class="time">🕛 11:00 · DIA</div>
+          <div class="tags"><span class="tag t-ins">Insight</span><span class="tag t-desejo">Identidade</span></div>
+          <div class="mom"><b>Momento:</b> reflexão de virada (reposiciona o "slim e definida" que floppou em maio — agora com gancho de decisão).</div>
+          <div class="txt">"Domingo é o dia em que você decide se segunda vai ser igual de novo. Slim e definida não é sorte. É decisão repetida."</div>
+          <div class="fmt">Formato: texto fundo escuro · gancho de identidade (não frase solta)</div>
+          <div class="conc"><b>Conclusão invisível:</b> "depende de mim começar — e eu posso."</div>
+        </div>
+        <div class="card bd-aut">
+          <div class="time">🌙 19:00 · NOITE</div>
+          <div class="tags"><span class="tag t-aut">Autoridade</span><span class="tag t-cta">Semente</span></div>
+          <div class="mom"><b>Momento:</b> planta a próxima semana — antecipa novo resultado/turma. <span class="fill">⚡ contexto real</span></div>
+          <div class="txt">"Semana que vem tem mais transformação chegando. Quem entrar agora pega a leva certa. Me manda 'PRIORIDADE'."</div>
+          <div class="fmt">Formato: foto/print + texto · abre gancho pra segunda</div>
+          <div class="conc"><b>Conclusão invisível:</b> "tem algo vindo, melhor eu já me posicionar."</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /board -->
+
+  <!-- FOOTER -->
+  <div class="footer panel">
+    <h3>⚙️ Regras de operação da semana</h3>
+    <ul>
+      <li><b>Métrica que importa:</b> respostas no direct (lead) &gt; salvamentos &gt; compartilhamentos. Curtidas e views são vaidade.</li>
+      <li><b>Campos <span class="fill">⚡ amarelos</span></b> precisam de dado/foto REAL — nunca invente aluna, resultado ou print. Sem material real, troque por outro story do mesmo pilar.</li>
+      <li><b>1 CTA por dia, no mínimo.</b> A sequência de venda da quinta é o pico — não pule.</li>
+      <li><b>Mostrar &gt; falar:</b> nenhum story declara "sou o melhor". Cada um cria a cena pra ela concluir sozinha.</li>
+      <li><b>Arco único:</b> só a aluna da semana. Cumpra o desfecho na sexta — credibilidade de promessa é o ativo mais valioso.</li>
+      <li><b>Linha "Conclusão invisível" NÃO se publica</b> — é só pra calibrar o momento de captura.</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

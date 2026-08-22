@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Esthefany Gabrielle</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+  h1.titulo { font-family: Georgia, serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon"><span class="ramo">∿∿∿</span><div class="circle">B<span class="x">x</span></div></div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas</div>
+
+<h1 class="titulo">Esthefany Gabrielle da Silva Almeida · Ganho de massa leve (definição corporal)</h1>
+
+<div class="cards">
+  <div class="card"><div class="card-label">Objetivo<br>Calórico</div><div class="card-value">2.200 <small>kcal</small></div></div>
+  <div class="card"><div class="card-label">Proteína</div><div class="card-value">120 <small>g/dia</small></div></div>
+  <div class="card"><div class="card-label">Refeições</div><div class="card-value">5 <small>/ dia</small></div></div>
+  <div class="card"><div class="card-label">Idade / Peso<br>Altura</div><div class="card-value" style="font-size:10.5pt; line-height:1.2;">19 anos<br><small>58 kg · 1,63 m</small></div></div>
+  <div class="card"><div class="card-label">Suplemento</div><div class="card-value" style="font-size:11pt; line-height:1.2;">Whey<br><small>Creatina 5g</small></div></div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head"><div class="macro-title">Distribuição de Macronutrientes</div><div class="macro-kcal">2.200 <small>kcal / dia</small></div></div>
+  <div class="macros-grid">
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Proteína</div><div class="macro-amt">120 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">22% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:44%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Carboidrato</div><div class="macro-amt">305 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">56% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:100%;"></div></div></div>
+    <div class="macro"><div class="macro-name"><span class="dot"></span>Gordura Total</div><div class="macro-amt">55 <small style="font-size:9pt; font-weight:400;">g</small></div><div class="macro-pct">22% do VCT</div><div class="bar-track"><div class="bar-fill" style="width:45%;"></div></div></div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row"><div class="meal-name">Café da manhã (7h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:83%;"></div></div></div><div class="meal-kcal">500 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche manhã (10h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:47%;"></div></div></div><div class="meal-kcal">280 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Almoço (12h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div><div class="meal-kcal">600 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Lanche tarde (16h30)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:58%;"></div></div></div><div class="meal-kcal">350 kcal</div></div>
+  <div class="meal-row"><div class="meal-name">Jantar (20h)</div><div class="meal-bar"><div class="track"><div class="fill" style="width:78%;"></div></div></div><div class="meal-kcal">470 kcal</div></div>
+</div>
+
+<div class="recomendacao"><span class="label">Recomendação:</span> a quantidade de vegetais (legumes) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span> Pontos chave do protocolo</div>
+  <ul>
+    <li><strong>Ganho de massa LEVE:</strong> superávit calórico controlado (+ aprox 5% sobre o GET). Peso na balança sobe devagar (0,3 a 0,5 kg por mês), massa magra ganha, gordura corporal quase não muda. Estratégia certa pra "slim com barriga seca, glúteo e pernas fortes".</li>
+    <li><strong>4 opções em cada refeição:</strong> nunca fica sem escolha e sempre tem versão portátil pra dia corrido.</li>
+    <li><strong>Almoço pensado pra correria:</strong> as 4 opções são rápidas (rap 10, pão, marmita de vidro, tigela). Nenhuma exige panela quente na hora.</li>
+    <li><strong>Lanche da tarde é OBRIGATÓRIO agora</strong> (mesmo que não esteja treinando). Sem ele, o intervalo almoço a jantar fica de 7h + e o corpo entra em jejum longo, atrapalha ganho muscular.</li>
+    <li><strong>Marmitas do jantar mantidas</strong> (sua rotina). Estruturei 4 versões pra congelar em porção única e não enjoar.</li>
+    <li><strong>Creatina 5g/dia:</strong> essencial pra ganho de massa. Diluída em água, suco natural ou pós treino. TODO dia (inclusive dias de descanso).</li>
+    <li><strong>Whey:</strong> 1 scoop no lanche da manhã ou pós treino. Concentrado padrão. Sugestões: Vitafor, True Source, DUX, Equaliv, Essential, Pura Vida.</li>
+    <li><strong>Doce até 100 kcal pós almoço</strong> nas 4 opções (bombom, paçoca, 2 quadrados chocolate 70 por cento). Encaixa no superávit.</li>
+    <li><strong>Hidratação:</strong> 2 L de água por dia (0,035 x peso na balança).</li>
+    <li><strong>Sem treino ativo agora, mas COMEÇAR de volta:</strong> ganho de massa sem treino de força é 20% do resultado. O corpo precisa do estímulo pra usar o superávit em músculo (e não em gordura).</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">7h · 4 opções (base sua rotina · pão integral + ovo + queijo)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão integral com ovo e queijo (sua rotina)</span> <span class="kcal-tag">~500 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral (Vigor light ou similar) <span class="qtd">2 fatias (aprox 50g)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">25g (1 fatia média)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa)</span></div>
+    <div>Fruta (banana, mamão ou 1 fatia de manga) <span class="qtd">120g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão integral com frango desfiado e queijo (sua rotina)</span> <span class="kcal-tag">~495 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral (Vigor light ou similar) <span class="qtd">2 fatias (aprox 50g)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">70g (3 a 4 colheres de sopa)</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">20g (1 fatia)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa)</span></div>
+    <div>Fruta (banana, mamão, mexerica) <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca com ovo, queijo e fruta</span> <span class="kcal-tag">~505 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca hidratada <span class="qtd">60g (3 colheres de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal <span class="qtd">25g (1 fatia)</span></div>
+    <div>Fruta (banana, mamão ou 1 fatia de manga) <span class="qtd">120g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Só queijo e tomate + pão + fruta (dia sem tempo · sua rotina)</span> <span class="kcal-tag">~490 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral (Vigor light ou similar) <span class="qtd">2 fatias (aprox 50g)</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">35g (2 fatias)</span></div>
+    <div>Tomate em fatias <span class="qtd">à vontade</span></div>
+    <div>Orégano e azeite <span class="qtd">5g azeite (1 colher de chá)</span></div>
+    <div>Fruta (banana, mamão, mexerica) <span class="qtd">120g</span></div>
+    <div>Iogurte natural desnatado (opcional) <span class="qtd">100g</span></div>
+    <div>Café coado sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">10h · 4 opções (fonte proteica leve)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte com fruta e granola</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Fruta (morango, mirtilo, mamão ou banana) <span class="qtd">100g</span></div>
+    <div>Granola sem açúcar <span class="qtd">25g (2,5 colheres de sopa)</span></div>
+    <div>Mel <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Shake de whey com fruta e aveia</span> <span class="kcal-tag">~280 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Whey protein concentrado <span class="qtd">30g (1 scoop cheio)</span></div>
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Aveia em flocos <span class="qtd">20g (2 colheres de sopa)</span></div>
+    <div>Leite desnatado <span class="qtd">200ml</span></div>
+    <div>Gelo <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Fruta com castanhas e biscoito de arroz</span> <span class="kcal-tag">~285 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana ou mamão <span class="qtd">150g</span></div>
+    <div>Castanha de caju ou amêndoas <span class="qtd">20g (aprox 15 unidades)</span></div>
+    <div>Biscoito de arroz integral <span class="qtd">3 unidades (aprox 15g)</span></div>
+    <div>Mel <span class="qtd">10g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Pão de queijo pequeno com fruta</span> <span class="kcal-tag">~275 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de queijo coquetel (pequeno) <span class="qtd">4 unidades (aprox 60g)</span></div>
+    <div>Fruta (banana, mexerica, mamão) <span class="qtd">120g</span></div>
+    <div>Café coado sem açúcar (opcional) <span class="qtd">1 xícara</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">12h30 · 4 opções PORTÁTEIS · sua rotina de rap 10 e sanduíche</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Rap 10 com carne moída, salada e requeijão (sua rotina)</span> <span class="kcal-tag">~600 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 Un.</span></div>
+    <div>Carne moída (patinho, coxão mole ou músculo moído) <span class="qtd">100g (5 colheres de sopa cheias)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa)</span></div>
+    <div>Alface, tomate, cebola, cenoura ralada <span class="qtd">à vontade (dentro)</span></div>
+    <div>Fruta pós refeição (mexerica, banana, mamão) <span class="qtd">100g</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal (bombom, paçoca, 2 quadrados chocolate 70 por cento)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Rap 10 com frango desfiado, salada e requeijão (sua rotina)</span> <span class="kcal-tag">~595 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 Un.</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">100g (5 colheres de sopa cheias)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa)</span></div>
+    <div>Alface, tomate, cebola, cenoura ralada <span class="qtd">à vontade (dentro)</span></div>
+    <div>Fruta pós refeição (mexerica, banana, mamão) <span class="qtd">100g</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Sanduíche de pão francês com frango e salada (sua rotina · sem rap 10)</span> <span class="kcal-tag">~610 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Frango desfiado ou carne moída <span class="qtd">100g</span></div>
+    <div>Queijo mussarela <span class="qtd">20g (1 fatia)</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa)</span></div>
+    <div>Alface, tomate, cebola <span class="qtd">à vontade (dentro)</span></div>
+    <div>Fruta pós refeição <span class="qtd">100g</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Marmita rápida (arroz + feijão + proteína · pra dias em casa)</span> <span class="kcal-tag">~590 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">100g (5 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">120g (5 colheres de sopa cheias)</span></div>
+    <div>Peito de frango grelhado ou carne moída <span class="qtd">90g</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu) <span class="qtd">120g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce pós refeição <span class="qtd">até 100 kcal</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">16h30 · 4 opções (obrigatório agora · sua rotina antiga de pão com ovo)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão integral com ovo e queijo (sua rotina antiga)</span> <span class="kcal-tag">~350 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão integral (Vigor light ou similar) <span class="qtd">2 fatias (aprox 50g)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela ou minas frescal <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Requeijão light <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Fruta (banana ou mexerica) <span class="qtd">80g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Panqueca de banana com aveia e cacau</span> <span class="kcal-tag">~355 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">120g (1 unidade grande)</span></div>
+    <div>Ovo <span class="qtd">2 Un.</span></div>
+    <div>Aveia em flocos <span class="qtd">30g (3 colheres de sopa)</span></div>
+    <div>Cacau em pó 100 por cento sem açúcar <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Mel <span class="qtd">10g (1 colher de chá)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Rap 10 com frango e queijo (rápido tipo almoço)</span> <span class="kcal-tag">~340 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 Un.</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">60g (3 colheres de sopa)</span></div>
+    <div>Queijo mussarela <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Alface, tomate <span class="qtd">à vontade (dentro)</span></div>
+    <div>Fruta pequena (mexerica) <span class="qtd">60g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Iogurte + granola + fruta + biscoito de arroz (mais leve)</span> <span class="kcal-tag">~345 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Fruta (morango, banana, mamão) <span class="qtd">120g</span></div>
+    <div>Granola sem açúcar <span class="qtd">30g (3 colheres de sopa)</span></div>
+    <div>Biscoito de arroz integral <span class="qtd">3 unidades (aprox 15g)</span></div>
+    <div>Mel <span class="qtd">10g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">20h · 4 opções · base marmitas congeladas (sua rotina)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Marmita: arroz + feijão + frango + legumes (sua rotina)</span> <span class="kcal-tag">~470 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">100g (4 colheres de sopa cheias)</span></div>
+    <div>Peito de frango grelhado ou desfiado <span class="qtd">90g</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, brócolis) <span class="qtd">150g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Marmita: arroz + feijão + carne + legumes (sua rotina)</span> <span class="kcal-tag">~475 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz branco cozido <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão cozido <span class="qtd">100g (4 colheres de sopa cheias)</span></div>
+    <div>Patinho, coxão mole ou músculo (grelhado ou moído refogado) <span class="qtd">90g</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu, beterraba) <span class="qtd">150g (livre pra comer mais)</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Marmita: macarrão + frango + legumes (sua rotina)</span> <span class="kcal-tag">~475 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão cozido <span class="qtd">130g (aprox 45g cru)</span></div>
+    <div>Peito de frango desfiado ou em cubos <span class="qtd">90g</span></div>
+    <div>Molho de tomate natural (passata) <span class="qtd">80g (5 colheres de sopa)</span></div>
+    <div>Legumes cozidos ou grelhados (abobrinha, cenoura, brócolis) <span class="qtd">120g</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Queijo parmesão ralado (opcional) <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 4 <span class="sub">· Marmita: macarrão + carne moída + legumes (versão bolonhesa · sua rotina)</span> <span class="kcal-tag">~480 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão cozido <span class="qtd">130g (aprox 45g cru)</span></div>
+    <div>Carne moída magra (patinho, coxão mole) <span class="qtd">90g</span></div>
+    <div>Molho de tomate natural (passata) <span class="qtd">80g (5 colheres de sopa)</span></div>
+    <div>Legumes cozidos (abobrinha, cenoura, chuchu) <span class="qtd">120g</span></div>
+    <div>Salada verde <span class="qtd">à vontade</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Queijo parmesão ralado (opcional) <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="livre"><strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza sem exagero no queijo OU 11 peças de sushi OU 1 hambúrguer artesanal com fritas médias). Sempre com contenção de danos: bebida zero, boas escolhas no geral. Beliscar liberado: melão, melancia, abacaxi, morango, kiwi, pipoca de panela (30g de milho com azeite e sal).</div>
+
+<div class="footer">@brenoxavieer_ <span style="color:#4caf50; margin: 0 8px;">·</span> 31 9 7262-8289 <span style="color:#4caf50; margin: 0 8px;">·</span> www.brenoxavier.com.br</div>
+
+</body>
+</html>

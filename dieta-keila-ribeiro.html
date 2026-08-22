@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta Keila Ribeiro Prado Roza</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Playfair Display', serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 18px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+
+  h1.titulo { font-family: Georgia, 'Playfair Display', serif; font-size: 22pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: 0.3px; }
+
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, 'Playfair Display', serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo.intra { color: #e65100; border-bottom-color: #e65100; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .opcao-bloco.intra { border-left-color: #e65100; background: #fff5eb; padding: 10px 12px; border-radius: 0 4px 4px 0; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao.intra { background: #e65100; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+  .opcao-bloco.intra .refeicao-itens .qtd { color: #e65100; }
+
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<h1 class="titulo">Keila Ribeiro Prado Roza · Manutenção (Performance Esportiva)</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">2.200 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">115 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value" style="font-size:12pt; line-height:1.15;">5 <small>+ intra treino</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Medicação</div>
+    <div class="card-value" style="font-size:9.5pt; line-height:1.2;">Puran,<br><small>Avodart, Minoxidil</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Treino</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Força + Beach<br><small>(2 sessões seguidas)</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes</div>
+    <div class="macro-kcal">2.200 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">115 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">21% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:50%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">300 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">55% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:96%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">60 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">24% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:56%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:73%;"></div></div></div>
+    <div class="meal-kcal">400 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Manhã</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:36%;"></div></div></div>
+    <div class="meal-kcal">200 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">550 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche Tarde</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:64%;"></div></div></div>
+    <div class="meal-kcal">350 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name" style="color:#e65100;">Intra Treino</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:27%; background:#e65100;"></div></div></div>
+    <div class="meal-kcal">150 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">550 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Pontos chave do protocolo (leia com atenção)</div>
+  <ul>
+    <li><strong>Puran (levotiroxina 62,5mg):</strong> tomar em jejum ao acordar com água pura. Esperar 30 a 60 minutos antes de tomar café da manhã. NÃO tomar café, leite ou soja próximo ao Puran (compromete a absorção do hormônio da tireóide).</li>
+    <li><strong>Intra treino é obrigatório</strong> nos dias que você faz força + beach tênis em sequência. Consumir 15 a 20 minutos antes de começar o beach tênis. Foco em carbo rápido e eletrólitos.</li>
+    <li><strong>Hidratação 3 L por dia (mínimo):</strong> minoxidil oral pode reter líquido e beach tênis suar bastante. Meta obrigatória. Água pura + isotônico caseiro no beach.</li>
+    <li><strong>Creatina 5g por dia</strong> em qualquer refeição (pode ir junto com o café, almoço ou lanche da tarde).</li>
+    <li><strong>Vitamina D:</strong> tomar junto com refeição que tenha gordura (café da manhã ou almoço) pra melhor absorção.</li>
+    <li>Doce até 100 a 150 kcal liberado nas 3 opções de almoço (ou troque por fruta).</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, lagarto, alcatra, tilápia, frango. Proteína animal até 90g por refeição.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">após o Puran (esperar 30 a 60 min) · 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Pão com ovos e queijo</span> <span class="kcal-tag">~400 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo mussarela <span class="qtd">30g (1 fatia)</span></div>
+    <div>Banana <span class="qtd">80g (1 unidade)</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Vitamina com whey e aveia</span> <span class="kcal-tag">~395 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Aveia em flocos <span class="qtd">30g (3 colheres de sopa)</span></div>
+    <div>Whey concentrado <span class="qtd">15g (meio scoop)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca com ovos e queijo</span> <span class="kcal-tag">~410 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca <span class="qtd">50g (3 colheres de sopa)</span></div>
+    <div>Ovo mexido <span class="qtd">2 Un.</span></div>
+    <div>Queijo minas frescal <span class="qtd">30g (1 fatia)</span></div>
+    <div>Fruta (banana, mamão) <span class="qtd">80g</span></div>
+    <div>Café preto sem açúcar <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da manhã <span class="dica">2 opções (pré treino se treinar cedo)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte com granola e fruta</span> <span class="kcal-tag">~200 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote)</span></div>
+    <div>Granola sem açúcar <span class="qtd">15g (1,5 colher de sopa)</span></div>
+    <div>Banana <span class="qtd">60g (meia unidade)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Fruta com castanhas</span> <span class="kcal-tag">~195 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Fruta a gosto (banana, maçã, mexerica, mamão) <span class="qtd">150g</span></div>
+    <div>Castanhas mistas (amêndoas, castanha do Pará) <span class="qtd">15g (12 a 15 unidades)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">pode acompanhar bebida zero · doce até 100 kcal nas 3 opções · 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Arroz, feijão, frango e vegetais</span> <span class="kcal-tag">~555 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">100g (5 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">120g (1 concha cheia)</span></div>
+    <div>Peito de frango grelhado <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Batata inglesa cozida <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Vegetais à escolha (brócolis, cenoura, couve) <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou fruta)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Macarrão com carne moída</span> <span class="kcal-tag">~545 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão cozido <span class="qtd">150g (1 escumadeira)</span></div>
+    <div>Carne moída magra <span class="qtd">90g (3 colheres de sopa cheias)</span></div>
+    <div>Molho de tomate caseiro <span class="qtd">50g</span></div>
+    <div>Vegetais à escolha <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou fruta)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Peixe com batata doce e vegetais</span> <span class="kcal-tag">~560 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">80g (4 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">100g (1 concha)</span></div>
+    <div>Tilápia, merluza ou pescada grelhada <span class="qtd">120g</span></div>
+    <div>Batata doce cozida <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Vegetais à escolha <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Doce <span class="qtd">até 100 kcal (ou fruta)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da tarde <span class="dica">pode ser pré treino (se treina à tarde) · 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Sanduíche natural com frango</span> <span class="kcal-tag">~350 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma <span class="qtd">70g (2 fatias)</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">70g</span></div>
+    <div>Requeijão light <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Tomate, alface, cenoura ralada <span class="qtd">à vontade</span></div>
+    <div>Fruta pequena (banana ou maçã) <span class="qtd">80g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Panqueca de banana com whey</span> <span class="kcal-tag">~345 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Ovo <span class="qtd">1 Un.</span></div>
+    <div>Aveia em flocos <span class="qtd">30g (3 colheres de sopa)</span></div>
+    <div>Whey concentrado <span class="qtd">20g (1 scoop pequeno)</span></div>
+    <div>Canela em pó <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Wrap de Rap 10 com frango</span> <span class="kcal-tag">~355 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 Un.</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">80g</span></div>
+    <div>Queijo branco <span class="qtd">25g (1 fatia)</span></div>
+    <div>Tomate, alface, cenoura ralada <span class="qtd">à vontade</span></div>
+    <div>Fruta pequena de sobremesa <span class="qtd">60g</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo intra">Intra treino <span class="dica">entre força e beach tênis · 15 a 20 min antes do beach · 3 opções</span></div>
+
+<div class="opcao-bloco intra">
+  <div class="refeicao-opcao intra">Opção 1 <span class="sub">· Banana com mel (mais prática)</span> <span class="kcal-tag">~155 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Banana <span class="qtd">100g (1 unidade)</span></div>
+    <div>Mel <span class="qtd">15g (1 colher de sopa rasa)</span></div>
+    <div>Água <span class="qtd">400ml (durante o beach)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco intra">
+  <div class="refeicao-opcao intra">Opção 2 <span class="sub">· Isotônico caseiro com palatinose</span> <span class="kcal-tag">~140 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Palatinose ou maltodextrina <span class="qtd">30g (2 colheres de sopa)</span></div>
+    <div>Água <span class="qtd">500ml</span></div>
+    <div>Suco de meio limão <span class="qtd">à vontade</span></div>
+    <div>Sal <span class="qtd">1 pitada (reposição de sódio)</span></div>
+    <div>Beber aos poucos durante o beach tênis</div>
+  </div>
+</div>
+
+<div class="opcao-bloco intra">
+  <div class="refeicao-opcao intra">Opção 3 <span class="sub">· Rap 10 mini com mel e banana</span> <span class="kcal-tag">~160 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">meia unidade</span></div>
+    <div>Mel ou geleia sem açúcar <span class="qtd">10g (1 colher de sopa rasa)</span></div>
+    <div>Banana <span class="qtd">60g (meia unidade)</span></div>
+    <div>Água <span class="qtd">400ml (durante o beach)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">pós beach tênis · foco em proteína e reposição de carbo · 3 opções</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Comida em casa (base do almoço)</span> <span class="kcal-tag">~550 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz <span class="qtd">100g (5 colheres de sopa)</span></div>
+    <div>Feijão <span class="qtd">120g (1 concha cheia)</span></div>
+    <div>Peito de frango grelhado ou carne magra <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Batata inglesa cozida <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Vegetais à escolha <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Hambúrguer caseiro</span> <span class="kcal-tag">~530 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão francês <span class="qtd">50g (1 unidade)</span></div>
+    <div>Patinho cru (vira hambúrguer caseiro) <span class="qtd">90g (1 unidade)</span></div>
+    <div>Queijo mussarela <span class="qtd">25g (1 fatia)</span></div>
+    <div>Ketchup <span class="qtd">20g (1 colher de sopa)</span></div>
+    <div>Salada variada <span class="qtd">à vontade</span></div>
+    <div>Batata inglesa assada <span class="qtd">100g (1 unidade pequena)</span></div>
+    <div>Fruta de sobremesa <span class="qtd">80g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Wrap de Rap 10 com frango e iogurte</span> <span class="kcal-tag">~540 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Rap 10 <span class="qtd">1 Un.</span></div>
+    <div>Frango desfiado caseiro <span class="qtd">100g</span></div>
+    <div>Queijo mussarela <span class="qtd">30g</span></div>
+    <div>Tomate, alface, cenoura ralada <span class="qtd">à vontade</span></div>
+    <div>Iogurte natural desnatado <span class="qtd">170g (1 pote, de sobremesa)</span></div>
+    <div>Granola sem açúcar <span class="qtd">15g (por cima do iogurte)</span></div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza OU 11 peças de sushi OU 1 hambúrguer simples). Sempre com contenção de danos: bebida zero, boas escolhas no geral. Se consumir álcool, a refeição livre vale por duas.
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>

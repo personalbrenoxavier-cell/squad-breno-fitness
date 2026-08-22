@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta BAIXA — Ana Luiza Mendonça Castro</title>
+<style>
+  @page { size: A4; margin: 14mm 14mm 14mm 14mm; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif; color: #1a1a1a; font-size: 10.5pt; line-height: 1.5; background: #fff; }
+
+  .logo-block { text-align: center; margin-bottom: 14px; padding-top: 4px; }
+  .logo-icon { display: inline-block; position: relative; margin-bottom: 6px; }
+  .logo-icon .ramo { display: block; font-size: 16pt; color: #4caf50; line-height: 1; margin-bottom: -3px; letter-spacing: -2px; }
+  .logo-icon .circle { width: 72px; height: 72px; border-radius: 50%; border: 2px solid #4caf50; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-family: Georgia, 'Playfair Display', serif; font-weight: 700; font-size: 32pt; color: #1b5e20; letter-spacing: -2px; line-height: 1; background: #fff; }
+  .logo-icon .circle .x { color: #4caf50; font-size: 22pt; margin-left: -3px; margin-top: 6px; }
+  .logo-name { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #1b5e20; line-height: 1.05; letter-spacing: 0.5px; margin-top: 6px; }
+  .logo-sub { font-family: Arial, Helvetica, sans-serif; font-size: 7.5pt; font-weight: 600; color: #4caf50; letter-spacing: 4px; margin-top: 2px; }
+
+  .credentials { border-top: 1.5px solid #4caf50; border-bottom: 1.5px solid #4caf50; padding: 6px 0; text-align: center; font-size: 8.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.3px; margin: 8px 0 14px 0; }
+  .credentials .sep { color: #4caf50; margin: 0 12px; font-weight: 400; }
+
+  .ciclo-banner { background: #1b5e20; color: #fff; padding: 8px 14px; border-radius: 4px; font-weight: 700; font-size: 11pt; letter-spacing: 1px; text-align: center; margin-bottom: 14px; text-transform: uppercase; }
+  .ciclo-banner .sub { font-weight: 400; font-size: 9pt; text-transform: none; letter-spacing: 0.3px; margin-left: 8px; opacity: 0.85; }
+
+  h1.titulo { font-family: Georgia, 'Playfair Display', serif; font-size: 20pt; font-weight: 700; color: #111; text-align: left; margin: 0 0 18px 0; line-height: 1.2; letter-spacing: -0.3px; }
+
+  .cards { display: table; table-layout: fixed; width: 100%; border-collapse: separate; border-spacing: 6px; margin-bottom: 14px; }
+  .card { display: table-cell; border: 1px solid #d4d4d4; border-radius: 4px; padding: 8px 10px; vertical-align: top; }
+  .card .card-label { font-size: 6.5pt; font-weight: 700; color: #777; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; line-height: 1.2; }
+  .card .card-value { font-family: Georgia, 'Playfair Display', serif; font-size: 13pt; font-weight: 700; color: #111; line-height: 1.15; }
+  .card .card-value small { font-size: 9pt; font-weight: 400; color: #444; }
+
+  .macro-box { background: #eaf3df; border-top: 3px solid #4caf50; border-radius: 4px; padding: 12px 16px 14px 16px; margin-bottom: 14px; }
+  .macro-box .macro-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+  .macro-box .macro-title { font-size: 8pt; font-weight: 700; color: #1b5e20; letter-spacing: 1.2px; text-transform: uppercase; }
+  .macro-box .macro-kcal { font-family: Georgia, 'Playfair Display', serif; font-size: 18pt; font-weight: 700; color: #111; line-height: 1; }
+  .macro-box .macro-kcal small { font-size: 9pt; font-weight: 400; color: #444; margin-left: 2px; }
+  .macros-grid { display: table; width: 100%; table-layout: fixed; border-spacing: 14px 0; margin-left: -14px; margin-right: -14px; }
+  .macro { display: table-cell; vertical-align: top; }
+  .macro-name { font-size: 7.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+  .macro-name .dot { display: inline-block; width: 8px; height: 8px; background: #4caf50; margin-right: 5px; vertical-align: middle; }
+  .macro-amt { font-family: Georgia, 'Playfair Display', serif; font-size: 16pt; font-weight: 700; color: #111; line-height: 1; margin-bottom: 2px; }
+  .macro-pct { font-size: 8pt; color: #555; margin-bottom: 6px; }
+  .bar-track { height: 6px; background: #fff; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: #4caf50; border-radius: 3px; }
+
+  .meals-kcal { margin-bottom: 14px; }
+  .meal-row { display: table; width: 100%; table-layout: fixed; border-bottom: 1px solid #e8e8e8; padding: 6px 4px; }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name { display: table-cell; width: 28%; font-size: 9.5pt; font-weight: 700; color: #1b5e20; letter-spacing: 0.5px; text-transform: uppercase; vertical-align: middle; }
+  .meal-bar { display: table-cell; vertical-align: middle; padding: 0 12px; }
+  .meal-bar .track { height: 6px; background: #eaf3df; border-radius: 3px; overflow: hidden; }
+  .meal-bar .fill { height: 100%; background: #4caf50; }
+  .meal-kcal { display: table-cell; width: 70px; text-align: right; font-size: 10pt; color: #444; vertical-align: middle; }
+
+  .recomendacao { font-size: 9.5pt; color: #333; margin-bottom: 14px; line-height: 1.55; text-align: justify; }
+  .recomendacao .label { color: #e65100; font-weight: 700; }
+
+  .alert { border-left: 4px solid #e65100; background: #fff5eb; padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 14px; }
+  .alert .alert-title { font-size: 9.5pt; font-weight: 700; color: #e65100; margin-bottom: 6px; }
+  .alert .alert-title .ic { margin-right: 6px; }
+  .alert ul { margin: 0; padding-left: 18px; font-size: 9.5pt; color: #333; }
+  .alert ul li { margin-bottom: 2px; line-height: 1.45; }
+
+  .refeicao-titulo { font-size: 10.5pt; font-weight: 700; color: #1b5e20; margin-top: 14px; margin-bottom: 4px; padding-bottom: 3px; border-bottom: 1px solid #4caf50; }
+  .refeicao-titulo .dica { font-weight: 400; font-style: italic; color: #555; font-size: 9.5pt; }
+  .opcao-bloco { border-left: 3px solid #4caf50; padding-left: 12px; margin: 10px 0 10px 0; page-break-inside: avoid; }
+  .refeicao-opcao { display: inline-block; font-size: 8.5pt; font-weight: 700; color: #fff; background: #1b5e20; letter-spacing: 1px; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px; text-transform: uppercase; }
+  .refeicao-opcao .sub { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 4px; opacity: 0.9; }
+  .refeicao-opcao .kcal-tag { font-weight: 400; text-transform: none; letter-spacing: 0.3px; margin-left: 6px; background: rgba(255,255,255,0.18); padding: 1px 6px; border-radius: 2px; font-size: 8pt; }
+  .refeicao-itens { padding: 2px 0 2px 0; }
+  .refeicao-itens div { font-size: 10pt; line-height: 1.55; color: #1a1a1a; }
+  .refeicao-itens .qtd { color: #1b5e20; font-weight: 600; }
+
+  .livre { margin-top: 18px; padding: 10px 14px; border-left: 4px solid #4caf50; background: #f4f9ee; font-size: 9.5pt; line-height: 1.55; text-align: justify; border-radius: 0 4px 4px 0; }
+  .livre strong { color: #1b5e20; }
+
+  .footer { margin-top: 18px; padding-top: 8px; border-top: 1px solid #d4d4d4; text-align: center; font-size: 8.5pt; color: #1b5e20; }
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<div class="ciclo-banner">
+  ⬇ Dieta BAIXA <span class="sub">· Dias de cardio / off / descanso · 3x por semana</span>
+</div>
+
+<h1 class="titulo">Ana Luiza Mendonça Castro — Cutting (DEFINIÇÃO) · Ciclagem</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">1.100 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">110 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value">4 <small>/ dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Frequência<br>na semana</div>
+    <div class="card-value" style="font-size:11pt;">3x <small>/ sem</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Treino<br>Cardio / Off</div>
+    <div class="card-value" style="font-size:10pt; line-height:1.25;">Leve<br><small>(dias BAIXA)</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes — Dieta BAIXA</div>
+    <div class="macro-kcal">1.100 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">110 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">40% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:80%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">80 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">29% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:58%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">38 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">31% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:62%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:71%;"></div></div></div>
+    <div class="meal-kcal">250 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">350 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche da Tarde</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:57%;"></div></div></div>
+    <div class="meal-kcal">200 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:86%;"></div></div></div>
+    <div class="meal-kcal">300 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar, nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Como usar a Dieta BAIXA</div>
+  <ul>
+    <li><strong>Use nos 3 dias de cardio / descanso / treino leve</strong> da semana. Não use em dia de treino de força pesado — troca pela ALTA.</li>
+    <li><strong>Mantém a base brasileira</strong> (arroz, feijão, frango, ovo, pão), mas com mudanças significativas em relação à ALTA: <strong>sem pão no café (Op.1)</strong>, <strong>sem batata no almoço</strong>, <strong>sem doce no almoço</strong>, <strong>arroz menor em todas as refeições</strong>, <strong>sem hambúrguer / sem pizza no jantar</strong>.</li>
+    <li><strong>Proteína igual à ALTA (110g)</strong> — proteção máxima da massa magra.</li>
+    <li><strong>Carbo bem reduzido (80g)</strong> — foca em vegetais à vontade pra saciar.</li>
+    <li><strong>Se sentir muita fome, queda de energia ou tontura</strong> → troca o dia pela ALTA.</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, alcatra.</li>
+    <li><strong>Creatina 5g/dia</strong> mantida (igual à ALTA).</li>
+    <li>Hidratação: 3 L de água/dia.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">— 3 opções · mudanças significativas em relação à ALTA</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Ovos com queijo — sem pão (mudança)</span> <span class="kcal-tag">~260 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovos mexidos — <span class="qtd">3 Un.</span></div>
+    <div>Queijo branco — <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Tomate, cebola, cheiro verde — <span class="qtd">à vontade (na omelete)</span></div>
+    <div>Café preto sem açúcar — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Vitamina simples (sem banana, sem aveia)</span> <span class="kcal-tag">~250 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">170g (1 pote)</span></div>
+    <div>Whey concentrado — <span class="qtd">25g (~3/4 scoop)</span></div>
+    <div>Pasta de amendoim integral — <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Canela em pó / cacau 100% — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Tapioca pequena com ovos</span> <span class="kcal-tag">~245 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Goma de tapioca hidratada — <span class="qtd">20g (~2 colheres de sopa)</span></div>
+    <div>Ovos mexidos — <span class="qtd">2 Un.</span></div>
+    <div>Queijo branco — <span class="qtd">15g (1 fatia bem fina)</span></div>
+    <div>Café preto sem açúcar — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">— mantém base brasileira · sem batata · sem doce (mudanças em relação à ALTA)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango + arroz + feijão (sem batata, sem doce)</span> <span class="kcal-tag">~365 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">50g (~2,5 colheres de sopa)</span></div>
+    <div>Feijão — <span class="qtd">80g (1 concha)</span></div>
+    <div>Peito de frango grelhado — <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Carne moída + arroz + feijão (sem macarrão, sem doce)</span> <span class="kcal-tag">~365 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">50g (~2,5 colheres de sopa)</span></div>
+    <div>Feijão — <span class="qtd">80g (1 concha)</span></div>
+    <div>Carne moída magra (patinho ou acém) — <span class="qtd">90g (~3 colheres de sopa)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Sobrecoxa + arroz + feijão (sem batata, sem doce)</span> <span class="kcal-tag">~380 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">50g (~2,5 colheres de sopa)</span></div>
+    <div>Feijão — <span class="qtd">80g (1 concha)</span></div>
+    <div>Sobrecoxa sem pele — <span class="qtd">90g (1 unidade)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">150g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da Tarde <span class="dica">— 3 opções · troca panqueca/toast por opção mais simples</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Ovos cozidos + fruta (em vez da panqueca)</span> <span class="kcal-tag">~195 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovos cozidos — <span class="qtd">2 Un.</span></div>
+    <div>Fruta a gosto (maçã, mexerica, banana) — <span class="qtd">100g (~1 unidade)</span></div>
+    <div>Canela / sal — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Iogurte com whey (sem fruta, sem aveia)</span> <span class="kcal-tag">~200 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">170g (1 pote)</span></div>
+    <div>Whey concentrado — <span class="qtd">20g (~2/3 scoop)</span></div>
+    <div>Pasta de amendoim integral — <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Canela em pó — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Pão integral + queijo (em vez do toast com banana)</span> <span class="kcal-tag">~180 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma integral — <span class="qtd">50g (2 fatias)</span></div>
+    <div>Queijo branco — <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Tomate / orégano — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">— 3 opções · sem hambúrguer / sem pizza Rap 10 (mudanças em relação à ALTA)</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Frango + arroz + feijão (sem batata)</span> <span class="kcal-tag">~305 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">40g (2 colheres de sopa)</span></div>
+    <div>Feijão — <span class="qtd">80g (1 concha)</span></div>
+    <div>Peito de frango — <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Omelete + pão integral (em vez do hambúrguer)</span> <span class="kcal-tag">~320 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Ovos — <span class="qtd">2 Un.</span></div>
+    <div>Frango desfiado — <span class="qtd">50g</span></div>
+    <div>Queijo branco — <span class="qtd">15g (1 fatia fina)</span></div>
+    <div>Pão de forma integral — <span class="qtd">25g (1 fatia)</span></div>
+    <div>Tomate, cebola, orégano — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Frango grelhado + salada (em vez da pizza Rap 10)</span> <span class="kcal-tag">~310 kcal</span></div>
+  <div class="refeicao-itens">
+    <div>Peito de frango grelhado — <span class="qtd">100g (1 filé generoso)</span></div>
+    <div>Ovo cozido — <span class="qtd">1 Un.</span></div>
+    <div>Salada (alface, tomate, pepino, cenoura ralada) — <span class="qtd">200g (à vontade)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza OU 11 peças de sushi OU 1 hambúrguer simples). <strong>Faça a refeição livre num dia ALTA, nunca num dia BAIXA.</strong>
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>

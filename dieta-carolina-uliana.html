@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Dieta — Carolina Boone Uliana</title>
+<style>
+  @page {
+    size: A4;
+    margin: 14mm 14mm 14mm 14mm;
+  }
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    color: #1a1a1a;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    background: #fff;
+  }
+
+  .logo-block {
+    text-align: center;
+    margin-bottom: 14px;
+    padding-top: 4px;
+  }
+  .logo-icon {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .logo-icon .ramo {
+    display: block;
+    font-size: 16pt;
+    color: #4caf50;
+    line-height: 1;
+    margin-bottom: -3px;
+    letter-spacing: -2px;
+  }
+  .logo-icon .circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 2px solid #4caf50;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 32pt;
+    color: #1b5e20;
+    letter-spacing: -2px;
+    line-height: 1;
+    background: #fff;
+  }
+  .logo-icon .circle .x {
+    color: #4caf50;
+    font-size: 22pt;
+    margin-left: -3px;
+    margin-top: 6px;
+  }
+  .logo-name {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #1b5e20;
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+  }
+  .logo-sub {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #4caf50;
+    letter-spacing: 4px;
+    margin-top: 2px;
+  }
+
+  .credentials {
+    border-top: 1.5px solid #4caf50;
+    border-bottom: 1.5px solid #4caf50;
+    padding: 6px 0;
+    text-align: center;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #1b5e20;
+    letter-spacing: 0.3px;
+    margin: 8px 0 18px 0;
+  }
+  .credentials .sep {
+    color: #4caf50;
+    margin: 0 12px;
+    font-weight: 400;
+  }
+
+  h1.titulo {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: 22pt;
+    font-weight: 700;
+    color: #111;
+    text-align: left;
+    margin: 0 0 18px 0;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+
+  .cards {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 6px;
+    margin-bottom: 14px;
+  }
+  .card {
+    display: table-cell;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    padding: 8px 10px;
+    vertical-align: top;
+  }
+  .card .card-label {
+    font-size: 6.5pt;
+    font-weight: 700;
+    color: #777;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .card .card-value {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: 13pt;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.15;
+  }
+  .card .card-value small {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #444;
+  }
+
+  .macro-box {
+    background: #eaf3df;
+    border-top: 3px solid #4caf50;
+    border-radius: 4px;
+    padding: 12px 16px 14px 16px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .macro-box .macro-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .macro-box .macro-title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #1b5e20;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+  .macro-box .macro-kcal {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #111;
+    line-height: 1;
+  }
+  .macro-box .macro-kcal small {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #444;
+    margin-left: 2px;
+  }
+  .macros-grid {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 14px 0;
+    margin-left: -14px;
+    margin-right: -14px;
+  }
+  .macro {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .macro-name {
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: #1b5e20;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .macro-name .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .macro-amt {
+    font-family: Georgia, 'Playfair Display', serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: #111;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .macro-pct {
+    font-size: 8pt;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .bar-track {
+    height: 6px;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: #4caf50;
+    border-radius: 3px;
+  }
+
+  .meals-kcal {
+    margin-bottom: 14px;
+  }
+  .meal-row {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 6px 4px;
+  }
+  .meal-row:last-child { border-bottom: none; }
+  .meal-name {
+    display: table-cell;
+    width: 28%;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #1b5e20;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .meal-bar {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 12px;
+  }
+  .meal-bar .track {
+    height: 6px;
+    background: #eaf3df;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .meal-bar .fill {
+    height: 100%;
+    background: #4caf50;
+  }
+  .meal-kcal {
+    display: table-cell;
+    width: 70px;
+    text-align: right;
+    font-size: 10pt;
+    color: #444;
+    vertical-align: middle;
+  }
+
+  .recomendacao {
+    font-size: 9.5pt;
+    color: #333;
+    margin-bottom: 14px;
+    line-height: 1.55;
+    text-align: justify;
+  }
+  .recomendacao .label {
+    color: #e65100;
+    font-weight: 700;
+  }
+
+  .alert {
+    border-left: 4px solid #e65100;
+    background: #fff5eb;
+    padding: 10px 14px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 14px;
+  }
+  .alert .alert-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #e65100;
+    margin-bottom: 6px;
+  }
+  .alert .alert-title .ic {
+    margin-right: 6px;
+  }
+  .alert ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 9.5pt;
+    color: #333;
+  }
+  .alert ul li {
+    margin-bottom: 2px;
+    line-height: 1.45;
+  }
+
+  .refeicao-titulo {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #1b5e20;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #4caf50;
+  }
+  .refeicao-titulo .dica {
+    font-weight: 400;
+    font-style: italic;
+    color: #555;
+    font-size: 9.5pt;
+  }
+  .opcao-bloco {
+    border-left: 3px solid #4caf50;
+    padding-left: 12px;
+    margin: 10px 0 10px 0;
+    page-break-inside: avoid;
+  }
+  .refeicao-opcao {
+    display: inline-block;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #fff;
+    background: #1b5e20;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .refeicao-opcao .sub {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    margin-left: 4px;
+    opacity: 0.9;
+  }
+  .refeicao-itens {
+    padding: 2px 0 2px 0;
+  }
+  .refeicao-itens div {
+    font-size: 10pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+  }
+  .refeicao-itens .qtd {
+    color: #1b5e20;
+    font-weight: 600;
+  }
+
+  .livre {
+    margin-top: 18px;
+    padding: 10px 14px;
+    border-left: 4px solid #4caf50;
+    background: #f4f9ee;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    text-align: justify;
+    border-radius: 0 4px 4px 0;
+  }
+  .livre strong { color: #1b5e20; }
+
+  .footer {
+    margin-top: 18px;
+    padding-top: 8px;
+    border-top: 1px solid #d4d4d4;
+    text-align: center;
+    font-size: 8.5pt;
+    color: #1b5e20;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="logo-block">
+  <div class="logo-icon">
+    <span class="ramo">∿∿∿</span>
+    <div class="circle">B<span class="x">x</span></div>
+  </div>
+  <div class="logo-name">Breno<br>Xavier</div>
+  <div class="logo-sub">TREINO E NUTRIÇÃO</div>
+</div>
+
+<div class="credentials">
+  Ed. Física / Nutrição<span class="sep">·</span>Pós em Biomecânica<span class="sep">·</span>Pós em Bases Fisiológicas
+</div>
+
+<h1 class="titulo">Carolina Boone Uliana — Cutting (DEFINIÇÃO)</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Objetivo<br>Calórico</div>
+    <div class="card-value">1.500 <small>kcal</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Proteína</div>
+    <div class="card-value">115 <small>g/dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Refeições</div>
+    <div class="card-value">5 <small>/ dia</small></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Medicação</div>
+    <div class="card-value" style="font-size:13pt;">—</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Treino<br>Força</div>
+    <div class="card-value" style="font-size:11pt; line-height:1.25;">3x / sem<br><small>(baixa intens.)</small></div>
+  </div>
+</div>
+
+<div class="macro-box">
+  <div class="macro-head">
+    <div class="macro-title">Distribuição de Macronutrientes — Opção 1</div>
+    <div class="macro-kcal">1.500 <small>kcal / dia</small></div>
+  </div>
+  <div class="macros-grid">
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Proteína</div>
+      <div class="macro-amt">115 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">31% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:62%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Carboidrato</div>
+      <div class="macro-amt">165 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">45% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:90%;"></div></div>
+    </div>
+    <div class="macro">
+      <div class="macro-name"><span class="dot"></span>Gordura Total</div>
+      <div class="macro-amt">38 <small style="font-size:9pt; font-weight:400;">g</small></div>
+      <div class="macro-pct">23% do VCT</div>
+      <div class="bar-track"><div class="bar-fill" style="width:46%;"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="meals-kcal">
+  <div class="meal-row">
+    <div class="meal-name">Café da manhã</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:74%;"></div></div></div>
+    <div class="meal-kcal">340 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche da Manhã</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:20%;"></div></div></div>
+    <div class="meal-kcal">90 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Almoço</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:100%;"></div></div></div>
+    <div class="meal-kcal">460 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Lanche da Tarde</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:50%;"></div></div></div>
+    <div class="meal-kcal">230 kcal</div>
+  </div>
+  <div class="meal-row">
+    <div class="meal-name">Jantar</div>
+    <div class="meal-bar"><div class="track"><div class="fill" style="width:78%;"></div></div></div>
+    <div class="meal-kcal">360 kcal</div>
+  </div>
+</div>
+
+<div class="recomendacao">
+  <span class="label">Recomendação:</span> a quantidade de vegetais (legumes e verduras) na dieta é o mínimo que você deve consumir, não há qualquer problema em comer uma quantidade a mais. Todas as quantidades se referem aos alimentos pesados prontos para consumo (exceto se tiver a observação "cru"). Você não deve acrescentar, nem retirar alimentos da dieta, em vez disso entre em contato comigo para substituição.
+</div>
+
+<div class="alert">
+  <div class="alert-title"><span class="ic">⚠</span>Adaptado à sua rotina</div>
+  <ul>
+    <li><strong>Whey:</strong> as opções que levam whey estão marcadas — todas combinadas com iogurte natural desnatado, que foi a forma que você aceitou bem o gosto.</li>
+    <li><strong>Sobremesa = fruta</strong>, já que você não gosta muito de doce. Se algum dia bater vontade, libera 1 doce ≤150 kcal no lugar da fruta.</li>
+    <li><strong>Lanche da Tarde:</strong> as 3 opções são leves e práticas — pra usar quando bater fome (~final da tarde) e fechar o dia sem pesar.</li>
+    <li><strong>Jantar Op.3 (ovo mexido + farofa)</strong> é a sua "comida rápida" que você já fazia. Mantém pros dias mais corridos.</li>
+    <li><strong>Creatina:</strong> 5g/dia fixa, em qualquer refeição (treina força → recomendada).</li>
+    <li>Carne magra = patinho, músculo, acém, coxão mole, lagarto, alcatra.</li>
+  </ul>
+</div>
+
+<div class="refeicao-titulo">Café da manhã <span class="dica">— 3 opções, mantém a base do cuscuz que você já faz</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Cuscuz com ovos (sua rotina)</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz — <span class="qtd">25g (~2 colheres de sopa)</span></div>
+    <div>Ovos mexidos — <span class="qtd">3 Un.</span></div>
+    <div>Queijo branco — <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Café preto sem açúcar — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Cuscuz com carne moída (sua rotina)</span></div>
+  <div class="refeicao-itens">
+    <div>Cuscuz — <span class="qtd">30g (~2 colheres de sopa cheias)</span></div>
+    <div>Carne moída magra (patinho ou acém) — <span class="qtd">90g (~3 colheres de sopa cheias)</span></div>
+    <div>Café preto sem açúcar — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Iogurte com whey (sem ovo / sem carne)</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">170g (1 pote)</span></div>
+    <div>Whey concentrado — <span class="qtd">15g (~1/2 scoop)</span></div>
+    <div>Aveia em flocos — <span class="qtd">20g (2 colheres de sopa)</span></div>
+    <div>Banana (ou mamão) — <span class="qtd">80g (~1 unidade pequena)</span></div>
+    <div>Canela / cacau em pó — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da Manhã <span class="dica">— a fruta do intervalo que você já costuma fazer</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Fruta simples (sua rotina)</span></div>
+  <div class="refeicao-itens">
+    <div>Fruta a gosto (banana, mexerica, manga, mamão, laranja) — <span class="qtd">100g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Iogurte com whey (se quiser fechar a proteína do dia)</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">100g</span></div>
+    <div>Whey concentrado — <span class="qtd">10g (~1/3 scoop)</span></div>
+    <div>Fruta a gosto — <span class="qtd">60g (~1/2 unidade)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Almoço <span class="dica">— prato brasileiro de verdade · sobremesa = fruta</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Carne magra (sua rotina)</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">80g (4 colheres de sopa cheias)</span></div>
+    <div>Feijão — <span class="qtd">100g (1 concha cheia)</span></div>
+    <div>Carne magra (patinho, músculo, acém ou lagarto) — <span class="qtd">90g (1 bife médio)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Fruta de sobremesa — <span class="qtd">80g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Peito de frango (variação)</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">80g (4 colheres de sopa cheias)</span></div>
+    <div>Feijão — <span class="qtd">100g (1 concha cheia)</span></div>
+    <div>Peito de frango grelhado — <span class="qtd">90g (1 filé médio)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+    <div>Fruta de sobremesa — <span class="qtd">80g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Macarrão com carne moída (prático)</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão — <span class="qtd">100g (cozido, ~3/4 de escumadeira)</span></div>
+    <div>Carne moída magra (patinho ou acém) — <span class="qtd">80g (~3 colheres de sopa cheias)</span></div>
+    <div>Molho de tomate caseiro — <span class="qtd">50g</span></div>
+    <div>Vegetais à escolha — <span class="qtd">150g (ou mais)</span></div>
+    <div>Fruta de sobremesa — <span class="qtd">80g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Lanche da Tarde <span class="dica">— leve e prático, pra quando bater fome antes do treino</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Iogurte com whey (sua preferência)</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">170g (1 pote)</span></div>
+    <div>Whey concentrado — <span class="qtd">15g (~1/2 scoop)</span></div>
+    <div>Aveia em flocos — <span class="qtd">15g (~1,5 colher de sopa)</span></div>
+    <div>Fruta a gosto — <span class="qtd">60g</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Pão + queijo + fruta (sem whey)</span></div>
+  <div class="refeicao-itens">
+    <div>Pão de forma Vigor light — <span class="qtd">50g (2 fatias)</span></div>
+    <div>Queijo branco — <span class="qtd">20g (1 fatia fina)</span></div>
+    <div>Banana (ou mexerica) — <span class="qtd">80g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Vitamina rápida com whey (shake)</span></div>
+  <div class="refeicao-itens">
+    <div>Iogurte natural desnatado — <span class="qtd">100g</span></div>
+    <div>Whey concentrado — <span class="qtd">15g (~1/2 scoop)</span></div>
+    <div>Banana congelada — <span class="qtd">80g</span></div>
+    <div>Canela / cacau em pó — <span class="qtd">à vontade</span></div>
+  </div>
+</div>
+
+<div class="refeicao-titulo">Jantar <span class="dica">— comida de verdade · Op.3 é a sua "comida rápida"</span></div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 1 <span class="sub">· Comida em casa (sua base)</span></div>
+  <div class="refeicao-itens">
+    <div>Arroz — <span class="qtd">50g (~2,5 colheres de sopa cheias)</span></div>
+    <div>Feijão — <span class="qtd">80g (1 concha)</span></div>
+    <div>Carne magra OU peito de frango — <span class="qtd">90g (1 bife / 1 filé médio)</span></div>
+    <div>Vegetais à escolha — <span class="qtd">200g (ou mais)</span></div>
+    <div>Azeite extra virgem — <span class="qtd">5g (1 colher de chá)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 2 <span class="sub">· Macarrão com carne moída (rápida)</span></div>
+  <div class="refeicao-itens">
+    <div>Macarrão — <span class="qtd">80g (cozido, ~1/2 escumadeira)</span></div>
+    <div>Carne moída magra OU frango desfiado — <span class="qtd">80g</span></div>
+    <div>Molho de tomate caseiro — <span class="qtd">50g</span></div>
+    <div>Vegetais à escolha — <span class="qtd">100g (ou mais)</span></div>
+  </div>
+</div>
+
+<div class="opcao-bloco">
+  <div class="refeicao-opcao">Opção 3 <span class="sub">· Ovo mexido + farofa (sua rotina rápida)</span></div>
+  <div class="refeicao-itens">
+    <div>Ovos mexidos — <span class="qtd">2 Un.</span></div>
+    <div>Farofa de mandioca caseira (farinha + cebola + 1 col chá de azeite) — <span class="qtd">25g</span></div>
+    <div>Vegetais à escolha (tomate, alface, pepino) — <span class="qtd">150g</span></div>
+    <div>Fruta — <span class="qtd">80g (~1 unidade)</span></div>
+  </div>
+</div>
+
+<div class="livre">
+  <strong>Refeição livre:</strong> 1 refeição livre por semana, moderada (ex.: 2 fatias de pizza OU 11 peças de sushi OU 1 hambúrguer simples). Sempre com contenção de danos — bebida zero, boas escolhas no geral. Se consumir álcool, a refeição livre vale por duas.
+</div>
+
+<div class="footer">
+  @brenoxavieer_ &nbsp;·&nbsp; 31 9 7262-8289 &nbsp;·&nbsp; www.brenoxavier.com.br
+</div>
+
+</body>
+</html>
