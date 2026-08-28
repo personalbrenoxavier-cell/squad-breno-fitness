@@ -129,6 +129,18 @@ Ele mostra o que mudou, pede uma descrição (pode só apertar Enter) e envia tu
 
 Não precisa fazer isso a cada arquivo. Pode acumular o dia inteiro e enviar uma vez só.
 
+### Trazer de volta pro computador
+
+Quando o Claude Code trabalhar na nuvem (pelo celular, pelo navegador ou por sessão remota),
+os arquivos ficam no GitHub, não na sua pasta. Pra puxar: **dois cliques em `baixar-do-github.bat`**.
+
+Ele busca as novidades, mostra as branches que existem no GitHub e pergunta qual você quer.
+Aperte Enter pra ficar na branch atual, ou digite o nome (ex.: `claude/dieta-fulana-abc123`).
+
+Duas travas de segurança: se você tiver arquivo modificado e ainda não enviado, ele **para** e
+manda rodar o `atualizar-github.bat` primeiro; e se a versão daqui tiver seguido caminho
+diferente da do GitHub, ele **não** faz o merge sozinho — avisa pra você resolver no Claude Code.
+
 **Fica de fora do GitHub:** `data/` (avaliações posturais), fotos, `.csv` e `.xlsx`.
 Ou seja, o GitHub **não** é backup dessa pasta.
 
